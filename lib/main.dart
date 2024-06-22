@@ -8,11 +8,12 @@ import 'package:medica/core/route.dart';
 import 'package:medica/core/theme/custom_scheme_color.dart';
 import 'package:medica/core/theme/theme_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medica/registration/business_logic/forget_password/forget_password_cubit.dart';
-import 'package:medica/registration/business_logic/reset_password/reset_password_cubit.dart';
-import 'package:medica/registration/business_logic/sign_in/sign_in_cubit.dart';
-import 'package:medica/registration/business_logic/sign_up/sign_up_cubit.dart';
-import 'package:medica/registration/business_logic/verify_code/verify_code_cubit.dart';
+import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
+import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';
+import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart';
+import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
+import 'package:medica/features/registration/business_logic/sign_up/sign_up_cubit.dart';
+import 'package:medica/features/registration/business_logic/verify_code/verify_code_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,8 @@ void main() async {
     BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
     BlocProvider(create: (_) => getIt<VerifyCodeCubit>()),
     BlocProvider(create: (_) => getIt<ResetPasswordCubit>()),
+    BlocProvider(create: (_) => getIt<SearchDoctorBloc>()),
+
   ], child: const MyApp()));
 }
 
@@ -47,6 +50,8 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: router,
+            // routerDelegate: router.routerDelegate,
+
           );
         });
   }

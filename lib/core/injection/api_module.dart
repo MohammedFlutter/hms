@@ -1,14 +1,16 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:medica/core/route.dart';
-import 'package:medica/registration/data/repository/auth_repository.dart';
+import 'package:medica/features/registration/data/repository/auth_repository.dart';
 
 @module
 abstract class ApiModule {
   @Named('baseUrl')
-  String get baseUrl => 'http://localhost:8080/hms/v1/';
+  String get baseUrl => 'http://localhost:8080/';
 
   @lazySingleton
   Dio createDio() {
@@ -49,43 +51,50 @@ class TokenInterceptor extends Interceptor {
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    var accessToken = await authRepo.accessToken;
+    final accessToken = await _getValidAccessToken();
 
-    if (accessToken == null || JwtDecoder.isExpired(accessToken)) {
-      onRefreshToken();
-      accessToken = await authRepo.accessToken;
-    }
-
-    if (accessToken != null && !JwtDecoder.isExpired(accessToken)) {
+    if (accessToken != null) {
       options.headers['Authorization'] = 'Bearer $accessToken';
     }
+
     return super.onRequest(options, handler);
   }
 
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
-    handleUnauthorizedError(err);
-    handler.next(err);
-  }
-
-  void handleUnauthorizedError(DioException err) {
     if (err.response?.statusCode == 401) {
-      authRepo.logout();
-      navigatorKey.currentState
-          ?.pushNamedAndRemoveUntil(CustomRoute.signIn, (route) => false);
+      _handleUnauthorizedError();
     }
+    handler.next(err); // Continue with the original error handling
   }
 
-  void onRefreshToken() async {
+  // Helper function to get a valid access token (with refresh if needed)
+  Future<String?> _getValidAccessToken() async {
+    var accessToken = await authRepo.accessToken;
+    if (accessToken != null && !JwtDecoder.isExpired(accessToken)) {
+      return accessToken;
+    }
+
+    // Try to refresh the token
     final refreshToken = await authRepo.refreshToken;
     if (refreshToken != null) {
-      var result = await authRepo.refreshAccessToken(refreshToken);
-      result.when(
+      final result = await authRepo.refreshAccessToken(refreshToken);
+      return result.when(
+        failure: (failure) => null, // Refresh failed, return null
         success: (tokens) {
           authRepo.storeTokens(tokens!);
+          return tokens.accessToken; // Return the new access token
         },
-        failure: (err) => throw err,
       );
     }
+
+    return null; // No valid access token available
+  }
+
+  // Handle unauthorized errors (navigate to sign-in)
+  void _handleUnauthorizedError() {
+    authRepo.logout();
+    navigatorKey.currentState
+        ?.pushNamedAndRemoveUntil(Routes.signIn, (route) => false);
   }
 }
