@@ -8,6 +8,7 @@ import 'package:medica/core/route.dart';
 import 'package:medica/core/theme/custom_scheme_color.dart';
 import 'package:medica/core/theme/theme_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medica/features/appointment/business_logic/appointment_bloc.dart';
 import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';
 import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart';
@@ -25,6 +26,7 @@ void main() async {
     BlocProvider(create: (_) => getIt<VerifyCodeCubit>()),
     BlocProvider(create: (_) => getIt<ResetPasswordCubit>()),
     BlocProvider(create: (_) => getIt<SearchDoctorBloc>()),
+    BlocProvider(create: (_) => getIt<AppointmentBloc>()),
 
   ], child: const MyApp()));
 }
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData().create(CustomSchemeColor().lightColorScheme),
             darkTheme: ThemeData().create(CustomSchemeColor().darkColorScheme),
+            themeMode: ThemeMode.dark,
             // locale: const Locale('ar'),
             localizationsDelegates: const [
               FormBuilderLocalizations.delegate,

@@ -69,11 +69,9 @@ class AuthRepository {
 
   Future<ApiResult<void>> logout() async {
     try {
-      _authProvider.logout();
-      Future.wait([
-        _secureStorage.deleteAll(),
-        // _preferences.clear(),
-      ]);
+      await _authProvider.logout();
+      await _secureStorage.deleteAll();
+      // _preferences.clear(),
 
       return const ApiResult.success();
     } catch (e) {
@@ -85,8 +83,9 @@ class AuthRepository {
 
   Future<void> storeTokens(Tokens tokens) async {
     // await Future.wait([
-    await      _secureStorage.write(key: _accessTokenKey, value: tokens.accessToken);
-     await  _secureStorage.write(key: _refreshTokenKey, value: tokens.refreshToken);
+    await _secureStorage.write(key: _accessTokenKey, value: tokens.accessToken);
+    await _secureStorage.write(
+        key: _refreshTokenKey, value: tokens.refreshToken);
     // ]);
   }
 

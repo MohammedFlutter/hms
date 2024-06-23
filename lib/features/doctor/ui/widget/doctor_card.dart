@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:medica/core/route.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
 
 class DoctorCard extends StatelessWidget {
@@ -11,9 +13,17 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('${doctor.basicInfo.firstname} ${doctor.basicInfo.lastname}'),
-      subtitle: Text(doctor.professionalDetails.specialty ?? ''),
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: BorderSide(color: Theme.of(context).dividerColor)),
+      child: ListTile(
+        title:
+            Text('${doctor.basicInfo.firstname} ${doctor.basicInfo.lastname}'),
+        subtitle: Text(doctor.professionalDetails.specialty ?? ''),
+        onTap: () => context.pushNamed(Routes.doctorDetails,extra: doctor),
+      ),
     );
   }
 }

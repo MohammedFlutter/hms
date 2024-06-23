@@ -173,9 +173,9 @@ class _FillProfilePageState extends State<FillProfilePage> {
     );
   }
 
-  void _logout() {
-    context.go(Routes.signIn);
-  }
+  // void _logout() {
+  //   context.go(Routes.signIn);
+  // }
 
   void _save(BuildContext context) {}
 

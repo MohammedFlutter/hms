@@ -6,24 +6,15 @@ import 'package:medica/core/injection/init_di.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key}) {
     getIt<Dio>().interceptors.add(getIt<TokenInterceptor>());
-    // getIt<AuthRepository>().refreshToken.then((token) {
-    //   getIt<AuthRepository>().refreshAccessToken(token!).then((result) {
-    //     result.when(
-    //       success: (data) {
-    //         print(data);
-    //       },
-    //       failure: (exceptions) {
-    //         print(exceptions);
-    //       },
-    //     );
-    //   });
-    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welcome name'),
+      ),
+      body: const Center(
         child: Text('home Screen'),
       ),
     );

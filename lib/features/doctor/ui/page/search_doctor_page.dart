@@ -47,7 +47,7 @@ class SearchDoctorPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Number of Doctors: ${state.doctors.length}'),
-                    ElevatedButton(
+                    FilledButton(
                       onPressed: () {
                         context.read<SearchDoctorBloc>().add(
                             SearchDoctorEvent.sortDoctors(!state.isAscending));

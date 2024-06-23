@@ -1,51 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-const patientDestinations = [
-  NavigationDestination(
-    icon: Icon(Icons.home),
+class Destination {
+  Destination({required this.icon, required this.label, required this.routeIndex});
+
+  final Icon icon;
+  final String label;
+  final int routeIndex;
+}
+
+final patientDestinations = [
+  Destination(
+    icon: const Icon(Icons.home),
     label: 'Home',
+    routeIndex: 0,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.search),
+  Destination(
+    icon: const Icon(Icons.search),
     label: 'Search',
+    routeIndex: 1,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.receipt_long),
+  Destination(
+    icon: const Icon(Icons.receipt_long),
     label: 'Lab Results',
+    routeIndex:3,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.medical_information),
+  Destination(
+    icon: const Icon(Icons.medical_information),
     label: 'Prescription',
+    routeIndex: 4,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.person),
+  Destination(
+    icon: const Icon(Icons.person),
     label: 'Profile',
+    routeIndex: 6,
   ),
 ];
 
-const doctorDestinations = [
-  NavigationDestination(
-    icon: Icon(Icons.home),
+final doctorDestinations = [
+  Destination(
+    icon: const Icon(Icons.home),
     label: 'Home',
+    routeIndex: 0,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.event),
+  Destination(
+    icon: const Icon(Icons.event),
     label: 'Appointment',
+    routeIndex:2,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.groups),
+  Destination(
+    icon: const Icon(Icons.groups),
     label: 'Patients',
+    routeIndex:5,
   ),
-  NavigationDestination(
-    icon: Icon(Icons.person),
+  Destination(
+    icon: const Icon(Icons.person),
     label: 'Profile',
+    routeIndex: 6,
   ),
 ];
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
-  final List<NavigationDestination> navigationDestinations;
+  final List<Destination> navigationDestinations;
 
   const CustomBottomNavigationBar({
     super.key,
@@ -64,7 +81,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      destinations: widget.navigationDestinations,
+      destinations: widget.navigationDestinations
+          .map((e) => NavigationDestination(icon: e.icon, label: e.label))
+          .toList(),
       selectedIndex: _selectedIndex,
       onDestinationSelected: (index) => _onDestinationSelected(context, index),
     );
@@ -74,7 +93,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     setState(() {
       _selectedIndex = index;
     });
-    widget.navigationShell.goBranch(index,
-        initialLocation: index == widget.navigationShell.currentIndex);
-  }
+    // context.goNamed(widget.navigationDestinations[index].route);
+    var destinationIndex =widget.navigationDestinations[index].routeIndex;
+    widget.navigationShell.goBranch(destinationIndex,
+        // initialLocation: index == widget.navigationShell.currentIndex
+    );
+  } // widget.navigationShell.goBranch(6);
+// }
 }

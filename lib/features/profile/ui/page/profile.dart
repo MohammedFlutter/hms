@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
+import 'package:medica/core/injection/init_di.dart';
 import 'package:medica/features/profile/ui/widget/profile_card.dart';
+import 'package:medica/features/registration/data/repository/auth_repository.dart';
 import 'package:medica/generated/assets.dart';
+import 'package:medica/core/route.dart';
 
 //https://www.figma.com/file/M35s7H1ggYdCWKOAHwtNHP/Doctor-Appointment-App-UI-Kit-(Community)-(Copy)?type=design&node-id=2-5043&mode=design&t=hKGwMWgViTFCHJZt-4
 class ProfilePage extends StatelessWidget {
@@ -78,10 +82,7 @@ class ProfilePage extends StatelessWidget {
               child: Transform.translate(
                   // offset: const Offset(-20, 0),
                   offset: const Offset(0, 0),
-                  child:
-                      // Image.
-
-                      Image.network(
+                  child: Image.network(
                     imageUri,
                     height: 200,
                     width: 200,
@@ -183,5 +184,9 @@ class ProfilePage extends StatelessWidget {
 
   void _onTermsAndCondition(BuildContext context) {}
 
-  void _onLogOut(BuildContext context) {}
+  void _onLogOut(BuildContext context) {
+    //todo this not place
+    getIt<AuthRepository>().logout();
+    context.goNamed(Routes.signIn);
+  }
 }
