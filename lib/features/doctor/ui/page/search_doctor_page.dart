@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
@@ -48,11 +49,12 @@ class SearchDoctorPage extends StatelessWidget {
                   children: [
                     Text('Number of Doctors: ${state.doctors.length}'),
                     FilledButton(
+                      style: const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsetsDirectional.symmetric(horizontal: 8))),
                       onPressed: () {
                         context.read<SearchDoctorBloc>().add(
                             SearchDoctorEvent.sortDoctors(!state.isAscending));
                       },
-                      child: Text(state.isAscending ? 'Sort Z-A' : 'Sort A-Z'),
+                      child: Text(state.isAscending ? 'Sort Z-A' : 'Sort A-Z',style: CustomTextStyle.bodySMedium,),
                     ),
                   ],
                 ),

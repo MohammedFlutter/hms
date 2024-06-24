@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medica/core/route.dart';
 import 'package:medica/features/appointment/business_logic/appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/appointment_event.dart';
 import 'package:medica/features/appointment/business_logic/appointment_state.dart';
@@ -24,8 +25,18 @@ final dateFormat = DateFormat('HH:mm:ss');
 class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
   final _formKey = GlobalKey<FormState>();
   final _reasonController = TextEditingController();
+
   DateTime? _selectedTime;
   bool _isVirtual = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    context
+        .read<AppointmentBloc>()
+        .add(GetAvailableTimeSlots(widget.doctor.id));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +46,36 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
       ),
       body: BlocConsumer<AppointmentBloc, AppointmentState>(
         listener: (context, state) {
-          state.when(
-            initial: () {},
-            loading: () {},
-            success: () {
+          switch (state.status) {
+            case AppointmentStateStatus.loading:
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   const SnackBar(content: Text('Loading...')),
+              // );
+              break;
+            case AppointmentStateStatus.success:
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                     content: Text('Appointment created successfully!')),
               );
               context.pop();
-            },
-            failure: (error) {
+              break;
+            case AppointmentStateStatus.failure:
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Error: $error')),
+                SnackBar(content: Text('Error: ${state.errorMessage}')),
               );
-            },
-          );
+              break;
+            case AppointmentStateStatus.initial:
+              break;
+            case AppointmentStateStatus.timeSlotsLoaded:
+              if (state.timeSlots.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('this Doctor is not available now'),
+                  ),
+                );
+                context.go(Routes.search);
+              }
+          }
         },
         builder: (BuildContext context, AppointmentState state) {
           return Padding(
@@ -78,6 +103,7 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
                     endTime: dateFormat
                         .parse(widget.doctor.professionalDetails.workEndTime!),
                     interval: const Duration(minutes: 30),
+                    availableTimeSlots: state.timeSlots,
                     onTimeSlotSelected: (selectedTime) {
                       _selectedTime = selectedTime;
                     },

@@ -1,45 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
-import 'package:medica/core/injection/init_di.dart';
+import 'package:medica/features/profile/business_logic/profile_bloc.dart';
+import 'package:medica/features/profile/business_logic/profile_event.dart';
+import 'package:medica/features/profile/business_logic/profile_state.dart';
+import 'package:medica/features/profile/data/model/profile.dart';
 import 'package:medica/features/profile/ui/widget/profile_card.dart';
-import 'package:medica/features/registration/data/repository/auth_repository.dart';
 import 'package:medica/generated/assets.dart';
 import 'package:medica/core/route.dart';
 
-//https://www.figma.com/file/M35s7H1ggYdCWKOAHwtNHP/Doctor-Appointment-App-UI-Kit-(Community)-(Copy)?type=design&node-id=2-5043&mode=design&t=hKGwMWgViTFCHJZt-4
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({
     super.key,
   });
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+
+  static const tiles = [
+    // (icon:Icons. ),
+  ];
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final String imageUri =
       'https://marketplace.canva.com/EAFauoQSZtY/1/0/1600w/canva-brown-mascot-lion-free-logo-qJptouniZ0A.jpg';
 
-  final String name = 'mohammed abdo';
-  final String phone = '+20 101 677 6179';
-
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProfileBloc>().add(const ProfileEvent.getProfile());
+  }
+  // final String name = 'mohammed abdo';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-        child: SingleChildScrollView(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildProfileInfo(context),
-            const Gap(16),
-            buildBody(context)
-          ],
-        )),
-      )),
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        state.maybeWhen(
+            orElse: () {},
+            logoutSuccess: () => context.goNamed(Routes.signIn),
+            failure: (error) => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Error: $error')),
+                ));
+      },
+      builder: (context, state) {
+        return state.maybeWhen(
+
+            orElse: () => const SizedBox(child: Text('lllllllllllll'),),
+            loading: () {
+              return const Center(child: CircularProgressIndicator());
+            },
+            success: (profile) {
+              return SafeArea(
+                child: Scaffold(
+                    body: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  child: SingleChildScrollView(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      buildProfileInfo(context, profile),
+                      const Gap(16),
+                      buildBody(context)
+                    ],
+                  )),
+                )),
+              );
+            });
+      },
     );
   }
 
-  Widget buildProfileInfo(BuildContext context) {
+  Widget buildProfileInfo(BuildContext context, Profile profile) {
     return Column(
       children: [
         Text(
@@ -50,12 +85,12 @@ class ProfilePage extends StatelessWidget {
         _buildPicture(context),
         const Gap(16),
         Text(
-          name,
+          '${profile.firstname} ${profile.lastname}',
           style: CustomTextStyle.h2,
         ),
         const Gap(4),
         Text(
-          phone,
+          profile.phone ?? '',
           style: CustomTextStyle.bodyXSMedium,
         ),
       ],
@@ -168,10 +203,6 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  static const tiles = [
-    // (icon:Icons. ),
-  ];
-
   void _onEditProfile(BuildContext context) {}
 
   void _onFavorite(BuildContext context) {}
@@ -185,8 +216,6 @@ class ProfilePage extends StatelessWidget {
   void _onTermsAndCondition(BuildContext context) {}
 
   void _onLogOut(BuildContext context) {
-    //todo this not place
-    getIt<AuthRepository>().logout();
-    context.goNamed(Routes.signIn);
+    context.read<ProfileBloc>().add(const ProfileEvent.logout());
   }
 }

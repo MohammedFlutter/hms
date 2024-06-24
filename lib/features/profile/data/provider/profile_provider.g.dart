@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'appointment_provider.dart';
+part of 'profile_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'appointment_provider.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _AppointmentProvider implements AppointmentProvider {
-  _AppointmentProvider(
+class _ProfileProvider implements ProfileProvider {
+  _ProfileProvider(
     this._dio, {
     this.baseUrl,
   });
@@ -19,44 +19,20 @@ class _AppointmentProvider implements AppointmentProvider {
   String? baseUrl;
 
   @override
-  Future<void> createAppointment(Appointment appointment) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = appointment;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'api/v1/appointments',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-  }
-
-  @override
-  Future<List<String>> getAvailableTimeSlots(int doctorId) async {
+  Future<Profile> getProfile() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Profile>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'api/v1/doctor/get-available-time/${doctorId}',
+              'api/v1/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -65,7 +41,7 @@ class _AppointmentProvider implements AppointmentProvider {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data!.cast<String>();
+    final value = Profile.fromJson(_result.data!);
     return value;
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -28,14 +27,14 @@ class VerifyCodePage extends StatefulWidget {
 }
 
 class _VerifyCodePageState extends State<VerifyCodePage> {
-  late final GlobalKey<FormBuilderState> _formKey;
+  late final GlobalKey<FormState> _formKey;
 
   late final TextEditingController _otpController;
 
   @override
   void initState() {
     super.initState();
-    _formKey = GlobalKey<FormBuilderState>();
+    _formKey = GlobalKey<FormState>();
     _otpController = TextEditingController();
   }
 
@@ -53,10 +52,13 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
             },
             success: () {
               context.pop();
+              CustomSnakeBar.show(
+                  context: context,
+                  isError: false,
+                  message: 'account created successfully');
               if (widget.previousRoute ==
                   PreviousRoute.forgotPasswordVerification) {
-                context.goNamed(Routes.resetPassword,
-                    extra:  widget.email);
+                context.goNamed(Routes.resetPassword, extra: widget.email);
               } else if (widget.previousRoute ==
                   PreviousRoute.accountActivationVerification) {
                 context.goNamed(Routes.signIn);
@@ -172,7 +174,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
     //todo on resend
     _otpController.text = '';
     // if (widget.previousRoute == PreviousRoute.forgotPasswordVerification) {
-      BlocProvider.of<VerifyCodeCubit>(context).onResentOtp(widget.email);
+    BlocProvider.of<VerifyCodeCubit>(context).onResentOtp(widget.email);
     // }
     // c
     // ontext.pushNamed(CustomRoute.resetPassword);

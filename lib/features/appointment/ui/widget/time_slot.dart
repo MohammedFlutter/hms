@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 class TimeSlot extends StatefulWidget {
   final DateTime startTime;
   final Duration interval;
   final DateTime endTime;
+  final List<String> availableTimeSlots;
 
   final void Function(DateTime) onTimeSlotSelected;
 
@@ -13,6 +14,7 @@ class TimeSlot extends StatefulWidget {
     required this.startTime,
     required this.interval,
     required this.endTime,
+    required this.availableTimeSlots,
     required this.onTimeSlotSelected,
   });
 
@@ -30,21 +32,31 @@ class _TimeSlotState extends State<TimeSlot> {
       runSpacing: 10,
       children: generateTimeSlots().map((timeSlot) {
         final isSelected = selectedTimeSlot == timeSlot;
+        final isAvailable = widget.availableTimeSlots
+            .contains(DateFormat('HH:mm:ss').format(timeSlot));
         return InkWell(
-          onTap: () {
-            widget.onTimeSlotSelected(timeSlot);
-            setState(() => selectedTimeSlot = timeSlot);
-          },
+          onTap: isAvailable
+              ? () {
+                  widget.onTimeSlotSelected(timeSlot);
+                  setState(() => selectedTimeSlot = timeSlot);
+                }
+              : null,
           child: Chip(
-            // padding:EdgeInsetsDirectional.symmetric(horizontal: 20) ,
-
-            backgroundColor: isSelected ? Colors.blue : Colors.grey[200],
+            backgroundColor: isAvailable
+                ? isSelected
+                    ? Colors.blue
+                    : Colors.grey[200]
+                : Colors.grey[300],
             label: SizedBox(
               width: 36,
               child: Text(
                 DateFormat('HH:mm').format(timeSlot),
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.black,
+                  color: isAvailable
+                      ? isSelected
+                          ? Colors.white
+                          : Colors.black
+                      : Colors.grey[600],
                 ),
               ),
             ),

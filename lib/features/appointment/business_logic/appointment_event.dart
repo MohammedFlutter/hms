@@ -7,4 +7,7 @@ part 'appointment_event.freezed.dart';
 class AppointmentEvent with _$AppointmentEvent {
   const factory AppointmentEvent.createAppointment(Appointment appointment) =
       CreateAppointment;
+
+  const factory AppointmentEvent.getAvailableTimeSlots(int doctorId) =
+      GetAvailableTimeSlots;
 }

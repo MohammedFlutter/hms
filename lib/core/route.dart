@@ -11,7 +11,7 @@ import 'package:medica/features/home/ui/home_page.dart';
 import 'package:medica/features/onboarding/onboarding_cubit.dart';
 import 'package:medica/features/onboarding/onboarding_repo.dart';
 import 'package:medica/features/onboarding/ui/pages/onboarding_page.dart';
-import 'package:medica/features/profile/ui/page/profile.dart';
+import 'package:medica/features/profile/ui/page/profile_page.dart';
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
 import 'package:medica/features/registration/data/repository/auth_repository.dart';
 import 'package:medica/features/registration/ui/pages/fill_profile_page.dart';

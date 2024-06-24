@@ -4,7 +4,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/enums/gender.dart';
-import 'package:medica/core/route.dart';
 import 'package:medica/core/widget/custom_text_field.dart';
 
 class FillProfilePage extends StatefulWidget {

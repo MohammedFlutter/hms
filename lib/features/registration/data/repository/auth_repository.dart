@@ -70,15 +70,12 @@ class AuthRepository {
   Future<ApiResult<void>> logout() async {
     try {
       await _authProvider.logout();
-      await _secureStorage.deleteAll();
-      // _preferences.clear(),
-
       return const ApiResult.success();
     } catch (e) {
       return ApiResult.failure(NetworkExceptions.getDioException(e));
+    } finally {
+      await _secureStorage.deleteAll();
     }
-    // await _storage.delete(key: _tokenKey);
-    // await preferences.clear();
   }
 
   Future<void> storeTokens(Tokens tokens) async {

@@ -16,6 +16,8 @@ import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubi
 import 'package:medica/features/registration/business_logic/sign_up/sign_up_cubit.dart';
 import 'package:medica/features/registration/business_logic/verify_code/verify_code_cubit.dart';
 
+import 'features/profile/business_logic/profile_bloc.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await getIt.init();
@@ -27,6 +29,7 @@ void main() async {
     BlocProvider(create: (_) => getIt<ResetPasswordCubit>()),
     BlocProvider(create: (_) => getIt<SearchDoctorBloc>()),
     BlocProvider(create: (_) => getIt<AppointmentBloc>()),
+    BlocProvider(create: (_) => getIt<ProfileBloc>()),
 
   ], child: const MyApp()));
 }

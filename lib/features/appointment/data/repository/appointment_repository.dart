@@ -18,4 +18,24 @@ class AppointmentRepository {
       return ApiResult.failure(NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult<List<String>>> getAvailableTimeSlots(int doctorId) async {
+    try {
+      final timeSlots =
+          await _appointmentProvider.getAvailableTimeSlots(doctorId);
+      return ApiResult.success(data: timeSlots);
+    } catch (e) {
+      return ApiResult.failure(NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<bool>> isAvailable(int doctorId) async {
+    try {
+      final timeSlots =
+          await _appointmentProvider.getAvailableTimeSlots(doctorId);
+      return ApiResult.success(data: timeSlots.isNotEmpty);
+    } catch (e) {
+      return ApiResult.failure(NetworkExceptions.getDioException(e));
+    }
+  }
 }

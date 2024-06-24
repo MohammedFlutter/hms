@@ -14,4 +14,7 @@ abstract class AppointmentProvider {
 
   @POST('api/v1/appointments')
   Future<void> createAppointment(@Body() Appointment appointment);
+
+  @GET('api/v1/doctor/get-available-time/{doctorId}')
+  Future<List<String>> getAvailableTimeSlots(@Path('doctorId') int doctorId);
 }

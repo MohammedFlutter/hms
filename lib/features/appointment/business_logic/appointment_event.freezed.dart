@@ -16,42 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppointmentEvent {
-  Appointment get appointment => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(int doctorId) getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(int doctorId)? getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(int doctorId)? getAvailableTimeSlots,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreateAppointment value) createAppointment,
+    required TResult Function(GetAvailableTimeSlots value)
+        getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateAppointment value)? createAppointment,
+    TResult? Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateAppointment value)? createAppointment,
+    TResult Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AppointmentEventCopyWith<AppointmentEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +62,6 @@ abstract class $AppointmentEventCopyWith<$Res> {
   factory $AppointmentEventCopyWith(
           AppointmentEvent value, $Res Function(AppointmentEvent) then) =
       _$AppointmentEventCopyWithImpl<$Res, AppointmentEvent>;
-  @useResult
-  $Res call({Appointment appointment});
-
-  $AppointmentCopyWith<$Res> get appointment;
 }
 
 /// @nodoc
@@ -75,40 +73,16 @@ class _$AppointmentEventCopyWithImpl<$Res, $Val extends AppointmentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appointment = null,
-  }) {
-    return _then(_value.copyWith(
-      appointment: null == appointment
-          ? _value.appointment
-          : appointment // ignore: cast_nullable_to_non_nullable
-              as Appointment,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppointmentCopyWith<$Res> get appointment {
-    return $AppointmentCopyWith<$Res>(_value.appointment, (value) {
-      return _then(_value.copyWith(appointment: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$CreateAppointmentImplCopyWith<$Res>
-    implements $AppointmentEventCopyWith<$Res> {
+abstract class _$$CreateAppointmentImplCopyWith<$Res> {
   factory _$$CreateAppointmentImplCopyWith(_$CreateAppointmentImpl value,
           $Res Function(_$CreateAppointmentImpl) then) =
       __$$CreateAppointmentImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Appointment appointment});
 
-  @override
   $AppointmentCopyWith<$Res> get appointment;
 }
 
@@ -131,6 +105,14 @@ class __$$CreateAppointmentImplCopyWithImpl<$Res>
           : appointment // ignore: cast_nullable_to_non_nullable
               as Appointment,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppointmentCopyWith<$Res> get appointment {
+    return $AppointmentCopyWith<$Res>(_value.appointment, (value) {
+      return _then(_value.copyWith(appointment: value));
+    });
   }
 }
 
@@ -170,6 +152,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(int doctorId) getAvailableTimeSlots,
   }) {
     return createAppointment(appointment);
   }
@@ -178,6 +161,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(int doctorId)? getAvailableTimeSlots,
   }) {
     return createAppointment?.call(appointment);
   }
@@ -186,6 +170,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(int doctorId)? getAvailableTimeSlots,
     required TResult orElse(),
   }) {
     if (createAppointment != null) {
@@ -198,6 +183,8 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreateAppointment value) createAppointment,
+    required TResult Function(GetAvailableTimeSlots value)
+        getAvailableTimeSlots,
   }) {
     return createAppointment(this);
   }
@@ -206,6 +193,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateAppointment value)? createAppointment,
+    TResult? Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
   }) {
     return createAppointment?.call(this);
   }
@@ -214,6 +202,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateAppointment value)? createAppointment,
+    TResult Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
     required TResult orElse(),
   }) {
     if (createAppointment != null) {
@@ -227,10 +216,146 @@ abstract class CreateAppointment implements AppointmentEvent {
   const factory CreateAppointment(final Appointment appointment) =
       _$CreateAppointmentImpl;
 
-  @override
   Appointment get appointment;
-  @override
   @JsonKey(ignore: true)
   _$$CreateAppointmentImplCopyWith<_$CreateAppointmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetAvailableTimeSlotsImplCopyWith<$Res> {
+  factory _$$GetAvailableTimeSlotsImplCopyWith(
+          _$GetAvailableTimeSlotsImpl value,
+          $Res Function(_$GetAvailableTimeSlotsImpl) then) =
+      __$$GetAvailableTimeSlotsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int doctorId});
+}
+
+/// @nodoc
+class __$$GetAvailableTimeSlotsImplCopyWithImpl<$Res>
+    extends _$AppointmentEventCopyWithImpl<$Res, _$GetAvailableTimeSlotsImpl>
+    implements _$$GetAvailableTimeSlotsImplCopyWith<$Res> {
+  __$$GetAvailableTimeSlotsImplCopyWithImpl(_$GetAvailableTimeSlotsImpl _value,
+      $Res Function(_$GetAvailableTimeSlotsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? doctorId = null,
+  }) {
+    return _then(_$GetAvailableTimeSlotsImpl(
+      null == doctorId
+          ? _value.doctorId
+          : doctorId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAvailableTimeSlotsImpl implements GetAvailableTimeSlots {
+  const _$GetAvailableTimeSlotsImpl(this.doctorId);
+
+  @override
+  final int doctorId;
+
+  @override
+  String toString() {
+    return 'AppointmentEvent.getAvailableTimeSlots(doctorId: $doctorId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAvailableTimeSlotsImpl &&
+            (identical(other.doctorId, doctorId) ||
+                other.doctorId == doctorId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, doctorId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAvailableTimeSlotsImplCopyWith<_$GetAvailableTimeSlotsImpl>
+      get copyWith => __$$GetAvailableTimeSlotsImplCopyWithImpl<
+          _$GetAvailableTimeSlotsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(int doctorId) getAvailableTimeSlots,
+  }) {
+    return getAvailableTimeSlots(doctorId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(int doctorId)? getAvailableTimeSlots,
+  }) {
+    return getAvailableTimeSlots?.call(doctorId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(int doctorId)? getAvailableTimeSlots,
+    required TResult orElse(),
+  }) {
+    if (getAvailableTimeSlots != null) {
+      return getAvailableTimeSlots(doctorId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateAppointment value) createAppointment,
+    required TResult Function(GetAvailableTimeSlots value)
+        getAvailableTimeSlots,
+  }) {
+    return getAvailableTimeSlots(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateAppointment value)? createAppointment,
+    TResult? Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
+  }) {
+    return getAvailableTimeSlots?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateAppointment value)? createAppointment,
+    TResult Function(GetAvailableTimeSlots value)? getAvailableTimeSlots,
+    required TResult orElse(),
+  }) {
+    if (getAvailableTimeSlots != null) {
+      return getAvailableTimeSlots(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetAvailableTimeSlots implements AppointmentEvent {
+  const factory GetAvailableTimeSlots(final int doctorId) =
+      _$GetAvailableTimeSlotsImpl;
+
+  int get doctorId;
+  @JsonKey(ignore: true)
+  _$$GetAvailableTimeSlotsImplCopyWith<_$GetAvailableTimeSlotsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
