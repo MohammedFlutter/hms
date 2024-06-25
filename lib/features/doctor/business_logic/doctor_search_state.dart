@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
 
-part 'search_doctor_state.freezed.dart';
+part 'doctor_search_state.freezed.dart';
 
 @freezed
 class SearchDoctorState with _$SearchDoctorState {
   const factory SearchDoctorState({
-    @Default([]) List<DoctorDetails> doctors,
+    @Default([]) List<Doctor> doctors,
     @Default(true) bool isAscending,
     @Default('') String selectedSpecializations,
     @Default('') String searchQuery,

@@ -95,6 +95,6 @@ class TokenInterceptor extends Interceptor {
   void _handleUnauthorizedError() {
     authRepo.logout();
     navigatorKey.currentState
-        ?.pushNamedAndRemoveUntil(Routes.signIn, (route) => false);
+        ?.pushNamedAndRemoveUntil(CustomRoutes.signIn, (route) => false);
   }
 }

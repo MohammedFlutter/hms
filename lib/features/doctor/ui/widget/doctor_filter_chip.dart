@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_event.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_event.dart';
+
 
 class DoctorFilterChips extends StatefulWidget {
   const DoctorFilterChips({super.key});
@@ -46,7 +47,7 @@ class _DoctorFilterChipsState extends State<DoctorFilterChips> {
                     _selectedSpecialization = null;
                   }
                 });
-                context.read<SearchDoctorBloc>().add(
+                context.read<DoctorSearchBloc>().add(
                     SearchDoctorEvent.filterDoctorsBySpecializations(
                         _selectedSpecialization));
               },

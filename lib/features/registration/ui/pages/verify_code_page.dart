@@ -58,10 +58,10 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
                   message: 'account created successfully');
               if (widget.previousRoute ==
                   PreviousRoute.forgotPasswordVerification) {
-                context.goNamed(Routes.resetPassword, extra: widget.email);
+                context.goNamed(CustomRoutes.resetPassword, extra: widget.email);
               } else if (widget.previousRoute ==
                   PreviousRoute.accountActivationVerification) {
-                context.goNamed(Routes.signIn);
+                context.goNamed(CustomRoutes.signIn);
               }
             },
             failure: (error) {

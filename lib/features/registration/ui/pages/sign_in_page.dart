@@ -39,7 +39,7 @@ class _SignInPageState extends State<SignInPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(Routes.home);
+              context.goNamed(CustomRoutes.home);
             },
             failure: (error) {
               context.pop();
@@ -177,10 +177,10 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void _goSignUp(BuildContext context) {
-    context.goNamed(Routes.signUp);
+    context.goNamed(CustomRoutes.signUp);
   }
 
   void _goForgotPassword(BuildContext context) {
-    context.goNamed(Routes.forgetPassword);
+    context.goNamed(CustomRoutes.forgetPassword);
   }
 }

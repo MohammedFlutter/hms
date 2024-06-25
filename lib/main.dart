@@ -9,7 +9,9 @@ import 'package:medica/core/theme/custom_scheme_color.dart';
 import 'package:medica/core/theme/theme_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medica/features/appointment/business_logic/appointment_bloc.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
+import 'package:medica/features/home/business_logic/home_patient/home_patient_bloc.dart';
+import 'package:medica/features/patient/business_logic/patient_search_bloc.dart';
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';
 import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart';
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
@@ -27,10 +29,11 @@ void main() async {
     BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
     BlocProvider(create: (_) => getIt<VerifyCodeCubit>()),
     BlocProvider(create: (_) => getIt<ResetPasswordCubit>()),
-    BlocProvider(create: (_) => getIt<SearchDoctorBloc>()),
+    BlocProvider(create: (_) => getIt<HomePatientBloc>()),
+    BlocProvider(create: (_) => getIt<DoctorSearchBloc>()),
+    BlocProvider(create: (_) => getIt<PatientSearchBloc>()),
     BlocProvider(create: (_) => getIt<AppointmentBloc>()),
     BlocProvider(create: (_) => getIt<ProfileBloc>()),
-
   ], child: const MyApp()));
 }
 
@@ -57,7 +60,6 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: router,
             // routerDelegate: router.routerDelegate,
-
           );
         });
   }

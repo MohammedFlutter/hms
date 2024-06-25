@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_doctor_provider.dart';
+part of 'patient_history_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,40 +8,31 @@ part of 'search_doctor_provider.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _SearchDoctorProvider implements SearchDoctorProvider {
-  _SearchDoctorProvider(
+class _PatientHistoryProvider implements PatientHistoryProvider {
+  _PatientHistoryProvider(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'api/v1/';
-  }
+  });
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<List<Doctor>> searchDoctors({
-    String? searchQuery,
-    String? specialization,
-  }) async {
+  Future<PatientHistory> getPatientHistory(int patientId) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'firstname': searchQuery,
-      r'specialty': specialization,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Doctor>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PatientHistory>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'api/v1/doctor',
+              'api/vi/patient-history/get_by-patient-id/${patientId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -50,9 +41,7 @@ class _SearchDoctorProvider implements SearchDoctorProvider {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => Doctor.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = PatientHistory.fromJson(_result.data!);
     return value;
   }
 

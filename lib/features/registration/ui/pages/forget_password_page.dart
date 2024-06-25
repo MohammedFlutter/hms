@@ -38,8 +38,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(Routes.verifyCode, extra: {
-                CustomRouteParameter.previousPage: Routes.forgetPassword,
+              context.goNamed(CustomRoutes.verifyCode, extra: {
+                CustomRouteParameter.previousPage: CustomRoutes.forgetPassword,
                 CustomRouteParameter.email:_formKey.currentState!.value[email]
               });
             },

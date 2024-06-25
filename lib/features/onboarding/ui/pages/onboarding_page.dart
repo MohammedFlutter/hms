@@ -81,7 +81,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       if (isLast) {
                         BlocProvider.of<OnboardingCubit>(context)
                             .onGetStarted();
-                        context.goNamed(Routes.signUp);
+                        context.goNamed(CustomRoutes.signUp);
                       } else {
                         _pageController.nextPage(
                             duration: const Duration(milliseconds: 300),

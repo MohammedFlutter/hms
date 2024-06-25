@@ -1,14 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:medica/core/exceptions/network_exceptions.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_event.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_state.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_event.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_state.dart';
 
 import 'package:medica/features/doctor/data/repository/search_doctor_repository.dart';
 
 @injectable
-class SearchDoctorBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
-  SearchDoctorBloc(
+class DoctorSearchBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
+  DoctorSearchBloc(
     this._doctorRepository,
   ) : super(const SearchDoctorState()) {
     on<SearchDoctorEvent>((event, emit) {
@@ -24,7 +24,7 @@ class SearchDoctorBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
   final SearchDoctorRepository _doctorRepository;
 
   Future<void> _onLoad() async {
-    emit(state.copyWith(status: DoctorStatus.loading));
+    // emit(state.copyWith(status: DoctorStatus.loading));
     final result = await _doctorRepository.searchDoctor(
         specialization: state.selectedSpecializations,
         searchQuery: state.searchQuery);

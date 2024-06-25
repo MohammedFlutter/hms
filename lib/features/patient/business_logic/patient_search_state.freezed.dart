@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'search_doctor_state.dart';
+part of 'patient_search_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,38 +15,40 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SearchDoctorState {
-  List<DoctorDetails> get doctors => throw _privateConstructorUsedError;
+mixin _$PatientSearchState {
+  PatientHistory? get patientHistory => throw _privateConstructorUsedError;
+  List<Patient> get patients => throw _privateConstructorUsedError;
   bool get isAscending => throw _privateConstructorUsedError;
-  String get selectedSpecializations => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
-  DoctorStatus get status => throw _privateConstructorUsedError;
+  PatientSearchStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchDoctorStateCopyWith<SearchDoctorState> get copyWith =>
+  $PatientSearchStateCopyWith<PatientSearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SearchDoctorStateCopyWith<$Res> {
-  factory $SearchDoctorStateCopyWith(
-          SearchDoctorState value, $Res Function(SearchDoctorState) then) =
-      _$SearchDoctorStateCopyWithImpl<$Res, SearchDoctorState>;
+abstract class $PatientSearchStateCopyWith<$Res> {
+  factory $PatientSearchStateCopyWith(
+          PatientSearchState value, $Res Function(PatientSearchState) then) =
+      _$PatientSearchStateCopyWithImpl<$Res, PatientSearchState>;
   @useResult
   $Res call(
-      {List<DoctorDetails> doctors,
+      {PatientHistory? patientHistory,
+      List<Patient> patients,
       bool isAscending,
-      String selectedSpecializations,
       String searchQuery,
       String errorMessage,
-      DoctorStatus status});
+      PatientSearchStatus status});
+
+  $PatientHistoryCopyWith<$Res>? get patientHistory;
 }
 
 /// @nodoc
-class _$SearchDoctorStateCopyWithImpl<$Res, $Val extends SearchDoctorState>
-    implements $SearchDoctorStateCopyWith<$Res> {
-  _$SearchDoctorStateCopyWithImpl(this._value, this._then);
+class _$PatientSearchStateCopyWithImpl<$Res, $Val extends PatientSearchState>
+    implements $PatientSearchStateCopyWith<$Res> {
+  _$PatientSearchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -56,26 +58,26 @@ class _$SearchDoctorStateCopyWithImpl<$Res, $Val extends SearchDoctorState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? doctors = null,
+    Object? patientHistory = freezed,
+    Object? patients = null,
     Object? isAscending = null,
-    Object? selectedSpecializations = null,
     Object? searchQuery = null,
     Object? errorMessage = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
-      doctors: null == doctors
-          ? _value.doctors
-          : doctors // ignore: cast_nullable_to_non_nullable
-              as List<DoctorDetails>,
+      patientHistory: freezed == patientHistory
+          ? _value.patientHistory
+          : patientHistory // ignore: cast_nullable_to_non_nullable
+              as PatientHistory?,
+      patients: null == patients
+          ? _value.patients
+          : patients // ignore: cast_nullable_to_non_nullable
+              as List<Patient>,
       isAscending: null == isAscending
           ? _value.isAscending
           : isAscending // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedSpecializations: null == selectedSpecializations
-          ? _value.selectedSpecializations
-          : selectedSpecializations // ignore: cast_nullable_to_non_nullable
-              as String,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -87,59 +89,74 @@ class _$SearchDoctorStateCopyWithImpl<$Res, $Val extends SearchDoctorState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as DoctorStatus,
+              as PatientSearchStatus,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PatientHistoryCopyWith<$Res>? get patientHistory {
+    if (_value.patientHistory == null) {
+      return null;
+    }
+
+    return $PatientHistoryCopyWith<$Res>(_value.patientHistory!, (value) {
+      return _then(_value.copyWith(patientHistory: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$SearchDoctorStateImplCopyWith<$Res>
-    implements $SearchDoctorStateCopyWith<$Res> {
-  factory _$$SearchDoctorStateImplCopyWith(_$SearchDoctorStateImpl value,
-          $Res Function(_$SearchDoctorStateImpl) then) =
-      __$$SearchDoctorStateImplCopyWithImpl<$Res>;
+abstract class _$$PatientSearchStateImplCopyWith<$Res>
+    implements $PatientSearchStateCopyWith<$Res> {
+  factory _$$PatientSearchStateImplCopyWith(_$PatientSearchStateImpl value,
+          $Res Function(_$PatientSearchStateImpl) then) =
+      __$$PatientSearchStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {List<DoctorDetails> doctors,
+      {PatientHistory? patientHistory,
+      List<Patient> patients,
       bool isAscending,
-      String selectedSpecializations,
       String searchQuery,
       String errorMessage,
-      DoctorStatus status});
+      PatientSearchStatus status});
+
+  @override
+  $PatientHistoryCopyWith<$Res>? get patientHistory;
 }
 
 /// @nodoc
-class __$$SearchDoctorStateImplCopyWithImpl<$Res>
-    extends _$SearchDoctorStateCopyWithImpl<$Res, _$SearchDoctorStateImpl>
-    implements _$$SearchDoctorStateImplCopyWith<$Res> {
-  __$$SearchDoctorStateImplCopyWithImpl(_$SearchDoctorStateImpl _value,
-      $Res Function(_$SearchDoctorStateImpl) _then)
+class __$$PatientSearchStateImplCopyWithImpl<$Res>
+    extends _$PatientSearchStateCopyWithImpl<$Res, _$PatientSearchStateImpl>
+    implements _$$PatientSearchStateImplCopyWith<$Res> {
+  __$$PatientSearchStateImplCopyWithImpl(_$PatientSearchStateImpl _value,
+      $Res Function(_$PatientSearchStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? doctors = null,
+    Object? patientHistory = freezed,
+    Object? patients = null,
     Object? isAscending = null,
-    Object? selectedSpecializations = null,
     Object? searchQuery = null,
     Object? errorMessage = null,
     Object? status = null,
   }) {
-    return _then(_$SearchDoctorStateImpl(
-      doctors: null == doctors
-          ? _value._doctors
-          : doctors // ignore: cast_nullable_to_non_nullable
-              as List<DoctorDetails>,
+    return _then(_$PatientSearchStateImpl(
+      patientHistory: freezed == patientHistory
+          ? _value.patientHistory
+          : patientHistory // ignore: cast_nullable_to_non_nullable
+              as PatientHistory?,
+      patients: null == patients
+          ? _value._patients
+          : patients // ignore: cast_nullable_to_non_nullable
+              as List<Patient>,
       isAscending: null == isAscending
           ? _value.isAscending
           : isAscending // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedSpecializations: null == selectedSpecializations
-          ? _value.selectedSpecializations
-          : selectedSpecializations // ignore: cast_nullable_to_non_nullable
-              as String,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -151,38 +168,38 @@ class __$$SearchDoctorStateImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as DoctorStatus,
+              as PatientSearchStatus,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SearchDoctorStateImpl implements _SearchDoctorState {
-  const _$SearchDoctorStateImpl(
-      {final List<DoctorDetails> doctors = const [],
+class _$PatientSearchStateImpl implements _PatientSearchState {
+  const _$PatientSearchStateImpl(
+      {this.patientHistory = null,
+      final List<Patient> patients = const [],
       this.isAscending = true,
-      this.selectedSpecializations = '',
       this.searchQuery = '',
       this.errorMessage = '',
-      this.status = DoctorStatus.initial})
-      : _doctors = doctors;
+      this.status = PatientSearchStatus.initial})
+      : _patients = patients;
 
-  final List<DoctorDetails> _doctors;
   @override
   @JsonKey()
-  List<DoctorDetails> get doctors {
-    if (_doctors is EqualUnmodifiableListView) return _doctors;
+  final PatientHistory? patientHistory;
+  final List<Patient> _patients;
+  @override
+  @JsonKey()
+  List<Patient> get patients {
+    if (_patients is EqualUnmodifiableListView) return _patients;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_doctors);
+    return EqualUnmodifiableListView(_patients);
   }
 
   @override
   @JsonKey()
   final bool isAscending;
-  @override
-  @JsonKey()
-  final String selectedSpecializations;
   @override
   @JsonKey()
   final String searchQuery;
@@ -191,24 +208,23 @@ class _$SearchDoctorStateImpl implements _SearchDoctorState {
   final String errorMessage;
   @override
   @JsonKey()
-  final DoctorStatus status;
+  final PatientSearchStatus status;
 
   @override
   String toString() {
-    return 'SearchDoctorState(doctors: $doctors, isAscending: $isAscending, selectedSpecializations: $selectedSpecializations, searchQuery: $searchQuery, errorMessage: $errorMessage, status: $status)';
+    return 'PatientSearchState(patientHistory: $patientHistory, patients: $patients, isAscending: $isAscending, searchQuery: $searchQuery, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearchDoctorStateImpl &&
-            const DeepCollectionEquality().equals(other._doctors, _doctors) &&
+            other is _$PatientSearchStateImpl &&
+            (identical(other.patientHistory, patientHistory) ||
+                other.patientHistory == patientHistory) &&
+            const DeepCollectionEquality().equals(other._patients, _patients) &&
             (identical(other.isAscending, isAscending) ||
                 other.isAscending == isAscending) &&
-            (identical(
-                    other.selectedSpecializations, selectedSpecializations) ||
-                other.selectedSpecializations == selectedSpecializations) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -219,9 +235,9 @@ class _$SearchDoctorStateImpl implements _SearchDoctorState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_doctors),
+      patientHistory,
+      const DeepCollectionEquality().hash(_patients),
       isAscending,
-      selectedSpecializations,
       searchQuery,
       errorMessage,
       status);
@@ -229,34 +245,34 @@ class _$SearchDoctorStateImpl implements _SearchDoctorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SearchDoctorStateImplCopyWith<_$SearchDoctorStateImpl> get copyWith =>
-      __$$SearchDoctorStateImplCopyWithImpl<_$SearchDoctorStateImpl>(
+  _$$PatientSearchStateImplCopyWith<_$PatientSearchStateImpl> get copyWith =>
+      __$$PatientSearchStateImplCopyWithImpl<_$PatientSearchStateImpl>(
           this, _$identity);
 }
 
-abstract class _SearchDoctorState implements SearchDoctorState {
-  const factory _SearchDoctorState(
-      {final List<DoctorDetails> doctors,
+abstract class _PatientSearchState implements PatientSearchState {
+  const factory _PatientSearchState(
+      {final PatientHistory? patientHistory,
+      final List<Patient> patients,
       final bool isAscending,
-      final String selectedSpecializations,
       final String searchQuery,
       final String errorMessage,
-      final DoctorStatus status}) = _$SearchDoctorStateImpl;
+      final PatientSearchStatus status}) = _$PatientSearchStateImpl;
 
   @override
-  List<DoctorDetails> get doctors;
+  PatientHistory? get patientHistory;
+  @override
+  List<Patient> get patients;
   @override
   bool get isAscending;
-  @override
-  String get selectedSpecializations;
   @override
   String get searchQuery;
   @override
   String get errorMessage;
   @override
-  DoctorStatus get status;
+  PatientSearchStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$SearchDoctorStateImplCopyWith<_$SearchDoctorStateImpl> get copyWith =>
+  _$$PatientSearchStateImplCopyWith<_$PatientSearchStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -39,8 +39,8 @@ class _SignUpPageState extends State<SignUpPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(Routes.verifyCode, extra: {
-                CustomRouteParameter.previousPage: Routes.signUp,
+              context.goNamed(CustomRoutes.verifyCode, extra: {
+                CustomRouteParameter.previousPage: CustomRoutes.signUp,
                 CustomRouteParameter.email: _formKey.currentState!.value[email]
               });
             },
@@ -216,6 +216,6 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _goSignIn(BuildContext context) {
-    context.pushNamed(Routes.signIn);
+    context.pushNamed(CustomRoutes.signIn);
   }
 }

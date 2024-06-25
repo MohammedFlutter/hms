@@ -15,7 +15,7 @@ abstract class SearchDoctorProvider {
 
 
   @GET('api/v1/doctor')
-  Future<List<DoctorDetails>> searchDoctors({
+  Future<List<Doctor>> searchDoctors({
     @Query('firstname') String? searchQuery,
     @Query('specialty') String? specialization,
   });

@@ -9,7 +9,7 @@ class DoctorCard extends StatelessWidget {
     required this.doctor,
   });
 
-  final DoctorDetails doctor;
+  final Doctor doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DoctorCard extends StatelessWidget {
         title:
             Text('${doctor.basicInfo.firstname} ${doctor.basicInfo.lastname}'),
         subtitle: Text(doctor.professionalDetails.specialty ?? ''),
-        onTap: () => context.pushNamed(Routes.doctorDetails,extra: doctor),
+        onTap: () => context.pushNamed(CustomRoutes.doctorDetails,extra: doctor),
       ),
     );
   }

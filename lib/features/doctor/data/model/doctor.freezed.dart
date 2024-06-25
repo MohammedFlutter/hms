@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-DoctorDetails _$DoctorDetailsFromJson(Map<String, dynamic> json) {
-  return _DoctorDetails.fromJson(json);
+Doctor _$DoctorFromJson(Map<String, dynamic> json) {
+  return _Doctor.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DoctorDetails {
+mixin _$Doctor {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'requiredInfoDto')
   BasicInfo get basicInfo => throw _privateConstructorUsedError;
@@ -29,15 +29,13 @@ mixin _$DoctorDetails {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DoctorDetailsCopyWith<DoctorDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DoctorCopyWith<Doctor> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DoctorDetailsCopyWith<$Res> {
-  factory $DoctorDetailsCopyWith(
-          DoctorDetails value, $Res Function(DoctorDetails) then) =
-      _$DoctorDetailsCopyWithImpl<$Res, DoctorDetails>;
+abstract class $DoctorCopyWith<$Res> {
+  factory $DoctorCopyWith(Doctor value, $Res Function(Doctor) then) =
+      _$DoctorCopyWithImpl<$Res, Doctor>;
   @useResult
   $Res call(
       {int id,
@@ -50,9 +48,9 @@ abstract class $DoctorDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DoctorDetailsCopyWithImpl<$Res, $Val extends DoctorDetails>
-    implements $DoctorDetailsCopyWith<$Res> {
-  _$DoctorDetailsCopyWithImpl(this._value, this._then);
+class _$DoctorCopyWithImpl<$Res, $Val extends Doctor>
+    implements $DoctorCopyWith<$Res> {
+  _$DoctorCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,11 +99,10 @@ class _$DoctorDetailsCopyWithImpl<$Res, $Val extends DoctorDetails>
 }
 
 /// @nodoc
-abstract class _$$DoctorDetailsImplCopyWith<$Res>
-    implements $DoctorDetailsCopyWith<$Res> {
-  factory _$$DoctorDetailsImplCopyWith(
-          _$DoctorDetailsImpl value, $Res Function(_$DoctorDetailsImpl) then) =
-      __$$DoctorDetailsImplCopyWithImpl<$Res>;
+abstract class _$$DoctorImplCopyWith<$Res> implements $DoctorCopyWith<$Res> {
+  factory _$$DoctorImplCopyWith(
+          _$DoctorImpl value, $Res Function(_$DoctorImpl) then) =
+      __$$DoctorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +118,11 @@ abstract class _$$DoctorDetailsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DoctorDetailsImplCopyWithImpl<$Res>
-    extends _$DoctorDetailsCopyWithImpl<$Res, _$DoctorDetailsImpl>
-    implements _$$DoctorDetailsImplCopyWith<$Res> {
-  __$$DoctorDetailsImplCopyWithImpl(
-      _$DoctorDetailsImpl _value, $Res Function(_$DoctorDetailsImpl) _then)
+class __$$DoctorImplCopyWithImpl<$Res>
+    extends _$DoctorCopyWithImpl<$Res, _$DoctorImpl>
+    implements _$$DoctorImplCopyWith<$Res> {
+  __$$DoctorImplCopyWithImpl(
+      _$DoctorImpl _value, $Res Function(_$DoctorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -135,7 +132,7 @@ class __$$DoctorDetailsImplCopyWithImpl<$Res>
     Object? basicInfo = null,
     Object? professionalDetails = null,
   }) {
-    return _then(_$DoctorDetailsImpl(
+    return _then(_$DoctorImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -154,14 +151,14 @@ class __$$DoctorDetailsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DoctorDetailsImpl implements _DoctorDetails {
-  const _$DoctorDetailsImpl(
+class _$DoctorImpl implements _Doctor {
+  const _$DoctorImpl(
       {required this.id,
       @JsonKey(name: 'requiredInfoDto') required this.basicInfo,
       @JsonKey(name: 'additionalInfoDto') required this.professionalDetails});
 
-  factory _$DoctorDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DoctorDetailsImplFromJson(json);
+  factory _$DoctorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DoctorImplFromJson(json);
 
   @override
   final int id;
@@ -174,14 +171,14 @@ class _$DoctorDetailsImpl implements _DoctorDetails {
 
   @override
   String toString() {
-    return 'DoctorDetails(id: $id, basicInfo: $basicInfo, professionalDetails: $professionalDetails)';
+    return 'Doctor(id: $id, basicInfo: $basicInfo, professionalDetails: $professionalDetails)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DoctorDetailsImpl &&
+            other is _$DoctorImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.basicInfo, basicInfo) ||
                 other.basicInfo == basicInfo) &&
@@ -197,27 +194,25 @@ class _$DoctorDetailsImpl implements _DoctorDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DoctorDetailsImplCopyWith<_$DoctorDetailsImpl> get copyWith =>
-      __$$DoctorDetailsImplCopyWithImpl<_$DoctorDetailsImpl>(this, _$identity);
+  _$$DoctorImplCopyWith<_$DoctorImpl> get copyWith =>
+      __$$DoctorImplCopyWithImpl<_$DoctorImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DoctorDetailsImplToJson(
+    return _$$DoctorImplToJson(
       this,
     );
   }
 }
 
-abstract class _DoctorDetails implements DoctorDetails {
-  const factory _DoctorDetails(
-          {required final int id,
-          @JsonKey(name: 'requiredInfoDto') required final BasicInfo basicInfo,
-          @JsonKey(name: 'additionalInfoDto')
-          required final ProfessionalDetails professionalDetails}) =
-      _$DoctorDetailsImpl;
+abstract class _Doctor implements Doctor {
+  const factory _Doctor(
+      {required final int id,
+      @JsonKey(name: 'requiredInfoDto') required final BasicInfo basicInfo,
+      @JsonKey(name: 'additionalInfoDto')
+      required final ProfessionalDetails professionalDetails}) = _$DoctorImpl;
 
-  factory _DoctorDetails.fromJson(Map<String, dynamic> json) =
-      _$DoctorDetailsImpl.fromJson;
+  factory _Doctor.fromJson(Map<String, dynamic> json) = _$DoctorImpl.fromJson;
 
   @override
   int get id;
@@ -229,7 +224,7 @@ abstract class _DoctorDetails implements DoctorDetails {
   ProfessionalDetails get professionalDetails;
   @override
   @JsonKey(ignore: true)
-  _$$DoctorDetailsImplCopyWith<_$DoctorDetailsImpl> get copyWith =>
+  _$$DoctorImplCopyWith<_$DoctorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -241,12 +236,9 @@ BasicInfo _$BasicInfoFromJson(Map<String, dynamic> json) {
 mixin _$BasicInfo {
   String get firstname => throw _privateConstructorUsedError;
   String get lastname => throw _privateConstructorUsedError;
-  String get gender =>
-      throw _privateConstructorUsedError; // required String dob,
+  String get gender => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
-  String get phone =>
-      throw _privateConstructorUsedError; // required String email,
-// required String password,
+  String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_enabled')
   bool get isEnabled => throw _privateConstructorUsedError;
 
@@ -403,13 +395,10 @@ class _$BasicInfoImpl implements _BasicInfo {
   final String lastname;
   @override
   final String gender;
-// required String dob,
   @override
   final String address;
   @override
   final String phone;
-// required String email,
-// required String password,
   @override
   @JsonKey(name: 'is_enabled')
   final bool isEnabled;
@@ -473,12 +462,11 @@ abstract class _BasicInfo implements BasicInfo {
   String get lastname;
   @override
   String get gender;
-  @override // required String dob,
+  @override
   String get address;
   @override
   String get phone;
-  @override // required String email,
-// required String password,
+  @override
   @JsonKey(name: 'is_enabled')
   bool get isEnabled;
   @override

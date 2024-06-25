@@ -6,8 +6,7 @@ part of 'doctor.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DoctorDetailsImpl _$$DoctorDetailsImplFromJson(Map<String, dynamic> json) =>
-    _$DoctorDetailsImpl(
+_$DoctorImpl _$$DoctorImplFromJson(Map<String, dynamic> json) => _$DoctorImpl(
       id: (json['id'] as num).toInt(),
       basicInfo:
           BasicInfo.fromJson(json['requiredInfoDto'] as Map<String, dynamic>),
@@ -15,7 +14,7 @@ _$DoctorDetailsImpl _$$DoctorDetailsImplFromJson(Map<String, dynamic> json) =>
           json['additionalInfoDto'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$DoctorDetailsImplToJson(_$DoctorDetailsImpl instance) =>
+Map<String, dynamic> _$$DoctorImplToJson(_$DoctorImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'requiredInfoDto': instance.basicInfo,

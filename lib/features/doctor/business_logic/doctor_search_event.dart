@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'search_doctor_event.freezed.dart';
+part 'doctor_search_event.freezed.dart';
 
 @freezed
 class SearchDoctorEvent with _$SearchDoctorEvent {

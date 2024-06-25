@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
+import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/profile/business_logic/profile_bloc.dart';
 import 'package:medica/features/profile/business_logic/profile_event.dart';
 import 'package:medica/features/profile/business_logic/profile_state.dart';
@@ -33,6 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     context.read<ProfileBloc>().add(const ProfileEvent.getProfile());
   }
+
   // final String name = 'mohammed abdo';
   @override
   Widget build(BuildContext context) {
@@ -40,15 +42,13 @@ class _ProfilePageState extends State<ProfilePage> {
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},
-            logoutSuccess: () => context.goNamed(Routes.signIn),
-            failure: (error) => ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Error: $error')),
-                ));
+            logoutSuccess: () => context.goNamed(CustomRoutes.signIn),
+            failure: (error) => CustomSnakeBar.show(
+                context: context, isError: true, message: error));
       },
       builder: (context, state) {
         return state.maybeWhen(
-
-            orElse: () => const SizedBox(child: Text('lllllllllllll'),),
+            orElse: () => const SizedBox(),
             loading: () {
               return const Center(child: CircularProgressIndicator());
             },

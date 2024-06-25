@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/core/route.dart';
 import 'package:medica/features/appointment/business_logic/appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/appointment_event.dart';
@@ -14,7 +15,7 @@ import 'package:intl/intl.dart';
 class CreateAppointmentPage extends StatefulWidget {
   const CreateAppointmentPage({super.key, required this.doctor});
 
-  final DoctorDetails doctor;
+  final Doctor doctor;
 
   @override
   State<CreateAppointmentPage> createState() => _CreateAppointmentPageState();
@@ -48,32 +49,27 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
         listener: (context, state) {
           switch (state.status) {
             case AppointmentStateStatus.loading:
-              // ScaffoldMessenger.of(context).showSnackBar(
-              //   const SnackBar(content: Text('Loading...')),
-              // );
               break;
             case AppointmentStateStatus.success:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                    content: Text('Appointment created successfully!')),
-              );
+              CustomSnakeBar.show(
+                  context: context,
+                  isError: true,
+                  message: 'Appointment created successfully!');
               context.pop();
               break;
             case AppointmentStateStatus.failure:
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Error: ${state.errorMessage}')),
-              );
+              CustomSnakeBar.show(
+                  context: context, isError: true, message: state.errorMessage);
               break;
             case AppointmentStateStatus.initial:
               break;
             case AppointmentStateStatus.timeSlotsLoaded:
               if (state.timeSlots.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('this Doctor is not available now'),
-                  ),
-                );
-                context.go(Routes.search);
+                CustomSnakeBar.show(
+                    context: context,
+                    isError: true,
+                    message: 'this Doctor is not available now');
+                context.goNamed(CustomRoutes.search);
               }
           }
         },
@@ -120,7 +116,7 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
                     ],
                   ),
                   const Gap(24),
-                  ElevatedButton(
+                  FilledButton(
                     onPressed: () {
                       onCreateAppointment(context);
                     },

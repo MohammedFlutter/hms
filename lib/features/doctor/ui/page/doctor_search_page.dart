@@ -4,14 +4,15 @@ import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_bloc.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_event.dart';
-import 'package:medica/features/doctor/business_logic/search_doctor_state.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_event.dart';
+import 'package:medica/features/doctor/business_logic/doctor_search_state.dart';
+
 import 'package:medica/features/doctor/ui/widget/doctor_card.dart';
 import 'package:medica/features/doctor/ui/widget/doctor_filter_chip.dart';
 
-class SearchDoctorPage extends StatelessWidget {
-  const SearchDoctorPage({super.key});
+class DoctorSearchPage extends StatelessWidget {
+  const DoctorSearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SearchDoctorPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Doctor List'),
       ),
-      body: BlocConsumer<SearchDoctorBloc, SearchDoctorState>(
+      body: BlocConsumer<DoctorSearchBloc, SearchDoctorState>(
         builder: (context, state) {
           return Column(
             children: [
@@ -36,7 +37,7 @@ class SearchDoctorPage extends StatelessWidget {
                   ),
                   onChanged: (query) {
                     context
-                        .read<SearchDoctorBloc>()
+                        .read<DoctorSearchBloc>()
                         .add(SearchDoctorEvent.searchDoctors(query));
                   },
                 ),
@@ -51,7 +52,7 @@ class SearchDoctorPage extends StatelessWidget {
                     FilledButton(
                       style: const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsetsDirectional.symmetric(horizontal: 8))),
                       onPressed: () {
-                        context.read<SearchDoctorBloc>().add(
+                        context.read<DoctorSearchBloc>().add(
                             SearchDoctorEvent.sortDoctors(!state.isAscending));
                       },
                       child: Text(state.isAscending ? 'Sort Z-A' : 'Sort A-Z',style: CustomTextStyle.bodySMedium,),

@@ -5,7 +5,7 @@ import 'package:medica/features/doctor/data/model/doctor.dart';
 import 'package:medica/core/route.dart';
 
 class DoctorDetailsPage extends StatelessWidget {
-  final DoctorDetails doctorDetails;
+  final Doctor doctorDetails;
 
   const DoctorDetailsPage({super.key, required this.doctorDetails});
 
@@ -16,96 +16,84 @@ class DoctorDetailsPage extends StatelessWidget {
         title: Text(
             '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
       ),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildSectionTitle('Basic Information'),
-                    _buildDetailRow('Name',
-                        '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
-                    _buildDetailRow('Gender', doctorDetails.basicInfo.gender),
-                  ],
+            Expanded(child: SingleChildScrollView(child: Column(children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildSectionTitle('Basic Information'),
+                      _buildDetailRow('Name',
+                          '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
+                      _buildDetailRow('Gender', doctorDetails.basicInfo.gender),
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            const SizedBox(height: 16),
-
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildSectionTitle('Professional Details'),
-                    _buildDetailRow('Specialty',
-                        doctorDetails.professionalDetails.specialty ?? ''),
-                    _buildDetailRow('Experience',
-                        doctorDetails.professionalDetails.experience ?? ''),
-                    _buildDetailRow('Certifications',
-                        doctorDetails.professionalDetails.certifications ?? ''),
-                    // ... other relevant details ...
-                  ],
+              const SizedBox(height: 16),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildSectionTitle('Professional Details'),
+                      _buildDetailRow('Specialty',
+                          doctorDetails.professionalDetails.specialty ?? ''),
+                      _buildDetailRow('Experience',
+                          doctorDetails.professionalDetails.experience ?? ''),
+                      _buildDetailRow('Certifications',
+                          doctorDetails.professionalDetails.certifications ?? ''),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-
-            // Professional Details Card
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildSectionTitle('Work of time'),
-                    _buildDetailRow(
-                        'Start from',
-                        doctorDetails.professionalDetails.workStartTime
-                                ?.trim()
-                                .substring(0, 5) ??
-                            ''),
-                    _buildDetailRow(
-                        'End at     ',
-                        doctorDetails.professionalDetails.workEndTime
-                                ?.trim()
-                                .substring(0, 5) ??
-                            ''),
-
-                    // ... other relevant details ...
-                  ],
+              const SizedBox(height: 16),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildSectionTitle('Work of time'),
+                      _buildDetailRow(
+                          'Start from',
+                          doctorDetails.professionalDetails.workStartTime
+                              ?.trim()
+                              .substring(0, 5) ??
+                              ''),
+                      _buildDetailRow(
+                          'End at     ',
+                          doctorDetails.professionalDetails.workEndTime
+                              ?.trim()
+                              .substring(0, 5) ??
+                              ''),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            const SizedBox(height: 24),
+            ],),)),
+            const SizedBox(height: 8),
 
             // Contact Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-
-                  child: ElevatedButton(
+                  child: FilledButton(
                     onPressed: () {
-                      context.goNamed(Routes.createAppointment,
+                      context.goNamed(CustomRoutes.createAppointment,
                           extra: doctorDetails);
                     },
                     child: const Text('Book Appointment'),
                   ),
-
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     /* Handle send message */
-                  //   },
-                  //   child: const Text('Send Message'),
                 ),
               ],
             ),

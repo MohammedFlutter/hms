@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_doctor_provider.dart';
+part of 'patient_search_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,40 +8,31 @@ part of 'search_doctor_provider.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _SearchDoctorProvider implements SearchDoctorProvider {
-  _SearchDoctorProvider(
+class _PatientSearchProvider implements PatientSearchProvider {
+  _PatientSearchProvider(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'api/v1/';
-  }
+  });
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<List<Doctor>> searchDoctors({
-    String? searchQuery,
-    String? specialization,
-  }) async {
+  Future<List<Patient>> searchPatients(String fullName) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'firstname': searchQuery,
-      r'specialty': specialization,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{r'fullName': fullName};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Doctor>>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Patient>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'api/v1/doctor',
+              '/api/v1/patients/search-full-name',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -51,7 +42,7 @@ class _SearchDoctorProvider implements SearchDoctorProvider {
               baseUrl,
             ))));
     var value = _result.data!
-        .map((dynamic i) => Doctor.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Patient.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

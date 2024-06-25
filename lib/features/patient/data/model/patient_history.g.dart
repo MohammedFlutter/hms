@@ -1,0 +1,86 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'patient_history.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$PatientHistoryImpl _$$PatientHistoryImplFromJson(Map<String, dynamic> json) =>
+    _$PatientHistoryImpl(
+      id: (json['id'] as num).toInt(),
+      patientId: (json['patientId'] as num).toInt(),
+      hasPhysDiuresis: json['hasPhysDiuresis'] as bool,
+      hasPhysDiet: json['hasPhysDiet'] as bool,
+      hasPhysDrugs: json['hasPhysDrugs'] as bool,
+      hasPhysAlvo: json['hasPhysAlvo'] as bool,
+      hasPhysPregnancies: json['hasPhysPregnancies'] as bool,
+      hasPhysAlcohol: json['hasPhysAlcohol'] as bool,
+      hasPhysSmoke: json['hasPhysSmoke'] as bool,
+      hasPhysPeriod: json['hasPhysPeriod'] as bool,
+      hasPastCardio: json['hasPastCardio'] as bool,
+      hasPastCancer: json['hasPastCancer'] as bool,
+      hasPastHyp: json['hasPastHyp'] as bool,
+      hasPastNothing: json['hasPastNothing'] as bool,
+      hasPastInfect: json['hasPastInfect'] as bool,
+      hasPastOrto: json['hasPastOrto'] as bool,
+      hasPastDrugAdd: json['hasPastDrugAdd'] as bool,
+      hasPastEndo: json['hasPastEndo'] as bool,
+      hasPastResp: json['hasPastResp'] as bool,
+      pastNotes: json['pastNotes'] as String,
+      hasFamCardio: json['hasFamCardio'] as bool,
+      hasFamCancer: json['hasFamCancer'] as bool,
+      hasFamHyp: json['hasFamHyp'] as bool,
+      hasFamNothing: json['hasFamNothing'] as bool,
+      hasFamInfect: json['hasFamInfect'] as bool,
+      hasFamOrto: json['hasFamOrto'] as bool,
+      hasFamDrugAdd: json['hasFamDrugAdd'] as bool,
+      hasFamEndo: json['hasFamEndo'] as bool,
+      hasFamResp: json['hasFamResp'] as bool,
+      familyNotes: json['familyNotes'] as String,
+      allergies: json['allergies'] as String,
+      usualMedic: json['usualMedic'] as String,
+      surgeries: json['surgeries'] as String,
+      additionalNote: json['additionalNote'] as String,
+      notes: json['notes'] as String,
+    );
+
+Map<String, dynamic> _$$PatientHistoryImplToJson(
+        _$PatientHistoryImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'patientId': instance.patientId,
+      'hasPhysDiuresis': instance.hasPhysDiuresis,
+      'hasPhysDiet': instance.hasPhysDiet,
+      'hasPhysDrugs': instance.hasPhysDrugs,
+      'hasPhysAlvo': instance.hasPhysAlvo,
+      'hasPhysPregnancies': instance.hasPhysPregnancies,
+      'hasPhysAlcohol': instance.hasPhysAlcohol,
+      'hasPhysSmoke': instance.hasPhysSmoke,
+      'hasPhysPeriod': instance.hasPhysPeriod,
+      'hasPastCardio': instance.hasPastCardio,
+      'hasPastCancer': instance.hasPastCancer,
+      'hasPastHyp': instance.hasPastHyp,
+      'hasPastNothing': instance.hasPastNothing,
+      'hasPastInfect': instance.hasPastInfect,
+      'hasPastOrto': instance.hasPastOrto,
+      'hasPastDrugAdd': instance.hasPastDrugAdd,
+      'hasPastEndo': instance.hasPastEndo,
+      'hasPastResp': instance.hasPastResp,
+      'pastNotes': instance.pastNotes,
+      'hasFamCardio': instance.hasFamCardio,
+      'hasFamCancer': instance.hasFamCancer,
+      'hasFamHyp': instance.hasFamHyp,
+      'hasFamNothing': instance.hasFamNothing,
+      'hasFamInfect': instance.hasFamInfect,
+      'hasFamOrto': instance.hasFamOrto,
+      'hasFamDrugAdd': instance.hasFamDrugAdd,
+      'hasFamEndo': instance.hasFamEndo,
+      'hasFamResp': instance.hasFamResp,
+      'familyNotes': instance.familyNotes,
+      'allergies': instance.allergies,
+      'usualMedic': instance.usualMedic,
+      'surgeries': instance.surgeries,
+      'additionalNote': instance.additionalNote,
+      'notes': instance.notes,
+    };

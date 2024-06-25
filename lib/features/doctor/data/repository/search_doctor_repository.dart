@@ -11,7 +11,7 @@ class SearchDoctorRepository {
   SearchDoctorRepository({required SearchDoctorProvider searchDoctorProvider})
       : _searchDoctorProvider = searchDoctorProvider;
 
-  Future<ApiResult<List<DoctorDetails>>> searchDoctor(
+  Future<ApiResult<List<Doctor>>> searchDoctor(
       {String? searchQuery, String? specialization}) async {
     try {
       final doctors = await _searchDoctorProvider.searchDoctors(

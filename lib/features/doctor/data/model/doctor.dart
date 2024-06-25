@@ -6,15 +6,15 @@ part 'doctor.freezed.dart';
 part 'doctor.g.dart';
 
 @freezed
-class DoctorDetails with _$DoctorDetails {
-  const factory DoctorDetails(
+class Doctor with _$Doctor {
+  const factory Doctor(
       {required int id,
       @JsonKey(name: 'requiredInfoDto') required BasicInfo basicInfo,
       @JsonKey(name: 'additionalInfoDto')
-      required ProfessionalDetails professionalDetails}) = _DoctorDetails;
+      required ProfessionalDetails professionalDetails}) = _Doctor;
 
-  factory DoctorDetails.fromJson(Map<String, dynamic> json) =>
-      _$DoctorDetailsFromJson(json);
+  factory Doctor.fromJson(Map<String, dynamic> json) =>
+      _$DoctorFromJson(json);
 }
 
 @freezed
@@ -23,11 +23,8 @@ class BasicInfo with _$BasicInfo {
     required String firstname,
     required String lastname,
     required String gender,
-    // required String dob,
     required String address,
     required String phone,
-    // required String email,
-    // required String password,
     @JsonKey(name:'is_enabled' )
     required bool isEnabled,
   }) = _BasicInfo;

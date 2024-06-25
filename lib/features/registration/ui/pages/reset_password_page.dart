@@ -41,7 +41,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(Routes.signIn);
+              context.goNamed(CustomRoutes.signIn);
             },
             failure: (error) {
               context.pop();
