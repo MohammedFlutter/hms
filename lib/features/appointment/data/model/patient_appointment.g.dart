@@ -1,20 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'appointment.dart';
+part of 'patient_appointment.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppointmentImpl _$$AppointmentImplFromJson(Map<String, dynamic> json) =>
-    _$AppointmentImpl(
+_$PatientAppointmentImpl _$$PatientAppointmentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PatientAppointmentImpl(
       startTime: json['startTime'] as String,
       reasonForVisit: json['reasonForVisit'] as String,
       doctorId: (json['doctorId'] as num).toInt(),
       isVirtual: json['isVirtual'] as bool,
     );
 
-Map<String, dynamic> _$$AppointmentImplToJson(_$AppointmentImpl instance) =>
+Map<String, dynamic> _$$PatientAppointmentImplToJson(
+        _$PatientAppointmentImpl instance) =>
     <String, dynamic>{
       'startTime': instance.startTime,
       'reasonForVisit': instance.reasonForVisit,

@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:medica/core/injection/api_module.dart';
 import 'package:medica/core/injection/init_di.dart';
 import 'package:medica/core/widget/main_wrapper.dart';
-import 'package:medica/features/appointment/ui/page/create_appointment.dart';
+import 'package:medica/features/appointment/ui/page/create_appointment_page.dart';
+import 'package:medica/features/appointment/ui/page/doctor_appointment_page.dart';
+import 'package:medica/features/appointment/ui/page/patient_appointment_page.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
 import 'package:medica/features/doctor/ui/page/doctor_details_page.dart';
 import 'package:medica/features/doctor/ui/page/doctor_search_page.dart';
@@ -30,7 +32,7 @@ import 'package:medica/features/registration/ui/pages/verify_code_page.dart';
 final router = GoRouter(
   initialLocation: '/${CustomRoutes.signIn}',
   // initialLocation: '/',
-  debugLogDiagnostics:true ,
+  debugLogDiagnostics: true,
   navigatorKey: getIt<GlobalKey<NavigatorState>>(),
   redirect: (context, state) async {
     final isFirstTimeLaunch = getIt<OnboardingRepo>().isFirstTimeLaunch();
@@ -155,12 +157,10 @@ final router = GoRouter(
               navigatorKey: _NavigationKeys().appointmentKey,
               routes: [
                 GoRoute(
-                  path: '/${CustomRoutes.appointment}',
-                  name: CustomRoutes.appointment,
+                  path: '/${CustomRoutes.doctorAppointment}',
+                  name: CustomRoutes.doctorAppointment,
                   builder: (BuildContext context, GoRouterState state) {
-                    return const TestPage(
-                      title: CustomRoutes.appointment,
-                    );
+                    return const DoctorAppointmentPage();
                   },
                 ),
               ]),
@@ -171,9 +171,7 @@ final router = GoRouter(
                   path: '/${CustomRoutes.labResults}',
                   name: CustomRoutes.labResults,
                   builder: (BuildContext context, GoRouterState state) {
-                    return const TestPage(
-                      title: CustomRoutes.labResults,
-                    );
+                    return const PatientAppointmentPage();
                   },
                 ),
               ]),
@@ -264,7 +262,8 @@ class CustomRoutes {
   static const String search = 'search';
   static const String labResults = 'lab-results';
   static const String prescription = 'prescription';
-  static const String appointment = 'appointment';
+  static const String doctorAppointment = 'doctor-appointment';
+  static const String patientAppointment = 'patient-appointment';
   static const String patients = 'patients';
   static const String patientInfo = 'patientHistory';
   static const String doctorDetails = 'doctor-details';

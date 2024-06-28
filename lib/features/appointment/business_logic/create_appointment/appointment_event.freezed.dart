@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppointmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(PatientAppointment appointment) createAppointment,
     required TResult Function(int doctorId) getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(PatientAppointment appointment)? createAppointment,
     TResult? Function(int doctorId)? getAvailableTimeSlots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(PatientAppointment appointment)? createAppointment,
     TResult Function(int doctorId)? getAvailableTimeSlots,
     required TResult orElse(),
   }) =>
@@ -81,9 +81,9 @@ abstract class _$$CreateAppointmentImplCopyWith<$Res> {
           $Res Function(_$CreateAppointmentImpl) then) =
       __$$CreateAppointmentImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Appointment appointment});
+  $Res call({PatientAppointment appointment});
 
-  $AppointmentCopyWith<$Res> get appointment;
+  $PatientAppointmentCopyWith<$Res> get appointment;
 }
 
 /// @nodoc
@@ -103,14 +103,14 @@ class __$$CreateAppointmentImplCopyWithImpl<$Res>
       null == appointment
           ? _value.appointment
           : appointment // ignore: cast_nullable_to_non_nullable
-              as Appointment,
+              as PatientAppointment,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AppointmentCopyWith<$Res> get appointment {
-    return $AppointmentCopyWith<$Res>(_value.appointment, (value) {
+  $PatientAppointmentCopyWith<$Res> get appointment {
+    return $PatientAppointmentCopyWith<$Res>(_value.appointment, (value) {
       return _then(_value.copyWith(appointment: value));
     });
   }
@@ -122,7 +122,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   const _$CreateAppointmentImpl(this.appointment);
 
   @override
-  final Appointment appointment;
+  final PatientAppointment appointment;
 
   @override
   String toString() {
@@ -151,7 +151,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(PatientAppointment appointment) createAppointment,
     required TResult Function(int doctorId) getAvailableTimeSlots,
   }) {
     return createAppointment(appointment);
@@ -160,7 +160,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(PatientAppointment appointment)? createAppointment,
     TResult? Function(int doctorId)? getAvailableTimeSlots,
   }) {
     return createAppointment?.call(appointment);
@@ -169,7 +169,7 @@ class _$CreateAppointmentImpl implements CreateAppointment {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(PatientAppointment appointment)? createAppointment,
     TResult Function(int doctorId)? getAvailableTimeSlots,
     required TResult orElse(),
   }) {
@@ -213,10 +213,10 @@ class _$CreateAppointmentImpl implements CreateAppointment {
 }
 
 abstract class CreateAppointment implements AppointmentEvent {
-  const factory CreateAppointment(final Appointment appointment) =
+  const factory CreateAppointment(final PatientAppointment appointment) =
       _$CreateAppointmentImpl;
 
-  Appointment get appointment;
+  PatientAppointment get appointment;
   @JsonKey(ignore: true)
   _$$CreateAppointmentImplCopyWith<_$CreateAppointmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -289,7 +289,7 @@ class _$GetAvailableTimeSlotsImpl implements GetAvailableTimeSlots {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Appointment appointment) createAppointment,
+    required TResult Function(PatientAppointment appointment) createAppointment,
     required TResult Function(int doctorId) getAvailableTimeSlots,
   }) {
     return getAvailableTimeSlots(doctorId);
@@ -298,7 +298,7 @@ class _$GetAvailableTimeSlotsImpl implements GetAvailableTimeSlots {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Appointment appointment)? createAppointment,
+    TResult? Function(PatientAppointment appointment)? createAppointment,
     TResult? Function(int doctorId)? getAvailableTimeSlots,
   }) {
     return getAvailableTimeSlots?.call(doctorId);
@@ -307,7 +307,7 @@ class _$GetAvailableTimeSlotsImpl implements GetAvailableTimeSlots {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Appointment appointment)? createAppointment,
+    TResult Function(PatientAppointment appointment)? createAppointment,
     TResult Function(int doctorId)? getAvailableTimeSlots,
     required TResult orElse(),
   }) {

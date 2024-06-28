@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'appointment.dart';
+part of 'doctor_appointment.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,38 +14,40 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
-  return _Appointment.fromJson(json);
+DoctorAppointment _$DoctorAppointmentFromJson(Map<String, dynamic> json) {
+  return _DoctorAppointment.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Appointment {
-  String get startTime =>
-      throw _privateConstructorUsedError; // Changed to String
+mixin _$DoctorAppointment {
+  String get startTime => throw _privateConstructorUsedError;
   String get reasonForVisit => throw _privateConstructorUsedError;
-  int get doctorId => throw _privateConstructorUsedError;
-  bool get isVirtual => throw _privateConstructorUsedError;
+  int get patientId => throw _privateConstructorUsedError;
+  bool? get isVirtual => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AppointmentCopyWith<Appointment> get copyWith =>
+  $DoctorAppointmentCopyWith<DoctorAppointment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppointmentCopyWith<$Res> {
-  factory $AppointmentCopyWith(
-          Appointment value, $Res Function(Appointment) then) =
-      _$AppointmentCopyWithImpl<$Res, Appointment>;
+abstract class $DoctorAppointmentCopyWith<$Res> {
+  factory $DoctorAppointmentCopyWith(
+          DoctorAppointment value, $Res Function(DoctorAppointment) then) =
+      _$DoctorAppointmentCopyWithImpl<$Res, DoctorAppointment>;
   @useResult
   $Res call(
-      {String startTime, String reasonForVisit, int doctorId, bool isVirtual});
+      {String startTime,
+      String reasonForVisit,
+      int patientId,
+      bool? isVirtual});
 }
 
 /// @nodoc
-class _$AppointmentCopyWithImpl<$Res, $Val extends Appointment>
-    implements $AppointmentCopyWith<$Res> {
-  _$AppointmentCopyWithImpl(this._value, this._then);
+class _$DoctorAppointmentCopyWithImpl<$Res, $Val extends DoctorAppointment>
+    implements $DoctorAppointmentCopyWith<$Res> {
+  _$DoctorAppointmentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,8 +59,8 @@ class _$AppointmentCopyWithImpl<$Res, $Val extends Appointment>
   $Res call({
     Object? startTime = null,
     Object? reasonForVisit = null,
-    Object? doctorId = null,
-    Object? isVirtual = null,
+    Object? patientId = null,
+    Object? isVirtual = freezed,
   }) {
     return _then(_value.copyWith(
       startTime: null == startTime
@@ -69,36 +71,39 @@ class _$AppointmentCopyWithImpl<$Res, $Val extends Appointment>
           ? _value.reasonForVisit
           : reasonForVisit // ignore: cast_nullable_to_non_nullable
               as String,
-      doctorId: null == doctorId
-          ? _value.doctorId
-          : doctorId // ignore: cast_nullable_to_non_nullable
+      patientId: null == patientId
+          ? _value.patientId
+          : patientId // ignore: cast_nullable_to_non_nullable
               as int,
-      isVirtual: null == isVirtual
+      isVirtual: freezed == isVirtual
           ? _value.isVirtual
           : isVirtual // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$AppointmentImplCopyWith<$Res>
-    implements $AppointmentCopyWith<$Res> {
-  factory _$$AppointmentImplCopyWith(
-          _$AppointmentImpl value, $Res Function(_$AppointmentImpl) then) =
-      __$$AppointmentImplCopyWithImpl<$Res>;
+abstract class _$$DoctorAppointmentImplCopyWith<$Res>
+    implements $DoctorAppointmentCopyWith<$Res> {
+  factory _$$DoctorAppointmentImplCopyWith(_$DoctorAppointmentImpl value,
+          $Res Function(_$DoctorAppointmentImpl) then) =
+      __$$DoctorAppointmentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String startTime, String reasonForVisit, int doctorId, bool isVirtual});
+      {String startTime,
+      String reasonForVisit,
+      int patientId,
+      bool? isVirtual});
 }
 
 /// @nodoc
-class __$$AppointmentImplCopyWithImpl<$Res>
-    extends _$AppointmentCopyWithImpl<$Res, _$AppointmentImpl>
-    implements _$$AppointmentImplCopyWith<$Res> {
-  __$$AppointmentImplCopyWithImpl(
-      _$AppointmentImpl _value, $Res Function(_$AppointmentImpl) _then)
+class __$$DoctorAppointmentImplCopyWithImpl<$Res>
+    extends _$DoctorAppointmentCopyWithImpl<$Res, _$DoctorAppointmentImpl>
+    implements _$$DoctorAppointmentImplCopyWith<$Res> {
+  __$$DoctorAppointmentImplCopyWithImpl(_$DoctorAppointmentImpl _value,
+      $Res Function(_$DoctorAppointmentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,10 +111,10 @@ class __$$AppointmentImplCopyWithImpl<$Res>
   $Res call({
     Object? startTime = null,
     Object? reasonForVisit = null,
-    Object? doctorId = null,
-    Object? isVirtual = null,
+    Object? patientId = null,
+    Object? isVirtual = freezed,
   }) {
-    return _then(_$AppointmentImpl(
+    return _then(_$DoctorAppointmentImpl(
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
@@ -118,56 +123,55 @@ class __$$AppointmentImplCopyWithImpl<$Res>
           ? _value.reasonForVisit
           : reasonForVisit // ignore: cast_nullable_to_non_nullable
               as String,
-      doctorId: null == doctorId
-          ? _value.doctorId
-          : doctorId // ignore: cast_nullable_to_non_nullable
+      patientId: null == patientId
+          ? _value.patientId
+          : patientId // ignore: cast_nullable_to_non_nullable
               as int,
-      isVirtual: null == isVirtual
+      isVirtual: freezed == isVirtual
           ? _value.isVirtual
           : isVirtual // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AppointmentImpl implements _Appointment {
-  const _$AppointmentImpl(
+class _$DoctorAppointmentImpl implements _DoctorAppointment {
+  const _$DoctorAppointmentImpl(
       {required this.startTime,
       required this.reasonForVisit,
-      required this.doctorId,
+      required this.patientId,
       required this.isVirtual});
 
-  factory _$AppointmentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AppointmentImplFromJson(json);
+  factory _$DoctorAppointmentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DoctorAppointmentImplFromJson(json);
 
   @override
   final String startTime;
-// Changed to String
   @override
   final String reasonForVisit;
   @override
-  final int doctorId;
+  final int patientId;
   @override
-  final bool isVirtual;
+  final bool? isVirtual;
 
   @override
   String toString() {
-    return 'Appointment(startTime: $startTime, reasonForVisit: $reasonForVisit, doctorId: $doctorId, isVirtual: $isVirtual)';
+    return 'DoctorAppointment(startTime: $startTime, reasonForVisit: $reasonForVisit, patientId: $patientId, isVirtual: $isVirtual)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppointmentImpl &&
+            other is _$DoctorAppointmentImpl &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.reasonForVisit, reasonForVisit) ||
                 other.reasonForVisit == reasonForVisit) &&
-            (identical(other.doctorId, doctorId) ||
-                other.doctorId == doctorId) &&
+            (identical(other.patientId, patientId) ||
+                other.patientId == patientId) &&
             (identical(other.isVirtual, isVirtual) ||
                 other.isVirtual == isVirtual));
   }
@@ -175,42 +179,43 @@ class _$AppointmentImpl implements _Appointment {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, startTime, reasonForVisit, doctorId, isVirtual);
+      Object.hash(runtimeType, startTime, reasonForVisit, patientId, isVirtual);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppointmentImplCopyWith<_$AppointmentImpl> get copyWith =>
-      __$$AppointmentImplCopyWithImpl<_$AppointmentImpl>(this, _$identity);
+  _$$DoctorAppointmentImplCopyWith<_$DoctorAppointmentImpl> get copyWith =>
+      __$$DoctorAppointmentImplCopyWithImpl<_$DoctorAppointmentImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AppointmentImplToJson(
+    return _$$DoctorAppointmentImplToJson(
       this,
     );
   }
 }
 
-abstract class _Appointment implements Appointment {
-  const factory _Appointment(
+abstract class _DoctorAppointment implements DoctorAppointment {
+  const factory _DoctorAppointment(
       {required final String startTime,
       required final String reasonForVisit,
-      required final int doctorId,
-      required final bool isVirtual}) = _$AppointmentImpl;
+      required final int patientId,
+      required final bool? isVirtual}) = _$DoctorAppointmentImpl;
 
-  factory _Appointment.fromJson(Map<String, dynamic> json) =
-      _$AppointmentImpl.fromJson;
+  factory _DoctorAppointment.fromJson(Map<String, dynamic> json) =
+      _$DoctorAppointmentImpl.fromJson;
 
   @override
   String get startTime;
-  @override // Changed to String
+  @override
   String get reasonForVisit;
   @override
-  int get doctorId;
+  int get patientId;
   @override
-  bool get isVirtual;
+  bool? get isVirtual;
   @override
   @JsonKey(ignore: true)
-  _$$AppointmentImplCopyWith<_$AppointmentImpl> get copyWith =>
+  _$$DoctorAppointmentImplCopyWith<_$DoctorAppointmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

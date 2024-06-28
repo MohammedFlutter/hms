@@ -78,13 +78,13 @@ class DoctorSearchPage extends StatelessWidget {
             case DoctorStatus.initial:
               break;
             case DoctorStatus.loading:
-              CustomDialog.showLoadingDialog(context);
+              // CustomDialog.showLoadingDialog(context);
               break;
             case DoctorStatus.success:
-              context.pop();
+              // context.pop();
               break;
             case DoctorStatus.failure:
-              context.pop();
+              // context.pop();
               CustomSnakeBar.show(
                   context: context, isError: true, message: state.errorMessage);
               break;

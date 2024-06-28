@@ -8,7 +8,9 @@ import 'package:medica/core/route.dart';
 import 'package:medica/core/theme/custom_scheme_color.dart';
 import 'package:medica/core/theme/theme_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medica/features/appointment/business_logic/appointment_bloc.dart';
+import 'package:medica/features/appointment/business_logic/create_appointment/appointment_bloc.dart';
+import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_bloc.dart';
+import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_bloc.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
 import 'package:medica/features/home/business_logic/home_patient/home_patient_bloc.dart';
 import 'package:medica/features/patient/business_logic/patient_search_bloc.dart';
@@ -34,6 +36,8 @@ void main() async {
     BlocProvider(create: (_) => getIt<PatientSearchBloc>()),
     BlocProvider(create: (_) => getIt<AppointmentBloc>()),
     BlocProvider(create: (_) => getIt<ProfileBloc>()),
+    BlocProvider(create: (_) => getIt<PatientAppointmentBloc>()),
+    BlocProvider(create: (_) => getIt<DoctorAppointmentBloc>()),
   ], child: const MyApp()));
 }
 
@@ -51,7 +55,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData().create(CustomSchemeColor().lightColorScheme),
             darkTheme: ThemeData().create(CustomSchemeColor().darkColorScheme),
-            themeMode: ThemeMode.dark,
+            // themeMode: ThemeMode.dark,
             // locale: const Locale('ar'),
             localizationsDelegates: const [
               FormBuilderLocalizations.delegate,
