@@ -19,7 +19,7 @@ abstract class SearchDoctorProvider {
   });
 
   @GET('api/v1/doctor/get-by-id/{id}')
-  Future<List<Doctor>> searchDoctorsById({
-    @Path() int id,
-  });
+  Future<Doctor> getDoctorsById(
+    @Path('id') int id,
+  );
 }

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:medica/features/appointment/data/model/doctor_appointment.dart';
+import 'package:medica/features/appointment/business_logic/DTO/doctor_appointment_dto.dart';
 
 part 'doctor_appointment_state.freezed.dart';
 
@@ -7,7 +7,7 @@ part 'doctor_appointment_state.freezed.dart';
 class DoctorAppointmentState with _$DoctorAppointmentState {
   const factory DoctorAppointmentState({
     @Default('') String errorMessage,
-    @Default(null) List<DoctorAppointment>? doctorAppointments,
+    @Default(null) List<DoctorAppointmentDto>? doctorAppointments,
     @Default(DoctorAppointmentStatus.initial) DoctorAppointmentStatus  status,
   }) = _DoctorAppointmentState;
 }

@@ -32,14 +32,15 @@ class CustomSnakeBar {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Row(
+        content: Wrap(
+          alignment: WrapAlignment.center,
           children: [
             isError
                 ? Icon(Icons.error, color: theme.colorScheme.onError)
                 : Icon(Icons.check, color: theme.colorScheme.onPrimary),
             const SizedBox(width: 8),
             Text(
-              message,
+              message,softWrap:true ,
               style: TextStyle(color: theme.colorScheme.onError), // Use onError for contrast
             ),
           ],

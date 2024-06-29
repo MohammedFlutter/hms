@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
-import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/core/route.dart';
 import 'package:medica/features/patient/business_logic/patient_search_bloc.dart';
@@ -17,7 +16,7 @@ class PatientSearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Doctor List'),
+        title: const Text('Patient Search'),
       ),
       body: BlocConsumer<PatientSearchBloc, PatientSearchState>(
         builder: (context, state) {

@@ -14,19 +14,31 @@ class PatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final randomColor = Colors.primaries[patient.basicInfo.firstname.hashCode % Colors.primaries.length];
+
     return Card(
-      elevation: 2,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: BorderSide(color: Theme.of(context).dividerColor)),
+        borderRadius: BorderRadius.circular(4),
+        side: BorderSide(color: Theme.of(context).dividerColor,width: .5),
+      ),
       child: ListTile(
-          title: Text(
-              '${patient.basicInfo.firstname} ${patient.basicInfo.lastname}'),
-          onTap: () {
-            context
-                .read<PatientSearchBloc>()
-                .add(LoadPatientHistory(patient.id));
-          }),
+        leading: CircleAvatar(
+          backgroundColor: randomColor,
+          child: Text(
+            patient.basicInfo.firstname.substring(0, 1).toUpperCase(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        title: Text('${patient.basicInfo.firstname} ${patient.basicInfo.lastname}'),
+        onTap: () {
+          context
+              .read<PatientSearchBloc>()
+              .add(LoadPatientHistory(patient.id));
+        },
+      ),
     );
   }
 }

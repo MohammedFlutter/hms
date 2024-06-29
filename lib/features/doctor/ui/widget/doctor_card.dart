@@ -13,17 +13,48 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final randomColor = Colors.primaries[
+        doctor.basicInfo.firstname.hashCode % Colors.primaries.length];
+
     return Card(
-      elevation: 2,
+      // elevation: 2,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: BorderSide(color: Theme.of(context).dividerColor)),
+        borderRadius: BorderRadius.circular(4),
+        side: BorderSide(color: Theme.of(context).dividerColor),
+      ),
       child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: randomColor,
+          child: Text(
+            doctor.basicInfo.firstname.substring(0, 1).toUpperCase(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
         title:
             Text('${doctor.basicInfo.firstname} ${doctor.basicInfo.lastname}'),
         subtitle: Text(doctor.professionalDetails.specialty ?? ''),
-        onTap: () => context.pushNamed(CustomRoutes.doctorDetails,extra: doctor),
+        onTap: () =>
+            context.pushNamed(CustomRoutes.doctorDetails, extra: doctor),
       ),
     );
   }
+
+// @override
+// Widget build(BuildContext context) {
+//   return Card(
+//     elevation: 2,
+//     shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.circular(4),
+//         side: BorderSide(color: Theme.of(context).dividerColor)),
+//     child: ListTile(
+//       title:
+//           Text('${doctor.basicInfo.firstname} ${doctor.basicInfo.lastname}'),
+//       subtitle: Text(doctor.professionalDetails.specialty ?? ''),
+//       onTap: () => context.pushNamed(CustomRoutes.doctorDetails,extra: doctor),
+//     ),
+//   );
+// }
 }

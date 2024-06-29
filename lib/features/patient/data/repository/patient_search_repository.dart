@@ -18,4 +18,13 @@ class PatientSearchRepository {
       return ApiResult.failure(NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult<Patient>> getPatientById(int id) async {
+    try {
+      final patient = await _patientSearchProvider.getPatientById(id);
+      return ApiResult.success(data: patient);
+    } catch (e) {
+      return ApiResult.failure(NetworkExceptions.getDioException(e));
+    }
+  }
 }

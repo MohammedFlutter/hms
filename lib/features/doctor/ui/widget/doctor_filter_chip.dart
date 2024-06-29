@@ -37,6 +37,7 @@ class _DoctorFilterChipsState extends State<DoctorFilterChips> {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: FilterChip(
+              // selectedColor: ,
               label: Text(specialization),
               selected: _selectedSpecialization == specialization,
               onSelected: (isSelected) {

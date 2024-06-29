@@ -39,7 +39,7 @@ class _SignInPageState extends State<SignInPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(CustomRoutes.home);
+              context.goNamed(CustomRoutes.splash);
             },
             failure: (error) {
               context.pop();

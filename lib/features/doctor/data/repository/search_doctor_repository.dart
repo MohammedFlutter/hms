@@ -21,4 +21,13 @@ class SearchDoctorRepository {
       return ApiResult.failure(NetworkExceptions.getDioException(error));
     }
   }
+
+  Future<ApiResult<Doctor>> getDoctorById(int doctorId) async {
+    try {
+      final doctor = await _searchDoctorProvider.getDoctorsById(doctorId);
+      return ApiResult.success(data: doctor);
+    } catch (error) {
+      return ApiResult.failure(NetworkExceptions.getDioException(error));
+    }
+  }
 }

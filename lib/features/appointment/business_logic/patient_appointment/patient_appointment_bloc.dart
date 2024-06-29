@@ -3,18 +3,18 @@ import 'package:injectable/injectable.dart';
 import 'package:medica/core/exceptions/network_exceptions.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_event.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_state.dart';
-import 'package:medica/features/appointment/data/repository/appointment_repository.dart';
+import 'package:medica/features/appointment/business_logic/service/appointment_service.dart';
 
 @injectable
 class PatientAppointmentBloc
     extends Bloc<PatientAppointmentEvent, PatientAppointmentState> {
-  final AppointmentRepository _appointmentRepository;
+  final AppointmentsService _appointmentsService;
 
-  PatientAppointmentBloc(this._appointmentRepository)
+  PatientAppointmentBloc(this._appointmentsService)
       : super(const PatientAppointmentState()) {
     on<LoadAppointment>((event, emit) async {
       emit(state.copyWith(status: PatientAppointmentStatus.loading));
-      final result = await _appointmentRepository.getPatientAppointment();
+      final result = await _appointmentsService.getPatientAppointments();
       result.when(
         success: (data) => emit(state.copyWith(
             status: PatientAppointmentStatus.success,
@@ -25,4 +25,8 @@ class PatientAppointmentBloc
       );
     });
   }
+
+
+
+
 }

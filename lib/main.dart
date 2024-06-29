@@ -1,4 +1,9 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
@@ -19,13 +24,21 @@ import 'package:medica/features/registration/business_logic/reset_password/reset
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
 import 'package:medica/features/registration/business_logic/sign_up/sign_up_cubit.dart';
 import 'package:medica/features/registration/business_logic/verify_code/verify_code_cubit.dart';
+import 'package:medica/features/splash/business_logic/splash_bloc.dart';
+import 'package:medica/firebase_options.dart';
+import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
+import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
+import 'package:zego_zpns/zego_zpns.dart';
 
 import 'features/profile/business_logic/profile_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await getIt.init();
+  await zegoInit();
   runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (_) => getIt<SplashBloc>()),
     BlocProvider(create: (_) => getIt<SignUpCubit>()),
     BlocProvider(create: (_) => getIt<SignInCubit>()),
     BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
@@ -63,8 +76,33 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: router,
-            // routerDelegate: router.routerDelegate,
           );
         });
   }
+}
+
+Future<void> zegoInit() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  ZPNsConfig zpnsConfig = ZPNsConfig();
+  zpnsConfig.enableFCMPush = true;
+  ZPNs.setPushConfig(zpnsConfig);
+  ZPNs.getInstance()
+      .registerPush(iOSEnvironment: ZPNsIOSEnvironment.Automatic)
+      .catchError((onError) {
+    if (onError is PlatformException) {
+      log(onError.message ?? '');
+    }
+  });
+
+  ZegoUIKitPrebuiltCallInvitationService()
+      .setNavigatorKey(getIt<GlobalKey<NavigatorState>>());
+
+  ZegoUIKit().initLog().then((value) {
+    ZegoUIKitPrebuiltCallInvitationService().useSystemCallingUI(
+      [ZegoUIKitSignalingPlugin()],
+    );
+  });
 }

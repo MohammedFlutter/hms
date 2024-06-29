@@ -10,26 +10,28 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i5;
 import 'package:flutter/cupertino.dart' as _i6;
-import 'package:flutter/material.dart' as _i26;
+import 'package:flutter/material.dart' as _i28;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:medica/core/injection/api_module.dart' as _i25;
-import 'package:medica/core/injection/di_app_module.dart' as _i39;
-import 'package:medica/core/injection/preferences_module.dart' as _i37;
-import 'package:medica/core/injection/secure_storage_module.dart' as _i38;
+import 'package:medica/core/injection/api_module.dart' as _i27;
+import 'package:medica/core/injection/di_app_module.dart' as _i41;
+import 'package:medica/core/injection/preferences_module.dart' as _i39;
+import 'package:medica/core/injection/secure_storage_module.dart' as _i40;
 import 'package:medica/features/appointment/business_logic/create_appointment/appointment_bloc.dart'
-    as _i27;
-import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_bloc.dart'
-    as _i28;
-import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_bloc.dart'
     as _i29;
+import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_bloc.dart'
+    as _i35;
+import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_bloc.dart'
+    as _i36;
+import 'package:medica/features/appointment/business_logic/service/appointment_service.dart'
+    as _i23;
 import 'package:medica/features/appointment/data/provider/appointment_provider.dart'
     as _i9;
 import 'package:medica/features/appointment/data/repository/appointment_repository.dart'
     as _i21;
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart'
-    as _i23;
+    as _i24;
 import 'package:medica/features/doctor/data/provider/search_doctor_provider.dart'
     as _i10;
 import 'package:medica/features/doctor/data/repository/search_doctor_repository.dart'
@@ -55,9 +57,9 @@ import 'package:medica/features/profile/data/provider/profile_provider.dart'
 import 'package:medica/features/profile/data/repository/profile_repository.dart'
     as _i18;
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart'
-    as _i35;
+    as _i37;
 import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart'
-    as _i36;
+    as _i38;
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart'
     as _i33;
 import 'package:medica/features/registration/business_logic/sign_up/sign_up_cubit.dart'
@@ -71,7 +73,8 @@ import 'package:medica/features/registration/data/provider/reset_password_provid
 import 'package:medica/features/registration/data/repository/auth_repository.dart'
     as _i19;
 import 'package:medica/features/registration/data/repository/reset_password_repo.dart'
-    as _i24;
+    as _i26;
+import 'package:medica/features/splash/business_logic/splash_bloc.dart' as _i25;
 import 'package:shared_preferences/shared_preferences.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -152,22 +155,28 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i18.ProfileRepository>(),
           gh<_i19.AuthRepository>(),
         ));
-    gh.factory<_i23.DoctorSearchBloc>(
-        () => _i23.DoctorSearchBloc(gh<_i20.SearchDoctorRepository>()));
-    gh.factory<_i24.ResetPasswordRepository>(() => _i24.ResetPasswordRepository(
-        resetPasswordProvider: gh<_i15.ResetPasswordProvider>()));
-    gh.factory<_i25.TokenInterceptor>(() => _i25.TokenInterceptor(
-          authRepo: gh<_i19.AuthRepository>(),
-          navigatorKey: gh<_i26.GlobalKey<_i26.NavigatorState>>(),
+    gh.factory<_i23.AppointmentsService>(() => _i23.AppointmentsService(
+          gh<_i9.AppointmentProvider>(),
+          patientAppointmentProvider: gh<_i9.AppointmentProvider>(),
+          patientProvider: gh<_i12.PatientSearchProvider>(),
+          doctorProvider: gh<_i10.SearchDoctorProvider>(),
         ));
-    gh.factory<_i27.AppointmentBloc>(
-        () => _i27.AppointmentBloc(gh<_i21.AppointmentRepository>()));
-    gh.factory<_i28.DoctorAppointmentBloc>(
-        () => _i28.DoctorAppointmentBloc(gh<_i21.AppointmentRepository>()));
-    gh.factory<_i29.PatientAppointmentBloc>(
-        () => _i29.PatientAppointmentBloc(gh<_i21.AppointmentRepository>()));
+    gh.factory<_i24.DoctorSearchBloc>(
+        () => _i24.DoctorSearchBloc(gh<_i20.SearchDoctorRepository>()));
+    gh.factory<_i25.SplashBloc>(() => _i25.SplashBloc(
+          gh<_i19.AuthRepository>(),
+          gh<_i18.ProfileRepository>(),
+        ));
+    gh.factory<_i26.ResetPasswordRepository>(() => _i26.ResetPasswordRepository(
+        resetPasswordProvider: gh<_i15.ResetPasswordProvider>()));
+    gh.factory<_i27.TokenInterceptor>(() => _i27.TokenInterceptor(
+          authRepo: gh<_i19.AuthRepository>(),
+          navigatorKey: gh<_i28.GlobalKey<_i28.NavigatorState>>(),
+        ));
+    gh.factory<_i29.AppointmentBloc>(
+        () => _i29.AppointmentBloc(gh<_i21.AppointmentRepository>()));
     gh.factory<_i30.VerifyCodeCubit>(() => _i30.VerifyCodeCubit(
-          gh<_i24.ResetPasswordRepository>(),
+          gh<_i26.ResetPasswordRepository>(),
           gh<_i19.AuthRepository>(),
         ));
     gh.factory<_i31.PatientSearchBloc>(() => _i31.PatientSearchBloc(
@@ -180,18 +189,22 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i33.SignInCubit(gh<_i19.AuthRepository>()));
     gh.factory<_i34.SignUpCubit>(
         () => _i34.SignUpCubit(gh<_i19.AuthRepository>()));
-    gh.factory<_i35.ForgetPasswordCubit>(
-        () => _i35.ForgetPasswordCubit(gh<_i24.ResetPasswordRepository>()));
-    gh.factory<_i36.ResetPasswordCubit>(
-        () => _i36.ResetPasswordCubit(gh<_i24.ResetPasswordRepository>()));
+    gh.factory<_i35.DoctorAppointmentBloc>(
+        () => _i35.DoctorAppointmentBloc(gh<_i23.AppointmentsService>()));
+    gh.factory<_i36.PatientAppointmentBloc>(
+        () => _i36.PatientAppointmentBloc(gh<_i23.AppointmentsService>()));
+    gh.factory<_i37.ForgetPasswordCubit>(
+        () => _i37.ForgetPasswordCubit(gh<_i26.ResetPasswordRepository>()));
+    gh.factory<_i38.ResetPasswordCubit>(
+        () => _i38.ResetPasswordCubit(gh<_i26.ResetPasswordRepository>()));
     return this;
   }
 }
 
-class _$PreferencesModule extends _i37.PreferencesModule {}
+class _$PreferencesModule extends _i39.PreferencesModule {}
 
-class _$SecureStorageModule extends _i38.SecureStorageModule {}
+class _$SecureStorageModule extends _i40.SecureStorageModule {}
 
-class _$ApiModule extends _i25.ApiModule {}
+class _$ApiModule extends _i27.ApiModule {}
 
-class _$DiAppModule extends _i39.DiAppModule {}
+class _$DiAppModule extends _i41.DiAppModule {}

@@ -4,8 +4,7 @@ import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_event.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_state.dart';
-import 'package:medica/features/appointment/data/model/patient_appointment.dart';
-import 'package:medica/features/appointment/ui/widget/appointment_card.dart'; // Import your PatientAppointment model
+import 'package:medica/features/appointment/ui/widget/patient_appointment_card.dart';
 
 class PatientAppointmentPage extends StatefulWidget {
   const PatientAppointmentPage({super.key});
@@ -30,6 +29,7 @@ class _PatientAppointmentPageState extends State<PatientAppointmentPage> {
       body: BlocConsumer<PatientAppointmentBloc, PatientAppointmentState>(
         builder: (context, state) {
           return RefreshIndicator(
+            // triggerMode: RefreshIndicatorTriggerMode.onEdge,
             onRefresh: () async {
               context
                   .read<PatientAppointmentBloc>()
@@ -73,11 +73,9 @@ class _PatientAppointmentPageState extends State<PatientAppointmentPage> {
         itemCount: state.patientAppointments!.length,
         itemBuilder: (context, index) {
           final appointment = state.patientAppointments![index];
-          return AppointmentCard(
-              name: appointment.doctorId.toString(),
-              date: appointment.startTime,
-              isVirtual: appointment.isVirtual,
-              onTap: () {});
+          return PatientAppointmentCard(
+            patientAppointment: appointment,
+          );
         },
       );
     }

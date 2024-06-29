@@ -12,7 +12,7 @@ _$PatientAppointmentImpl _$$PatientAppointmentImplFromJson(
       startTime: json['startTime'] as String,
       reasonForVisit: json['reasonForVisit'] as String,
       doctorId: (json['doctorId'] as num).toInt(),
-      isVirtual: json['isVirtual'] as bool,
+      virtual: json['virtual'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$PatientAppointmentImplToJson(
@@ -21,5 +21,5 @@ Map<String, dynamic> _$$PatientAppointmentImplToJson(
       'startTime': instance.startTime,
       'reasonForVisit': instance.reasonForVisit,
       'doctorId': instance.doctorId,
-      'isVirtual': instance.isVirtual,
+      'virtual': instance.virtual,
     };

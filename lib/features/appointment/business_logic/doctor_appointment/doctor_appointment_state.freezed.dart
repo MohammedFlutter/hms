@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DoctorAppointmentState {
   String get errorMessage => throw _privateConstructorUsedError;
-  List<DoctorAppointment>? get doctorAppointments =>
+  List<DoctorAppointmentDto>? get doctorAppointments =>
       throw _privateConstructorUsedError;
   DoctorAppointmentStatus get status => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $DoctorAppointmentStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String errorMessage,
-      List<DoctorAppointment>? doctorAppointments,
+      List<DoctorAppointmentDto>? doctorAppointments,
       DoctorAppointmentStatus status});
 }
 
@@ -64,7 +64,7 @@ class _$DoctorAppointmentStateCopyWithImpl<$Res,
       doctorAppointments: freezed == doctorAppointments
           ? _value.doctorAppointments
           : doctorAppointments // ignore: cast_nullable_to_non_nullable
-              as List<DoctorAppointment>?,
+              as List<DoctorAppointmentDto>?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -84,7 +84,7 @@ abstract class _$$DoctorAppointmentStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String errorMessage,
-      List<DoctorAppointment>? doctorAppointments,
+      List<DoctorAppointmentDto>? doctorAppointments,
       DoctorAppointmentStatus status});
 }
 
@@ -113,7 +113,7 @@ class __$$DoctorAppointmentStateImplCopyWithImpl<$Res>
       doctorAppointments: freezed == doctorAppointments
           ? _value._doctorAppointments
           : doctorAppointments // ignore: cast_nullable_to_non_nullable
-              as List<DoctorAppointment>?,
+              as List<DoctorAppointmentDto>?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -127,17 +127,17 @@ class __$$DoctorAppointmentStateImplCopyWithImpl<$Res>
 class _$DoctorAppointmentStateImpl implements _DoctorAppointmentState {
   const _$DoctorAppointmentStateImpl(
       {this.errorMessage = '',
-      final List<DoctorAppointment>? doctorAppointments = null,
+      final List<DoctorAppointmentDto>? doctorAppointments = null,
       this.status = DoctorAppointmentStatus.initial})
       : _doctorAppointments = doctorAppointments;
 
   @override
   @JsonKey()
   final String errorMessage;
-  final List<DoctorAppointment>? _doctorAppointments;
+  final List<DoctorAppointmentDto>? _doctorAppointments;
   @override
   @JsonKey()
-  List<DoctorAppointment>? get doctorAppointments {
+  List<DoctorAppointmentDto>? get doctorAppointments {
     final value = _doctorAppointments;
     if (value == null) return null;
     if (_doctorAppointments is EqualUnmodifiableListView)
@@ -182,13 +182,13 @@ class _$DoctorAppointmentStateImpl implements _DoctorAppointmentState {
 abstract class _DoctorAppointmentState implements DoctorAppointmentState {
   const factory _DoctorAppointmentState(
       {final String errorMessage,
-      final List<DoctorAppointment>? doctorAppointments,
+      final List<DoctorAppointmentDto>? doctorAppointments,
       final DoctorAppointmentStatus status}) = _$DoctorAppointmentStateImpl;
 
   @override
   String get errorMessage;
   @override
-  List<DoctorAppointment>? get doctorAppointments;
+  List<DoctorAppointmentDto>? get doctorAppointments;
   @override
   DoctorAppointmentStatus get status;
   @override

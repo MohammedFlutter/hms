@@ -53,22 +53,21 @@ class _ProfilePageState extends State<ProfilePage> {
               return const Center(child: CircularProgressIndicator());
             },
             success: (profile) {
-              return SafeArea(
-                child: Scaffold(
-                    body: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: SingleChildScrollView(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      buildProfileInfo(context, profile),
-                      const Gap(16),
-                      buildBody(context)
-                    ],
-                  )),
+              return Scaffold(
+                appBar: AppBar(title: const Text('Profile'),),
+                  body: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24) ,
+                child: SingleChildScrollView(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    buildProfileInfo(context, profile),
+                    const Gap(16),
+                    buildBody(context)
+                  ],
                 )),
-              );
+              ));
             });
       },
     );
@@ -77,10 +76,10 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget buildProfileInfo(BuildContext context, Profile profile) {
     return Column(
       children: [
-        Text(
-          'Profile',
-          style: CustomTextStyle.h1.copyWith(fontWeight: FontWeight.w600),
-        ),
+        // Text(
+        //   'Profile',
+        //   style: CustomTextStyle.h1.copyWith(fontWeight: FontWeight.w600),
+        // ),
         const Gap(16),
         _buildPicture(context),
         const Gap(16),
@@ -98,6 +97,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildPicture(BuildContext context) {
+    final randomColor = Colors.primaries[DateTime.now().millisecondsSinceEpoch % Colors.primaries.length];
+
     return Stack(
       children: [
         InkWell(
@@ -115,40 +116,43 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 160,
               alignment: AlignmentDirectional.center,
               child: Transform.translate(
-                  // offset: const Offset(-20, 0),
-                  offset: const Offset(0, 0),
-                  child: Image.network(
-                    imageUri,
-                    height: 200,
-                    width: 200,
-                  )
-                  // const Icon(
-                  //   Icons.person,
-                  //   size: 200,
-                  //   color: Color(0xFFE5E7EB),
-                  // ),
+                  offset: const Offset(-20, 0),
+                  // offset: const Offset(0, 0),
+                  child:
+                  // Image.network(
+                  //   imageUri,
+                  //   height: 200,
+                  //   width: 200,
+                  // )
+                   Icon(
+                    Icons.person,
+
+                    size: 200,
+                    color: randomColor,
+                    // color: Color(0xFFE5E7EB),
+                  ),
                   ),
             ),
           ),
         ),
-        Positioned(
-            bottom: 10,
-            right: 10,
-            child: Container(
-                height: 30,
-                width: 30,
-                decoration: const BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4),
-                      topRight: Radius.circular(4),
-                      bottomRight: Radius.circular(4),
-                    )),
-                child: const Icon(
-                  Icons.edit_outlined,
-                  color: Colors.white,
-                ))),
+        // Positioned(
+        //     bottom: 10,
+        //     right: 10,
+        //     child: Container(
+        //         height: 30,
+        //         width: 30,
+        //         decoration: const BoxDecoration(
+        //             color: Colors.black,
+        //             shape: BoxShape.rectangle,
+        //             borderRadius: BorderRadius.only(
+        //               topLeft: Radius.circular(4),
+        //               topRight: Radius.circular(4),
+        //               bottomRight: Radius.circular(4),
+        //             )),
+        //         child: const Icon(
+        //           Icons.edit_outlined,
+        //           color: Colors.white,
+        //         ))),
       ],
     );
   }
@@ -188,12 +192,12 @@ class _ProfilePageState extends State<ProfilePage> {
           onTap: () => _onHelp(context),
         ),
         const Divider(),
-        ProfileCard(
-          name: 'Term and Conditions',
-          svgIconPath: Assets.iconsSecuritySafe,
-          onTap: () => _onTermsAndCondition(context),
-        ),
-        const Divider(),
+        // ProfileCard(
+        //   name: 'Term and Conditions',
+        //   svgIconPath: Assets.iconsSecuritySafe,
+        //   onTap: () => _onTermsAndCondition(context),
+        // ),
+        // const Divider(),
         ProfileCard(
           name: 'Log Out',
           svgIconPath: Assets.iconsLogout,
@@ -212,8 +216,6 @@ class _ProfilePageState extends State<ProfilePage> {
   void _onSettings(BuildContext context) {}
 
   void _onHelp(BuildContext context) {}
-
-  void _onTermsAndCondition(BuildContext context) {}
 
   void _onLogOut(BuildContext context) {
     context.read<ProfileBloc>().add(const ProfileEvent.logout());

@@ -4,8 +4,7 @@ import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_event.dart';
 import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_state.dart';
-import 'package:medica/features/appointment/data/model/doctor_appointment.dart';
-import 'package:medica/features/appointment/ui/widget/appointment_card.dart'; // Import your DoctorAppointment model
+import 'package:medica/features/appointment/ui/widget/doctor_appointment_card.dart'; // Import your DoctorAppointment model
 
 class DoctorAppointmentPage extends StatefulWidget {
   const DoctorAppointmentPage({super.key});
@@ -73,11 +72,7 @@ class _DoctorAppointmentPageState extends State<DoctorAppointmentPage> {
         itemCount: state.doctorAppointments!.length,
         itemBuilder: (context, index) {
           final appointment = state.doctorAppointments![index];
-          return AppointmentCard(
-              name: appointment.patientId.toString(),
-              date: appointment.startTime,
-              isVirtual: appointment.isVirtual,
-              onTap: () {});
+          return DoctorAppointmentCard(doctorAppointment: appointment,);
         },
       );
     }

@@ -148,7 +148,7 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
         startTime: dateFormat.format(_selectedTime!),
         reasonForVisit: _reasonController.text,
         doctorId: widget.doctor.id,
-        isVirtual: _isVirtual,
+        virtual: _isVirtual,
       );
 
       context.read<AppointmentBloc>().add(

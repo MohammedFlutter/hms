@@ -23,7 +23,7 @@ mixin _$PatientAppointment {
   String get startTime => throw _privateConstructorUsedError;
   String get reasonForVisit => throw _privateConstructorUsedError;
   int get doctorId => throw _privateConstructorUsedError;
-  bool get isVirtual => throw _privateConstructorUsedError;
+  bool get virtual => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $PatientAppointmentCopyWith<$Res> {
       _$PatientAppointmentCopyWithImpl<$Res, PatientAppointment>;
   @useResult
   $Res call(
-      {String startTime, String reasonForVisit, int doctorId, bool isVirtual});
+      {String startTime, String reasonForVisit, int doctorId, bool virtual});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$PatientAppointmentCopyWithImpl<$Res, $Val extends PatientAppointment>
     Object? startTime = null,
     Object? reasonForVisit = null,
     Object? doctorId = null,
-    Object? isVirtual = null,
+    Object? virtual = null,
   }) {
     return _then(_value.copyWith(
       startTime: null == startTime
@@ -72,9 +72,9 @@ class _$PatientAppointmentCopyWithImpl<$Res, $Val extends PatientAppointment>
           ? _value.doctorId
           : doctorId // ignore: cast_nullable_to_non_nullable
               as int,
-      isVirtual: null == isVirtual
-          ? _value.isVirtual
-          : isVirtual // ignore: cast_nullable_to_non_nullable
+      virtual: null == virtual
+          ? _value.virtual
+          : virtual // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -89,7 +89,7 @@ abstract class _$$PatientAppointmentImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String startTime, String reasonForVisit, int doctorId, bool isVirtual});
+      {String startTime, String reasonForVisit, int doctorId, bool virtual});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$PatientAppointmentImplCopyWithImpl<$Res>
     Object? startTime = null,
     Object? reasonForVisit = null,
     Object? doctorId = null,
-    Object? isVirtual = null,
+    Object? virtual = null,
   }) {
     return _then(_$PatientAppointmentImpl(
       startTime: null == startTime
@@ -121,9 +121,9 @@ class __$$PatientAppointmentImplCopyWithImpl<$Res>
           ? _value.doctorId
           : doctorId // ignore: cast_nullable_to_non_nullable
               as int,
-      isVirtual: null == isVirtual
-          ? _value.isVirtual
-          : isVirtual // ignore: cast_nullable_to_non_nullable
+      virtual: null == virtual
+          ? _value.virtual
+          : virtual // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -136,7 +136,7 @@ class _$PatientAppointmentImpl implements _PatientAppointment {
       {required this.startTime,
       required this.reasonForVisit,
       required this.doctorId,
-      required this.isVirtual});
+      this.virtual = false});
 
   factory _$PatientAppointmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$PatientAppointmentImplFromJson(json);
@@ -148,11 +148,12 @@ class _$PatientAppointmentImpl implements _PatientAppointment {
   @override
   final int doctorId;
   @override
-  final bool isVirtual;
+  @JsonKey()
+  final bool virtual;
 
   @override
   String toString() {
-    return 'PatientAppointment(startTime: $startTime, reasonForVisit: $reasonForVisit, doctorId: $doctorId, isVirtual: $isVirtual)';
+    return 'PatientAppointment(startTime: $startTime, reasonForVisit: $reasonForVisit, doctorId: $doctorId, virtual: $virtual)';
   }
 
   @override
@@ -166,14 +167,13 @@ class _$PatientAppointmentImpl implements _PatientAppointment {
                 other.reasonForVisit == reasonForVisit) &&
             (identical(other.doctorId, doctorId) ||
                 other.doctorId == doctorId) &&
-            (identical(other.isVirtual, isVirtual) ||
-                other.isVirtual == isVirtual));
+            (identical(other.virtual, virtual) || other.virtual == virtual));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, startTime, reasonForVisit, doctorId, isVirtual);
+      Object.hash(runtimeType, startTime, reasonForVisit, doctorId, virtual);
 
   @JsonKey(ignore: true)
   @override
@@ -195,7 +195,7 @@ abstract class _PatientAppointment implements PatientAppointment {
       {required final String startTime,
       required final String reasonForVisit,
       required final int doctorId,
-      required final bool isVirtual}) = _$PatientAppointmentImpl;
+      final bool virtual}) = _$PatientAppointmentImpl;
 
   factory _PatientAppointment.fromJson(Map<String, dynamic> json) =
       _$PatientAppointmentImpl.fromJson;
@@ -207,7 +207,7 @@ abstract class _PatientAppointment implements PatientAppointment {
   @override
   int get doctorId;
   @override
-  bool get isVirtual;
+  bool get virtual;
   @override
   @JsonKey(ignore: true)
   _$$PatientAppointmentImplCopyWith<_$PatientAppointmentImpl> get copyWith =>

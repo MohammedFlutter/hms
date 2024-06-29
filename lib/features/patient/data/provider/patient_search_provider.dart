@@ -10,8 +10,13 @@ part 'patient_search_provider.g.dart';
 abstract class PatientSearchProvider {
   @factoryMethod
   factory PatientSearchProvider(Dio dio, {@Named('baseUrl') String baseUrl}) =
-  _PatientSearchProvider;
+      _PatientSearchProvider;
 
   @GET('/api/v1/patients/search-full-name')
   Future<List<Patient>> searchPatients(@Query('fullName') String fullName);
+
+  @GET('api/v1/patients/get-by-id/{id}')
+  Future<Patient> getPatientById(
+    @Path('id') int id,
+  );
 }

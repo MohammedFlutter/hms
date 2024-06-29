@@ -15,4 +15,7 @@ abstract class PatientHistoryProvider {
   @GET(
       'api/vi/patient-history/get_by-patient-id/{patientId}')
   Future<PatientHistory> getPatientHistory(@Path('patientId') int patientId);
+
+
+
 }

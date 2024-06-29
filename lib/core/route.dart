@@ -1,8 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medica/core/injection/api_module.dart';
 import 'package:medica/core/injection/init_di.dart';
 import 'package:medica/core/widget/main_wrapper.dart';
 import 'package:medica/features/appointment/ui/page/create_appointment_page.dart';
@@ -13,7 +11,6 @@ import 'package:medica/features/doctor/ui/page/doctor_details_page.dart';
 import 'package:medica/features/doctor/ui/page/doctor_search_page.dart';
 import 'package:medica/features/home/ui/home_patient_page.dart';
 import 'package:medica/features/onboarding/onboarding_cubit.dart';
-import 'package:medica/features/onboarding/onboarding_repo.dart';
 import 'package:medica/features/onboarding/ui/pages/onboarding_page.dart';
 import 'package:medica/features/patient/data/model/patient.dart';
 import 'package:medica/features/patient/data/model/patient_history.dart';
@@ -21,32 +18,39 @@ import 'package:medica/features/patient/ui/page/Patient_search_page.dart';
 import 'package:medica/features/patient/ui/page/patient_info_page.dart';
 import 'package:medica/features/profile/ui/page/profile_page.dart';
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
-import 'package:medica/features/registration/data/repository/auth_repository.dart';
 import 'package:medica/features/registration/ui/pages/fill_profile_page.dart';
 import 'package:medica/features/registration/ui/pages/forget_password_page.dart';
 import 'package:medica/features/registration/ui/pages/reset_password_page.dart';
 import 'package:medica/features/registration/ui/pages/sign_in_page.dart';
 import 'package:medica/features/registration/ui/pages/sign_up_page.dart';
 import 'package:medica/features/registration/ui/pages/verify_code_page.dart';
+import 'package:medica/features/splash/splash_screen.dart';
 
 final router = GoRouter(
-  initialLocation: '/${CustomRoutes.signIn}',
+  initialLocation: '/${CustomRoutes.splash}',
   // initialLocation: '/',
   debugLogDiagnostics: true,
   navigatorKey: getIt<GlobalKey<NavigatorState>>(),
   redirect: (context, state) async {
-    final isFirstTimeLaunch = getIt<OnboardingRepo>().isFirstTimeLaunch();
-    if (isFirstTimeLaunch) {
-      return '/${CustomRoutes.onboarding}'; // Pass current location
-    }
-    final isLoggedIn = await getIt<AuthRepository>().isLoggedIn();
-    getIt<Dio>().interceptors.add(getIt<TokenInterceptor>());
-    if (isLoggedIn && state.matchedLocation == '/${CustomRoutes.signIn}') {
-      return '/'; // Pass current location
-    }
     return null;
+
+    // final isFirstTimeLaunch = getIt<OnboardingRepo>().isFirstTimeLaunch();
+    // if (isFirstTimeLaunch) {
+    //   return '/${CustomRoutes.onboarding}'; // Pass current location
+    // }
+    // final isLoggedIn = await getIt<AuthRepository>().isLoggedIn();
+    // getIt<Dio>().interceptors.add(getIt<TokenInterceptor>());
+    // if (isLoggedIn && state.matchedLocation == '/${CustomRoutes.signIn}') {
+    //   return '/'; // Pass current location
+    // }
+    // return null;
   },
   routes: [
+    GoRoute(
+      path: '/${CustomRoutes.splash}',
+      name: CustomRoutes.splash,
+      builder: (context, state) => const SplashScreen(),
+    ),
     GoRoute(
         path: '/${CustomRoutes.signUp}',
         name: CustomRoutes.signUp,
@@ -250,6 +254,7 @@ class TestPage extends StatelessWidget {
 }
 
 class CustomRoutes {
+  static const String splash = 'splash';
   static const String signUp = 'sign-up';
   static const String signIn = 'sign-in';
   static const String fillProfile = 'fill-profile';

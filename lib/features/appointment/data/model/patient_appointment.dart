@@ -10,7 +10,7 @@ class PatientAppointment with _$PatientAppointment {
     required String startTime,
     required String reasonForVisit,
     required int doctorId,
-    required bool isVirtual,
+    @Default(false) bool virtual,
   }) = _PatientAppointment;
 
   factory PatientAppointment.fromJson(Map<String, dynamic> json) =>

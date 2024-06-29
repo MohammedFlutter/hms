@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
-import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_event.dart';

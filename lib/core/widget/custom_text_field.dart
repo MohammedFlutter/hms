@@ -58,7 +58,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       autofocus: widget.autofocus ?? false,
       focusNode: widget.focusNode,
       onSubmitted: widget.onFieldSubmitted,
-      textInputAction: widget.textInputAction,autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: widget.textInputAction,
+      // autovalidateMode: AutovalidateMode.d,
       onTapOutside: (e) => FocusManager.instance.primaryFocus?.unfocus(),
       obscureText: _obscureText,
       decoration: InputDecoration(

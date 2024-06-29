@@ -48,7 +48,7 @@ class _TimeSlotState extends State<TimeSlot> {
                     : Colors.grey[200]
                 : Colors.grey[300],
             label: SizedBox(
-              width: 36,
+              width: 40,
               child: Text(
                 DateFormat('HH:mm').format(timeSlot),
                 style: TextStyle(

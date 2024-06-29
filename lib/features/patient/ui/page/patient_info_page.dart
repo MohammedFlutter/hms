@@ -120,10 +120,14 @@ class PatientInfoPage extends StatelessWidget {
   }
 
   Widget _buildCheckTile(String title, bool value) {
+
     return CheckboxListTile(
       title: Text(title),
       value: value,
-      onChanged: null,
+
+
+      // fillColor: WidgetStatePropertyAll(Colors.blue),
+      onChanged: (val){},
     );
   }
 
