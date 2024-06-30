@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
@@ -57,13 +58,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 appBar: AppBar(title: const Text('Profile'),),
                   body: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 24) ,
+                     EdgeInsets.symmetric(horizontal: 24.w) ,
                 child: SingleChildScrollView(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     buildProfileInfo(context, profile),
-                    const Gap(16),
+                     Gap(16.h),
                     buildBody(context)
                   ],
                 )),
@@ -80,14 +81,14 @@ class _ProfilePageState extends State<ProfilePage> {
         //   'Profile',
         //   style: CustomTextStyle.h1.copyWith(fontWeight: FontWeight.w600),
         // ),
-        const Gap(16),
+         Gap(16.h),
         _buildPicture(context),
-        const Gap(16),
+         Gap(16.h),
         Text(
           '${profile.firstname} ${profile.lastname}',
           style: CustomTextStyle.h2,
         ),
-        const Gap(4),
+         Gap(4.h),
         Text(
           profile.phone ?? '',
           style: CustomTextStyle.bodyXSMedium,
@@ -108,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
           //   height: 100,
           //   decoration: BoxDecoration(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(80),
+            borderRadius: BorderRadius.circular(80.r),
             child: Container(
               color: const Color(0xFFEDEDF8),
               // color: Colors.red,
@@ -116,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 160,
               alignment: AlignmentDirectional.center,
               child: Transform.translate(
-                  offset: const Offset(-20, 0),
+                  offset:  Offset(-20, 0),
                   // offset: const Offset(0, 0),
                   child:
                   // Image.network(

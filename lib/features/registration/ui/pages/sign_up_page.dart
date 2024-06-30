@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(CustomRoutes.verifyCode, extra: {
+              context.pushNamed(CustomRoutes.verifyCode, extra: {
                 CustomRouteParameter.previousPage: CustomRoutes.signUp,
                 CustomRouteParameter.email: _formKey.currentState!.value[email]
               });
@@ -53,12 +54,12 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: SingleChildScrollView(
               child: Column(children: [
-                const Gap(24),
+                 Gap(24.h),
                 buildForm(context),
-                const Gap(24),
+                 Gap(24.h),
                 buildFooter(context),
               ]),
             ),
@@ -67,15 +68,6 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
-
-  //
-  // Widget buildLogo() {
-  //   return Image.asset(
-  //     Assets.imagesLogo,
-  //     height: 66,
-  //     width: 66,
-  //   );
-  // }
 
   static const firstName = 'first_name';
   static const lastName = 'last_name';
@@ -87,24 +79,19 @@ class _SignUpPageState extends State<SignUpPage> {
         key: _formKey,
         child: Column(
           children: [
-            Column(
+            const Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Create Account',
-                    style: CustomTextStyle.h1.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xFF1C2A3A))),
+                Text('Create Account', style: CustomTextStyle.h1),
                 Text(
                   'We are here to help you!',
-                  style: CustomTextStyle.bodySRegular
-                      .copyWith(color: const Color(0xFF6B7280)),
+                  style: CustomTextStyle.bodySRegular,
                 )
               ],
             ),
-            const SizedBox(
-              height: 32,
-            ),
+            Gap(32.h),
+
             CustomTextField(
               name: firstName,
               label: 'First Name',
@@ -114,9 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            Gap(20.h),
             CustomTextField(
               name: lastName,
               label: 'Last Name',
@@ -126,9 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            Gap(20.h),
             CustomTextField(
               name: email,
               label: 'Email',
@@ -137,9 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            Gap(20.h),
             CustomTextField(
               name: password,
               label: 'password',
@@ -150,9 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
               type: TextFieldType.password,
               onFieldSubmitted: (_) => _signUp,
             ),
-            const SizedBox(
-              height: 24,
-            ),
+            Gap(24.h),
             Container(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: FilledButton(
@@ -206,11 +185,11 @@ class _SignUpPageState extends State<SignUpPage> {
     var formState = _formKey.currentState!;
     if (formState.saveAndValidate()) {
       context.read<SignUpCubit>().onSignIn(SignUpCredential(
-          email: formState.value[email],
-          password: formState.value[password],
-          firstname: formState.value[firstName],
-          lastname: formState.value[lastName],
-      ));
+            email: formState.value[email],
+            password: formState.value[password],
+            firstname: formState.value[firstName],
+            lastname: formState.value[lastName],
+          ));
     }
     //   todo implements
   }

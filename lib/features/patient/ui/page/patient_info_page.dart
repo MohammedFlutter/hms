@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:medica/core/const/text_style.dart';
@@ -20,13 +21,13 @@ class PatientInfoPage extends StatelessWidget {
             '${patient.basicInfo.firstname} ${patient.basicInfo.lastname}'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -44,15 +45,15 @@ class PatientInfoPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Gap(16),
+             Gap(16.h),
             Card(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildSectionTitle('Patient History'),
-                    const Gap(16),
+                     Gap(16.h),
                     _buildSection('Physical Examination', [
                       _buildCheckTile(
                           'Diuresis', patientHistory.hasPhysDiuresis),
@@ -95,7 +96,7 @@ class PatientInfoPage extends StatelessWidget {
                       _buildCheckTile('Endocrine', patientHistory.hasFamEndo),
                       _buildCheckTile('Respiratory', patientHistory.hasFamResp),
                     ]),
-                    const Gap(12),
+                     Gap(12.h),
                     _buildSection('Other', [
                       _buildDetailRow('Past Notes', patientHistory.pastNotes),
                       _buildDetailRow(
@@ -112,7 +113,7 @@ class PatientInfoPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Gap(40)
+             Gap(40.h)
           ],
         ),
       ),
@@ -135,20 +136,20 @@ class PatientInfoPage extends StatelessWidget {
     return ExpansionTile(
       title: Text(
         title,
-        style: const TextStyle(
+        style:  TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 16,
+          fontSize: 16.sp,
         ),
       ),
       expandedAlignment: Alignment.centerLeft,
-      childrenPadding: const EdgeInsets.symmetric(vertical: 12),
+      childrenPadding:  EdgeInsets.symmetric(vertical: 12.h),
       children: children,
     );
   }
 
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding:  EdgeInsets.only(bottom: 8.h),
       child: Text(
         title,
         style: const TextStyle(
@@ -161,7 +162,7 @@ class PatientInfoPage extends StatelessWidget {
 
   Widget _buildDetailRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      padding:  EdgeInsets.symmetric(vertical: 12.h),
       child: Row(
         children: [
           Text('$label: ', style: CustomTextStyle.bodyLG),

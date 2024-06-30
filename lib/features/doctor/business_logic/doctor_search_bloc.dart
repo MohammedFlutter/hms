@@ -7,11 +7,11 @@ import 'package:medica/features/doctor/business_logic/doctor_search_state.dart';
 import 'package:medica/features/doctor/data/repository/search_doctor_repository.dart';
 
 @injectable
-class DoctorSearchBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
+class DoctorSearchBloc extends Bloc<DoctorSearchEvent, DoctorSearchState> {
   DoctorSearchBloc(
     this._doctorRepository,
-  ) : super(const SearchDoctorState()) {
-    on<SearchDoctorEvent>((event, emit) {
+  ) : super(const DoctorSearchState()) {
+    on<DoctorSearchEvent>((event, emit) {
       event.when(
           started: () {},
           searchDoctors: _onSearch,
@@ -40,8 +40,8 @@ class DoctorSearchBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
   void _onFilterBySpecialization(String? selectedSpecializations) {
     emit(
         state.copyWith(selectedSpecializations: selectedSpecializations ?? ''));
-    if (state.searchQuery.isEmpty) return;
-    add(const SearchDoctorEvent.loadDoctor());
+    // if (state.searchQuery.isEmpty) return;
+    add(const DoctorSearchEvent.loadDoctor());
   }
 
   void _onSort(isAscending) {
@@ -62,6 +62,6 @@ class DoctorSearchBloc extends Bloc<SearchDoctorEvent, SearchDoctorState> {
   Future<void> _onSearch(query) async {
     emit(state.copyWith(searchQuery: query));
     if (query.isEmpty) return;
-    add(const SearchDoctorEvent.loadDoctor());
+    add(const DoctorSearchEvent.loadDoctor());
   }
 }

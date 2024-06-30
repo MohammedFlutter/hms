@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:medica/core/const/text_style.dart';
@@ -52,10 +53,10 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: SingleChildScrollView(
               child: Column(children: [
-                const Gap(24),
+                 Gap(24.h),
                 buildForm(context),
               ]),
             ),
@@ -73,16 +74,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       key: _formKey,
       child: Column(
         children: [
-          Text('Create New Password',
-              style: CustomTextStyle.h1.copyWith(
-                  fontWeight: FontWeight.w600, color: const Color(0xFF1C2A3A))),
-          const Gap(12),
-          Text(
+          const Text('Create New Password',
+              style: CustomTextStyle.h1),
+           Gap(12.h),
+          const Text(
             'Your new password must be different form previously used password',
             style: CustomTextStyle.bodySRegular
-                .copyWith(color: const Color(0xFF6B7280)),
+                ,
           ),
-          const Gap(32),
+           Gap(32.h),
           CustomTextField(
             name: _password,
             label: 'password',
@@ -92,7 +92,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             type: TextFieldType.password,
             textInputAction: TextInputAction.next,
           ),
-          const Gap(20),
+           Gap(20.h),
           CustomTextField(
             name: _confirmPassword,
             label: 'password',
@@ -103,7 +103,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             type: TextFieldType.password,
             onFieldSubmitted: (_) => _resetPassword(context),
           ),
-          const Gap(32),
+           Gap(32.h),
           Container(
             constraints: const BoxConstraints(minWidth: double.infinity),
             child: FilledButton(

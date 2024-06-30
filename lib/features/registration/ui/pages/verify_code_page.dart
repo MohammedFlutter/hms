@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -58,7 +59,8 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
                   message: 'account created successfully');
               if (widget.previousRoute ==
                   PreviousRoute.forgotPasswordVerification) {
-                context.goNamed(CustomRoutes.resetPassword, extra: widget.email);
+                context.pushNamed(CustomRoutes.resetPassword,
+                    extra: widget.email);
               } else if (widget.previousRoute ==
                   PreviousRoute.accountActivationVerification) {
                 context.goNamed(CustomRoutes.signIn);
@@ -73,12 +75,12 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: SingleChildScrollView(
               child: Column(children: [
-                const Gap(24),
+                 Gap(24.h),
                 buildForm(context),
-                const Gap(24),
+                 Gap(24.h),
                 buildFooter(context),
               ]),
             ),
@@ -91,24 +93,21 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
   Widget buildForm(BuildContext context) {
     return Column(
       children: [
-        Text('Verify Code',
-            style: CustomTextStyle.h1.copyWith(
-                fontWeight: FontWeight.w600, color: const Color(0xFF1C2A3A))),
-        const Gap(12),
-        Text(
-          'Enter the the code we just sent you on your registered Email',
-          textAlign: TextAlign.center,
-          style: CustomTextStyle.bodySRegular
-              .copyWith(color: const Color(0xFF6B7280)),
-        ),
-        const Gap(32),
+        const Text('Verify Code', style: CustomTextStyle.h1),
+         Gap(12.h),
+        const Text(
+            'Enter the the code we just sent you on your registered Email',
+            textAlign: TextAlign.center,
+            style: CustomTextStyle.bodySRegular),
+         Gap(32.h),
         Form(
           key: _formKey,
           child: Pinput(
             length: 6,
             validator: _codeValidator(),
+            // keyboardType: TextInputType.text,
             controller: _otpController,
-            // keyboardType: TextInputType.,
+            keyboardType: TextInputType.name,
             onChanged: (value) {
               // to delete any character
               // if (int.tryParse(value) == null) {
@@ -122,7 +121,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
             },
           ),
         ),
-        const Gap(32),
+         Gap(32.h),
         Container(
           constraints: const BoxConstraints(minWidth: double.infinity),
           child: FilledButton(
@@ -173,11 +172,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
   void _onResend() {
     //todo on resend
     _otpController.text = '';
-    // if (widget.previousRoute == PreviousRoute.forgotPasswordVerification) {
     BlocProvider.of<VerifyCodeCubit>(context).onResentOtp(widget.email);
-    // }
-    // c
-    // ontext.pushNamed(CustomRoute.resetPassword);
   }
 
   FormFieldValidator<String> _codeValidator(// AppLocalizations appLocalizations

@@ -58,27 +58,41 @@ class _PatientAppointmentPageState extends State<PatientAppointmentPage> {
   }
 
   Widget _buildAppointmentList(PatientAppointmentState state) {
-    if (state.patientAppointments == null) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
-    if (state.patientAppointments!.isEmpty) {
-      return const Center(
-        child: Text("you don't have Appointment "),
-      );
-    }
-    if (state.patientAppointments != null) {
-      return ListView.builder(
-        itemCount: state.patientAppointments!.length,
-        itemBuilder: (context, index) {
-          final appointment = state.patientAppointments![index];
-          return PatientAppointmentCard(
-            patientAppointment: appointment,
+    switch (state.status) {
+      case PatientAppointmentStatus.initial:
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      // case PatientAppointmentStatus.failure:
+      case PatientAppointmentStatus.loading:
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      case PatientAppointmentStatus.failure:
+        return SizedBox();
+      case PatientAppointmentStatus.success:
+        if (state.patientAppointments!.isEmpty) {
+          return const Center(
+            child: Text("you don't have Appointment "),
           );
-        },
-      );
+        }
+        if (state.patientAppointments != null) {
+          return ListView.builder(
+            itemCount: state.patientAppointments!.length,
+            itemBuilder: (context, index) {
+              final appointment = state.patientAppointments![index];
+              return PatientAppointmentCard(
+                patientAppointment: appointment,
+              );
+            },
+          );
+        }
     }
+    // if (state.patientAppointments == null) {
+    //   return const Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
     return const SizedBox();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
@@ -23,13 +24,13 @@ class PatientSearchPage extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search Patient...',
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(25.r),
                       borderSide: const BorderSide(),
                     ),
                   ),
@@ -41,15 +42,15 @@ class PatientSearchPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Number of Patient: ${state.patients.length}'),
                     FilledButton(
-                      style: const ButtonStyle(
+                      style:  ButtonStyle(
                           padding: WidgetStatePropertyAll(
-                              EdgeInsetsDirectional.symmetric(horizontal: 8))),
+                              EdgeInsetsDirectional.symmetric(horizontal: 8.w))),
                       onPressed: () {
                         context
                             .read<PatientSearchBloc>()

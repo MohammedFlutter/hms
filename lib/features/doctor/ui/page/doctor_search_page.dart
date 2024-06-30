@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
@@ -18,60 +19,72 @@ class DoctorSearchPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Doctor List'),
       ),
-      body: BlocConsumer<DoctorSearchBloc, SearchDoctorState>(
+      body: BlocConsumer<DoctorSearchBloc, DoctorSearchState>(
         builder: (context, state) {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search doctors...',
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(25.r),
                       borderSide: const BorderSide(),
                     ),
                   ),
                   onChanged: (query) {
                     context
                         .read<DoctorSearchBloc>()
-                        .add(SearchDoctorEvent.searchDoctors(query));
+                        .add(DoctorSearchEvent.searchDoctors(query));
                   },
                 ),
               ),
               const DoctorFilterChips(),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Number of Doctors: ${state.doctors.length}'),
                     FilledButton(
-                      style: const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsetsDirectional.symmetric(horizontal: 8))),
+                      style:  ButtonStyle(
+                          padding: WidgetStatePropertyAll(
+                              EdgeInsetsDirectional.symmetric(horizontal: 8.w))),
                       onPressed: () {
                         context.read<DoctorSearchBloc>().add(
-                            SearchDoctorEvent.sortDoctors(!state.isAscending));
+                            DoctorSearchEvent.sortDoctors(!state.isAscending));
                       },
-                      child: Text(state.isAscending ? 'Sort Z-A' : 'Sort A-Z',style: CustomTextStyle.bodySMedium,),
+                      child: Text(
+                        state.isAscending ? 'Sort Z-A' : 'Sort A-Z',
+                        style: CustomTextStyle.bodySMedium,
+                      ),
                     ),
                   ],
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: state.doctors.length,
-                  itemBuilder: (context, index) {
-                    final doctor = state.doctors[index];
-                    return DoctorCard(doctor: doctor);
-                  },
-                ),
+                child: (state.doctors.isEmpty)
+                    ? const Center(
+                        child: Text(
+                          'No Doctors Found',
+                          style: CustomTextStyle.bodySMedium,
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: state.doctors.length,
+                        itemBuilder: (context, index) {
+                          final doctor = state.doctors[index];
+                          return DoctorCard(doctor: doctor);
+                        },
+                      ),
               ),
             ],
           );
         },
-        listenWhen: (previous, current) => previous.status!=current.status,
-        listener: (BuildContext context, SearchDoctorState state) {
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (BuildContext context, DoctorSearchState state) {
           switch (state.status) {
             case DoctorStatus.initial:
               break;

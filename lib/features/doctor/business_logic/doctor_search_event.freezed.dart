@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SearchDoctorEvent {
+mixin _$DoctorSearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -79,16 +79,16 @@ mixin _$SearchDoctorEvent {
 }
 
 /// @nodoc
-abstract class $SearchDoctorEventCopyWith<$Res> {
-  factory $SearchDoctorEventCopyWith(
-          SearchDoctorEvent value, $Res Function(SearchDoctorEvent) then) =
-      _$SearchDoctorEventCopyWithImpl<$Res, SearchDoctorEvent>;
+abstract class $DoctorSearchEventCopyWith<$Res> {
+  factory $DoctorSearchEventCopyWith(
+          DoctorSearchEvent value, $Res Function(DoctorSearchEvent) then) =
+      _$DoctorSearchEventCopyWithImpl<$Res, DoctorSearchEvent>;
 }
 
 /// @nodoc
-class _$SearchDoctorEventCopyWithImpl<$Res, $Val extends SearchDoctorEvent>
-    implements $SearchDoctorEventCopyWith<$Res> {
-  _$SearchDoctorEventCopyWithImpl(this._value, this._then);
+class _$DoctorSearchEventCopyWithImpl<$Res, $Val extends DoctorSearchEvent>
+    implements $DoctorSearchEventCopyWith<$Res> {
+  _$DoctorSearchEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -105,7 +105,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SearchDoctorEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$DoctorSearchEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -119,7 +119,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'SearchDoctorEvent.started()';
+    return 'DoctorSearchEvent.started()';
   }
 
   @override
@@ -216,7 +216,7 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements SearchDoctorEvent {
+abstract class _Started implements DoctorSearchEvent {
   const factory _Started() = _$StartedImpl;
 }
 
@@ -229,7 +229,7 @@ abstract class _$$LoadDoctorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadDoctorImplCopyWithImpl<$Res>
-    extends _$SearchDoctorEventCopyWithImpl<$Res, _$LoadDoctorImpl>
+    extends _$DoctorSearchEventCopyWithImpl<$Res, _$LoadDoctorImpl>
     implements _$$LoadDoctorImplCopyWith<$Res> {
   __$$LoadDoctorImplCopyWithImpl(
       _$LoadDoctorImpl _value, $Res Function(_$LoadDoctorImpl) _then)
@@ -243,7 +243,7 @@ class _$LoadDoctorImpl implements _LoadDoctor {
 
   @override
   String toString() {
-    return 'SearchDoctorEvent.loadDoctor()';
+    return 'DoctorSearchEvent.loadDoctor()';
   }
 
   @override
@@ -340,7 +340,7 @@ class _$LoadDoctorImpl implements _LoadDoctor {
   }
 }
 
-abstract class _LoadDoctor implements SearchDoctorEvent {
+abstract class _LoadDoctor implements DoctorSearchEvent {
   const factory _LoadDoctor() = _$LoadDoctorImpl;
 }
 
@@ -355,7 +355,7 @@ abstract class _$$SearchDoctorsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SearchDoctorsImplCopyWithImpl<$Res>
-    extends _$SearchDoctorEventCopyWithImpl<$Res, _$SearchDoctorsImpl>
+    extends _$DoctorSearchEventCopyWithImpl<$Res, _$SearchDoctorsImpl>
     implements _$$SearchDoctorsImplCopyWith<$Res> {
   __$$SearchDoctorsImplCopyWithImpl(
       _$SearchDoctorsImpl _value, $Res Function(_$SearchDoctorsImpl) _then)
@@ -385,7 +385,7 @@ class _$SearchDoctorsImpl implements _SearchDoctors {
 
   @override
   String toString() {
-    return 'SearchDoctorEvent.searchDoctors(searchQuery: $searchQuery)';
+    return 'DoctorSearchEvent.searchDoctors(searchQuery: $searchQuery)';
   }
 
   @override
@@ -491,7 +491,7 @@ class _$SearchDoctorsImpl implements _SearchDoctors {
   }
 }
 
-abstract class _SearchDoctors implements SearchDoctorEvent {
+abstract class _SearchDoctors implements DoctorSearchEvent {
   const factory _SearchDoctors(final String searchQuery) = _$SearchDoctorsImpl;
 
   String get searchQuery;
@@ -511,7 +511,7 @@ abstract class _$$SortDoctorsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SortDoctorsImplCopyWithImpl<$Res>
-    extends _$SearchDoctorEventCopyWithImpl<$Res, _$SortDoctorsImpl>
+    extends _$DoctorSearchEventCopyWithImpl<$Res, _$SortDoctorsImpl>
     implements _$$SortDoctorsImplCopyWith<$Res> {
   __$$SortDoctorsImplCopyWithImpl(
       _$SortDoctorsImpl _value, $Res Function(_$SortDoctorsImpl) _then)
@@ -541,7 +541,7 @@ class _$SortDoctorsImpl implements _SortDoctors {
 
   @override
   String toString() {
-    return 'SearchDoctorEvent.sortDoctors(isAscending: $isAscending)';
+    return 'DoctorSearchEvent.sortDoctors(isAscending: $isAscending)';
   }
 
   @override
@@ -647,7 +647,7 @@ class _$SortDoctorsImpl implements _SortDoctors {
   }
 }
 
-abstract class _SortDoctors implements SearchDoctorEvent {
+abstract class _SortDoctors implements DoctorSearchEvent {
   const factory _SortDoctors(final bool isAscending) = _$SortDoctorsImpl;
 
   bool get isAscending;
@@ -667,7 +667,7 @@ abstract class _$$FilterDoctorsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FilterDoctorsImplCopyWithImpl<$Res>
-    extends _$SearchDoctorEventCopyWithImpl<$Res, _$FilterDoctorsImpl>
+    extends _$DoctorSearchEventCopyWithImpl<$Res, _$FilterDoctorsImpl>
     implements _$$FilterDoctorsImplCopyWith<$Res> {
   __$$FilterDoctorsImplCopyWithImpl(
       _$FilterDoctorsImpl _value, $Res Function(_$FilterDoctorsImpl) _then)
@@ -697,7 +697,7 @@ class _$FilterDoctorsImpl implements _FilterDoctors {
 
   @override
   String toString() {
-    return 'SearchDoctorEvent.filterDoctorsBySpecializations(selectedSpecializations: $selectedSpecializations)';
+    return 'DoctorSearchEvent.filterDoctorsBySpecializations(selectedSpecializations: $selectedSpecializations)';
   }
 
   @override
@@ -804,7 +804,7 @@ class _$FilterDoctorsImpl implements _FilterDoctors {
   }
 }
 
-abstract class _FilterDoctors implements SearchDoctorEvent {
+abstract class _FilterDoctors implements DoctorSearchEvent {
   const factory _FilterDoctors(final String? selectedSpecializations) =
       _$FilterDoctorsImpl;
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:medica/core/const/text_style.dart';
 import 'package:medica/features/appointment/business_logic/DTO/doctor_appointment_dto.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
@@ -22,42 +24,39 @@ class DoctorAppointmentCard extends StatelessWidget {
       onTap: () {},
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           child: Row(
             children: [
               // CircleAvatar with first letter
               CircleAvatar(
                 backgroundColor: randomColor,
-                radius: 20, // Adjust size as needed
+                radius: 20.r, // Adjust size as needed
                 child: Text(
                   doctorAppointment.patientName.substring(0, 1).toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
               ),
-              const SizedBox(width: 12), // Add some spacing
+               SizedBox(width: 12.w), // Add some spacing
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     doctorAppointment.patientName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                    style: CustomTextStyle.h3,
                   ),
-                  const Gap(4),
+                   Gap(4.h),
                   Text('Date: ${doctorAppointment.startTime}'),
-                  const Gap(4),
+                   Gap(4.h),
                   Text('Virtual: ${doctorAppointment.isVirtual}'),
                 ],
               ),
               const Spacer(),
-              buildIcon(true),
-              const Gap(4),
-              buildIcon(false),
+              buildIcon(true, context),
+               Gap(4.w),
+              buildIcon(false, context),
             ],
           ),
         ),
@@ -65,7 +64,7 @@ class DoctorAppointmentCard extends StatelessWidget {
     );
   }
 
-  Widget buildIcon(bool isVideoCall) {
+  Widget buildIcon(bool isVideoCall, context) {
     return ZegoSendCallInvitationButton(
       invitees: [
         ZegoUIKitUser(
@@ -73,8 +72,13 @@ class DoctorAppointmentCard extends StatelessWidget {
             name: doctorAppointment.patientName)
       ],
       isVideoCall: isVideoCall,
-      buttonSize: const Size(40, 40),
-      iconSize: const Size(40, 40),
+      icon: ButtonIcon(
+          icon: Icon(
+        isVideoCall ? Icons.video_call : Icons.phone,
+        color: Theme.of(context).colorScheme.onPrimary,
+      ),backgroundColor:Theme.of(context).colorScheme.primary),
+      buttonSize:  Size(40.w, 40.h),
+      iconSize:  Size(40.w, 40.h),
       margin: EdgeInsets.zero,
     );
   }

@@ -17,11 +17,6 @@ class DoctorCard extends StatelessWidget {
         doctor.basicInfo.firstname.hashCode % Colors.primaries.length];
 
     return Card(
-      // elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-        side: BorderSide(color: Theme.of(context).dividerColor),
-      ),
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: randomColor,

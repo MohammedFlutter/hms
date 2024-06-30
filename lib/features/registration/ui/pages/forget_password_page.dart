@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -38,9 +39,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             },
             success: () {
               context.pop();
-              context.goNamed(CustomRoutes.verifyCode, extra: {
+              context.pushNamed(CustomRoutes.verifyCode, extra: {
                 CustomRouteParameter.previousPage: CustomRoutes.forgetPassword,
-                CustomRouteParameter.email:_formKey.currentState!.value[email]
+                CustomRouteParameter.email: _formKey.currentState!.value[email]
               });
             },
             failure: (error) {
@@ -52,10 +53,10 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: SingleChildScrollView(
               child: Column(children: [
-                const Gap(24),
+                 Gap(24.h),
                 buildForm(context),
               ]),
             ),
@@ -72,16 +73,13 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
       key: _formKey,
       child: Column(
         children: [
-          Text('Hi, Welcome Back!',
-              style: CustomTextStyle.h1.copyWith(
-                  fontWeight: FontWeight.w600, color: const Color(0xFF1C2A3A))),
-          const Gap(12),
-          Text(
-            'Hope you’re doing fine.',
-            style: CustomTextStyle.bodySRegular
-                .copyWith(color: const Color(0xFF6B7280)),
+          const Text('Reset Password', style: CustomTextStyle.h1),
+           Gap(12.h),
+          const Text(
+            'Enter your email to receive a password reset link.',
+            style: CustomTextStyle.bodySRegular,
           ),
-          const Gap(32),
+           Gap(32.h),
           CustomTextField(
             name: email,
             label: 'Email',
@@ -90,11 +88,11 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
           ),
-          const Gap(32),
+           Gap(32.h),
           Container(
             constraints: const BoxConstraints(minWidth: double.infinity),
             child: FilledButton(
-              onPressed:_sendEmail,
+              onPressed: _sendEmail,
               child: const Text('Send Code'),
             ),
           )

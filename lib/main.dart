@@ -17,6 +17,7 @@ import 'package:medica/features/appointment/business_logic/create_appointment/ap
 import 'package:medica/features/appointment/business_logic/doctor_appointment/doctor_appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/patient_appointment/patient_appointment_bloc.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
+import 'package:medica/features/home/business_logic/home_doctor/home_doctor_bloc.dart';
 import 'package:medica/features/home/business_logic/home_patient/home_patient_bloc.dart';
 import 'package:medica/features/patient/business_logic/patient_search_bloc.dart';
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';
@@ -45,6 +46,7 @@ void main() async {
     BlocProvider(create: (_) => getIt<VerifyCodeCubit>()),
     BlocProvider(create: (_) => getIt<ResetPasswordCubit>()),
     BlocProvider(create: (_) => getIt<HomePatientBloc>()),
+    BlocProvider(create: (_) => getIt<HomeDoctorBloc>()),
     BlocProvider(create: (_) => getIt<DoctorSearchBloc>()),
     BlocProvider(create: (_) => getIt<PatientSearchBloc>()),
     BlocProvider(create: (_) => getIt<AppointmentBloc>()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 class TimeSlot extends StatefulWidget {
@@ -28,8 +29,8 @@ class _TimeSlotState extends State<TimeSlot> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 10,
-      runSpacing: 10,
+      spacing: 10.w,
+      runSpacing: 10.h,
       children: generateTimeSlots().map((timeSlot) {
         final isSelected = selectedTimeSlot == timeSlot;
         final isAvailable = widget.availableTimeSlots
@@ -48,7 +49,7 @@ class _TimeSlotState extends State<TimeSlot> {
                     : Colors.grey[200]
                 : Colors.grey[300],
             label: SizedBox(
-              width: 40,
+              width: 40.w,
               child: Text(
                 DateFormat('HH:mm').format(timeSlot),
                 style: TextStyle(

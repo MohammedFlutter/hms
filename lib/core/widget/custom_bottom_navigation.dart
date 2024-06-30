@@ -28,17 +28,19 @@ final patientDestinations = [
     routeIndex: 1,
   ),
   Destination(
-    icon: const Icon(Icons.receipt_long_outlined),
-    selectedIcon: const Icon(Icons.receipt_long), // Add selected icon
-    label: 'Lab Results',
+    icon: const Icon(Icons.event_outlined), // Use outlined for unselected
+    selectedIcon: const Icon(Icons.event), // Use filled for selected
+    // icon: const Icon(Icons.receipt_long_outlined),
+    // selectedIcon: const Icon(Icons.receipt_long), // Add selected icon
+    label: 'appointment',
     routeIndex: 3,
   ),
-  Destination(
-    icon: const Icon(Icons.medical_information_outlined),
-    selectedIcon: const Icon(Icons.medical_information), // Add selected icon
-    label: 'Prescription',
-    routeIndex: 4,
-  ),
+  // Destination(
+  //   icon: const Icon(Icons.medical_information_outlined),
+  //   selectedIcon: const Icon(Icons.medical_information), // Add selected icon
+  //   label: 'Prescription',
+  //   routeIndex: 4,
+  // ),
   Destination(
     icon: const Icon(Icons.person_outline),
     selectedIcon: const Icon(Icons.person), // Add selected icon
@@ -52,7 +54,7 @@ final doctorDestinations = [
     icon: const Icon(Icons.home_outlined), // Use outlined for unselected
     selectedIcon: const Icon(Icons.home), // Use filled for selected
     label: 'Home',
-    routeIndex: 0,
+    routeIndex: 7,
   ),
   Destination(
     icon: const Icon(Icons.event_outlined), // Use outlined for unselected
@@ -92,8 +94,10 @@ class CustomBottomNavigationBar extends StatefulWidget {
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
 
+
   @override
   Widget build(BuildContext context) {
+    _updateSelectedIndexBasedOnNavigation();
     return NavigationBar(
       destinations: widget.navigationDestinations
           .map((e) => NavigationDestination(
@@ -105,6 +109,19 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       selectedIndex: _selectedIndex,
       onDestinationSelected: (index) => _onDestinationSelected(context, index),
     );
+  }
+  //to handle routing out
+  void _updateSelectedIndexBasedOnNavigation() {
+    final navigationIndex = widget.navigationShell.currentIndex;
+    final currentIndex = widget.navigationDestinations.indexWhere((e) {
+      return e.routeIndex == navigationIndex;
+    });
+
+    if (_selectedIndex != currentIndex) {
+      setState(() {
+        _selectedIndex = currentIndex;
+      });
+    }
   }
 
   void _onDestinationSelected(BuildContext context, int index) {
@@ -118,5 +135,4 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       // initialLocation: index == widget.navigationShell.currentIndex
     );
   } // widget.navigationShell.goBranch(6);
-// }
 }

@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SearchDoctorState {
+mixin _$DoctorSearchState {
   List<Doctor> get doctors => throw _privateConstructorUsedError;
   bool get isAscending => throw _privateConstructorUsedError;
   String get selectedSpecializations => throw _privateConstructorUsedError;
@@ -24,15 +24,15 @@ mixin _$SearchDoctorState {
   DoctorStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchDoctorStateCopyWith<SearchDoctorState> get copyWith =>
+  $DoctorSearchStateCopyWith<DoctorSearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SearchDoctorStateCopyWith<$Res> {
-  factory $SearchDoctorStateCopyWith(
-          SearchDoctorState value, $Res Function(SearchDoctorState) then) =
-      _$SearchDoctorStateCopyWithImpl<$Res, SearchDoctorState>;
+abstract class $DoctorSearchStateCopyWith<$Res> {
+  factory $DoctorSearchStateCopyWith(
+          DoctorSearchState value, $Res Function(DoctorSearchState) then) =
+      _$DoctorSearchStateCopyWithImpl<$Res, DoctorSearchState>;
   @useResult
   $Res call(
       {List<Doctor> doctors,
@@ -44,9 +44,9 @@ abstract class $SearchDoctorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchDoctorStateCopyWithImpl<$Res, $Val extends SearchDoctorState>
-    implements $SearchDoctorStateCopyWith<$Res> {
-  _$SearchDoctorStateCopyWithImpl(this._value, this._then);
+class _$DoctorSearchStateCopyWithImpl<$Res, $Val extends DoctorSearchState>
+    implements $DoctorSearchStateCopyWith<$Res> {
+  _$DoctorSearchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,11 +93,11 @@ class _$SearchDoctorStateCopyWithImpl<$Res, $Val extends SearchDoctorState>
 }
 
 /// @nodoc
-abstract class _$$SearchDoctorStateImplCopyWith<$Res>
-    implements $SearchDoctorStateCopyWith<$Res> {
-  factory _$$SearchDoctorStateImplCopyWith(_$SearchDoctorStateImpl value,
-          $Res Function(_$SearchDoctorStateImpl) then) =
-      __$$SearchDoctorStateImplCopyWithImpl<$Res>;
+abstract class _$$DoctorSearchStateImplCopyWith<$Res>
+    implements $DoctorSearchStateCopyWith<$Res> {
+  factory _$$DoctorSearchStateImplCopyWith(_$DoctorSearchStateImpl value,
+          $Res Function(_$DoctorSearchStateImpl) then) =
+      __$$DoctorSearchStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$SearchDoctorStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SearchDoctorStateImplCopyWithImpl<$Res>
-    extends _$SearchDoctorStateCopyWithImpl<$Res, _$SearchDoctorStateImpl>
-    implements _$$SearchDoctorStateImplCopyWith<$Res> {
-  __$$SearchDoctorStateImplCopyWithImpl(_$SearchDoctorStateImpl _value,
-      $Res Function(_$SearchDoctorStateImpl) _then)
+class __$$DoctorSearchStateImplCopyWithImpl<$Res>
+    extends _$DoctorSearchStateCopyWithImpl<$Res, _$DoctorSearchStateImpl>
+    implements _$$DoctorSearchStateImplCopyWith<$Res> {
+  __$$DoctorSearchStateImplCopyWithImpl(_$DoctorSearchStateImpl _value,
+      $Res Function(_$DoctorSearchStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$SearchDoctorStateImplCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? status = null,
   }) {
-    return _then(_$SearchDoctorStateImpl(
+    return _then(_$DoctorSearchStateImpl(
       doctors: null == doctors
           ? _value._doctors
           : doctors // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$SearchDoctorStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SearchDoctorStateImpl implements _SearchDoctorState {
-  const _$SearchDoctorStateImpl(
+class _$DoctorSearchStateImpl implements _DoctorSearchState {
+  const _$DoctorSearchStateImpl(
       {final List<Doctor> doctors = const [],
       this.isAscending = true,
       this.selectedSpecializations = '',
@@ -195,14 +195,14 @@ class _$SearchDoctorStateImpl implements _SearchDoctorState {
 
   @override
   String toString() {
-    return 'SearchDoctorState(doctors: $doctors, isAscending: $isAscending, selectedSpecializations: $selectedSpecializations, searchQuery: $searchQuery, errorMessage: $errorMessage, status: $status)';
+    return 'DoctorSearchState(doctors: $doctors, isAscending: $isAscending, selectedSpecializations: $selectedSpecializations, searchQuery: $searchQuery, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearchDoctorStateImpl &&
+            other is _$DoctorSearchStateImpl &&
             const DeepCollectionEquality().equals(other._doctors, _doctors) &&
             (identical(other.isAscending, isAscending) ||
                 other.isAscending == isAscending) &&
@@ -229,19 +229,19 @@ class _$SearchDoctorStateImpl implements _SearchDoctorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SearchDoctorStateImplCopyWith<_$SearchDoctorStateImpl> get copyWith =>
-      __$$SearchDoctorStateImplCopyWithImpl<_$SearchDoctorStateImpl>(
+  _$$DoctorSearchStateImplCopyWith<_$DoctorSearchStateImpl> get copyWith =>
+      __$$DoctorSearchStateImplCopyWithImpl<_$DoctorSearchStateImpl>(
           this, _$identity);
 }
 
-abstract class _SearchDoctorState implements SearchDoctorState {
-  const factory _SearchDoctorState(
+abstract class _DoctorSearchState implements DoctorSearchState {
+  const factory _DoctorSearchState(
       {final List<Doctor> doctors,
       final bool isAscending,
       final String selectedSpecializations,
       final String searchQuery,
       final String errorMessage,
-      final DoctorStatus status}) = _$SearchDoctorStateImpl;
+      final DoctorStatus status}) = _$DoctorSearchStateImpl;
 
   @override
   List<Doctor> get doctors;
@@ -257,6 +257,6 @@ abstract class _SearchDoctorState implements SearchDoctorState {
   DoctorStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$SearchDoctorStateImplCopyWith<_$SearchDoctorStateImpl> get copyWith =>
+  _$$DoctorSearchStateImplCopyWith<_$DoctorSearchStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

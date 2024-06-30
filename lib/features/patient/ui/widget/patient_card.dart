@@ -17,10 +17,10 @@ class PatientCard extends StatelessWidget {
     final randomColor = Colors.primaries[patient.basicInfo.firstname.hashCode % Colors.primaries.length];
 
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-        side: BorderSide(color: Theme.of(context).dividerColor,width: .5),
-      ),
+      // shape: RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(4),
+      //   side: BorderSide(color: Theme.of(context).dividerColor,width: .5),
+      // ),
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: randomColor,

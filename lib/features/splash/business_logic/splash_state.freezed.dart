@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SplashState {
 // @Default('') String errorMessage,
+  Role? get role => throw _privateConstructorUsedError;
   SplashStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({SplashStatus status});
+  $Res call({Role? role, SplashStatus status});
 }
 
 /// @nodoc
@@ -46,9 +47,14 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? role = freezed,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as Role?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -65,7 +71,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SplashStatus status});
+  $Res call({Role? role, SplashStatus status});
 }
 
 /// @nodoc
@@ -79,9 +85,14 @@ class __$$SplashStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? role = freezed,
     Object? status = null,
   }) {
     return _then(_$SplashStateImpl(
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as Role?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -93,16 +104,18 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SplashStateImpl implements _SplashState {
-  const _$SplashStateImpl({this.status = SplashStatus.initial});
+  const _$SplashStateImpl({this.role, this.status = SplashStatus.initial});
 
 // @Default('') String errorMessage,
+  @override
+  final Role? role;
   @override
   @JsonKey()
   final SplashStatus status;
 
   @override
   String toString() {
-    return 'SplashState(status: $status)';
+    return 'SplashState(role: $role, status: $status)';
   }
 
   @override
@@ -110,11 +123,12 @@ class _$SplashStateImpl implements _SplashState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SplashStateImpl &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, role, status);
 
   @JsonKey(ignore: true)
   @override
@@ -124,9 +138,12 @@ class _$SplashStateImpl implements _SplashState {
 }
 
 abstract class _SplashState implements SplashState {
-  const factory _SplashState({final SplashStatus status}) = _$SplashStateImpl;
+  const factory _SplashState({final Role? role, final SplashStatus status}) =
+      _$SplashStateImpl;
 
   @override // @Default('') String errorMessage,
+  Role? get role;
+  @override
   SplashStatus get status;
   @override
   @JsonKey(ignore: true)

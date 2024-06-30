@@ -38,7 +38,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         getIt<Dio>().interceptors.add(getIt<TokenInterceptor>());
         final isConnected = await connectZego();
         if (isConnected) {
-          emit(state.copyWith(status: SplashStatus.logIn));
+          final role = await _authRepository.role();
+
+          emit(state.copyWith(status: SplashStatus.logIn, role: role));
         } else {
           emit(state.copyWith(status: SplashStatus.logOut));
         }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
@@ -69,13 +70,13 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
                     context: context,
                     isError: true,
                     message: 'this Doctor is not available now');
-                context.goNamed(CustomRoutes.search);
+                context.goNamed(CustomRoutes.searchDoctor);
               }
           }
         },
         builder: (BuildContext context, AppointmentState state) {
           return Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
@@ -93,7 +94,7 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
                         return null;
                       },
                     ),
-                    const Gap(16),
+                     Gap(16.h),
                     TimeSlot(
                       startTime: dateFormat.parse(
                           widget.doctor.professionalDetails.workStartTime!),
@@ -116,14 +117,14 @@ class _CreateAppointmentPageState extends State<CreateAppointmentPage> {
                         const Text('Virtual Appointment'),
                       ],
                     ),
-                    const Gap(24),
+                     Gap(24.h),
                     FilledButton(
                       onPressed: () {
                         onCreateAppointment(context);
                       },
-                      style: const ButtonStyle(
+                      style:  ButtonStyle(
                           padding: WidgetStatePropertyAll(
-                              EdgeInsets.symmetric(horizontal: 8))),
+                              EdgeInsets.symmetric(horizontal: 8.w))),
                       child: const Text('Create Appointment'),
                     ),
                   ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
@@ -17,71 +19,85 @@ class DoctorDetailsPage extends StatelessWidget {
             '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: SingleChildScrollView(child: Column(children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildSectionTitle('Basic Information'),
-                      _buildDetailRow('Name',
-                          '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
-                      _buildDetailRow('Gender', doctorDetails.basicInfo.gender),
-                    ],
+            Expanded(
+                child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 16.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildSectionTitle('Basic Information'),
+                          _buildDetailRow('Name',
+                              '${doctorDetails.basicInfo.firstname} ${doctorDetails.basicInfo.lastname}'),
+                          _buildDetailRow(
+                              'Gender', doctorDetails.basicInfo.gender),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildSectionTitle('Professional Details'),
-                      _buildDetailRow('Specialty',
-                          doctorDetails.professionalDetails.specialty ?? ''),
-                      _buildDetailRow('Experience',
-                          doctorDetails.professionalDetails.experience ?? ''),
-                      _buildDetailRow('Certifications',
-                          doctorDetails.professionalDetails.certifications ?? ''),
-                    ],
+                  Gap(16.h),
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 16.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildSectionTitle('Professional Details'),
+                          _buildDetailRow(
+                              'Specialty',
+                              doctorDetails.professionalDetails.specialty ??
+                                  ''),
+                          _buildDetailRow(
+                              'Experience',
+                              doctorDetails.professionalDetails.experience ??
+                                  ''),
+                          _buildDetailRow(
+                              'Certifications',
+                              doctorDetails
+                                      .professionalDetails.certifications ??
+                                  ''),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildSectionTitle('Work of time'),
-                      _buildDetailRow(
-                          'Start from',
-                          doctorDetails.professionalDetails.workStartTime
-                              ?.trim()
-                              .substring(0, 5) ??
-                              ''),
-                      _buildDetailRow(
-                          'End at     ',
-                          doctorDetails.professionalDetails.workEndTime
-                              ?.trim()
-                              .substring(0, 5) ??
-                              ''),
-                    ],
+                  Gap(16.h),
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 16.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildSectionTitle('Work of time'),
+                          _buildDetailRow(
+                              'Start from',
+                              doctorDetails.professionalDetails.workStartTime
+                                      ?.trim()
+                                      .substring(0, 5) ??
+                                  ''),
+                          _buildDetailRow(
+                              'End at     ',
+                              doctorDetails.professionalDetails.workEndTime
+                                      ?.trim()
+                                      .substring(0, 5) ??
+                                  ''),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-
-            ],),)),
-            const SizedBox(height: 8),
-
+            )),
+            Gap(8.h),
             // Contact Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -105,11 +121,11 @@ class DoctorDetailsPage extends StatelessWidget {
 
   Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: EdgeInsets.only(bottom: 8.0.h),
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18,
+        style: TextStyle(
+          fontSize: 18.sp,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -118,7 +134,7 @@ class DoctorDetailsPage extends StatelessWidget {
 
   Widget _buildDetailRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding:  EdgeInsets.symmetric(vertical: 4.w),
       child: Row(
         children: [
           Text('$label: ', style: CustomTextStyle.bodyLG),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
@@ -45,18 +46,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
               children: [
                 buildPage(
                   image: Assets.imagesOnboarding,
-                  title: '1',
-                  subtitle: '11',
+                  title: 'Efficient Patient Management',
+                  subtitle:
+                      'Streamline patient records and improve care coordination.',
                 ),
                 buildPage(
                   image: Assets.imagesOnboarding,
-                  title: '2',
-                  subtitle: '22222222222222222',
+                  title: 'Seamless Appointment Scheduling',
+                  subtitle:
+                      'Reduce wait times and optimize resource allocation.',
                 ),
                 buildPage(
                   image: Assets.imagesOnboarding,
-                  title: '3',
-                  subtitle: '33333333333333',
+                  title: 'Enhanced Communication',
+                  subtitle:
+                      'Connect patients, doctors, and staff for better collaboration.',
                 ),
               ],
             ),
@@ -69,7 +73,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   Widget buildFooter(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding:  EdgeInsets.symmetric(horizontal: 40.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -92,9 +96,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ],
           ),
-          const Gap(28),
+          Gap(28.h),
           buildSmoothPageIndicator(),
-          const Gap(20),
+          Gap(20.h),
           (!isLast)
               ? TextButton(
                   onPressed: () => _pageController.jumpToPage(2),
@@ -102,8 +106,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     'Skip',
                     style: CustomTextStyle.bodySMedium,
                   ))
-              : const Gap(32),
-          const Gap(32),
+              :  Gap(32.h),
+           Gap(32.h),
         ],
       ),
     );
@@ -132,21 +136,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
+          AspectRatio(
+            aspectRatio: 16 / 9, // Adjust the aspect ratio as needed
             child: Image.asset(
               image,
               fit: BoxFit.cover,
-              width: double.infinity,
             ),
           ),
           Column(
             children: [
-              const Gap(24),
+               Gap(24.h),
               Text(
                 title,
                 style: CustomTextStyle.h2,
               ),
-              const Gap(8),
+               Gap(8.h),
               Text(
                 subtitle,
                 style: CustomTextStyle.bodySRegular,

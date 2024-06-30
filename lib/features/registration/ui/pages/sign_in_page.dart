@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -50,12 +51,12 @@ class _SignInPageState extends State<SignInPage> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding:  EdgeInsets.symmetric( horizontal: 16.w ,vertical: 16.h),
             child: SingleChildScrollView(
               child: Column(children: [
-                const Gap(24),
+                 Gap(24.h),
                 buildForm(context),
-                const Gap(24),
+                 Gap(24.h),
                 buildFooter(context),
               ]),
             ),
@@ -73,22 +74,18 @@ class _SignInPageState extends State<SignInPage> {
         key: _formKey,
         child: Column(
           children: [
-            Column(
+            const Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Hi, Welcome Back!',
-                    style: CustomTextStyle.h1.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xFF1C2A3A))),
+                Text('Hi, Welcome Back!', style: CustomTextStyle.h1),
                 Text(
                   'Hope you’re doing fine.',
-                  style: CustomTextStyle.bodySRegular
-                      .copyWith(color: const Color(0xFF6B7280)),
+                  style: CustomTextStyle.bodySRegular,
                 )
               ],
             ),
-            const Gap(32),
+             Gap(32.h),
             CustomTextField(
               name: email,
               label: 'Email',
@@ -97,7 +94,7 @@ class _SignInPageState extends State<SignInPage> {
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
             ),
-            const Gap(20),
+             Gap(20.h),
             CustomTextField(
               name: password,
               label: 'password',
@@ -108,14 +105,14 @@ class _SignInPageState extends State<SignInPage> {
               type: TextFieldType.password,
               onFieldSubmitted: (_) => _signIn,
             ),
-            const Gap(24),
+             Gap(24.h),
             Container(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: FilledButton(
                 onPressed: () => _signIn(context),
-                style: const ButtonStyle(
+                style:  ButtonStyle(
                     padding: WidgetStatePropertyAll(
-                        EdgeInsets.symmetric(vertical: 16))),
+                        EdgeInsets.symmetric(vertical: 16.h))),
                 child: const Text('Sign In'),
               ),
             )
@@ -181,6 +178,6 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void _goForgotPassword(BuildContext context) {
-    context.goNamed(CustomRoutes.forgetPassword);
+    context.pushNamed(CustomRoutes.forgetPassword);
   }
 }

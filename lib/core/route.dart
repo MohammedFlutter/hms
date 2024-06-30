@@ -9,7 +9,8 @@ import 'package:medica/features/appointment/ui/page/patient_appointment_page.dar
 import 'package:medica/features/doctor/data/model/doctor.dart';
 import 'package:medica/features/doctor/ui/page/doctor_details_page.dart';
 import 'package:medica/features/doctor/ui/page/doctor_search_page.dart';
-import 'package:medica/features/home/ui/home_patient_page.dart';
+import 'package:medica/features/home/ui/page/home_doctor_page.dart';
+import 'package:medica/features/home/ui/page/home_patient_page.dart';
 import 'package:medica/features/onboarding/onboarding_cubit.dart';
 import 'package:medica/features/onboarding/ui/pages/onboarding_page.dart';
 import 'package:medica/features/patient/data/model/patient.dart';
@@ -118,10 +119,10 @@ final router = GoRouter(
         builder: (context, state, navigationShell) =>
             MainWrapper(navigationShell: navigationShell),
         branches: <StatefulShellBranch>[
-          StatefulShellBranch(navigatorKey: _NavigationKeys().homeKey, routes: [
+          StatefulShellBranch(navigatorKey: _NavigationKeys().homePatientKey, routes: [
             GoRoute(
-              path: '/',
-              name: CustomRoutes.home,
+              path: '/${CustomRoutes.homePatient}',
+              name: CustomRoutes.homePatient,
               builder: (BuildContext context, GoRouterState state) {
                 return const HomePatientPage();
               },
@@ -131,8 +132,8 @@ final router = GoRouter(
               navigatorKey: _NavigationKeys().searchDoctorKey,
               routes: [
                 GoRoute(
-                    path: '/${CustomRoutes.search}',
-                    name: CustomRoutes.search,
+                    path: '/${CustomRoutes.searchDoctor}',
+                    name: CustomRoutes.searchDoctor,
                     builder: (BuildContext context, GoRouterState state) {
                       return const DoctorSearchPage();
                     },
@@ -158,7 +159,7 @@ final router = GoRouter(
                     ]),
               ]),
           StatefulShellBranch(
-              navigatorKey: _NavigationKeys().appointmentKey,
+              navigatorKey: _NavigationKeys().doctorAppointmentKey,
               routes: [
                 GoRoute(
                   path: '/${CustomRoutes.doctorAppointment}',
@@ -169,11 +170,11 @@ final router = GoRouter(
                 ),
               ]),
           StatefulShellBranch(
-              navigatorKey: _NavigationKeys().labResults,
+              navigatorKey: _NavigationKeys().patientAppointmentKey,
               routes: [
                 GoRoute(
-                  path: '/${CustomRoutes.labResults}',
-                  name: CustomRoutes.labResults,
+                  path: '/${CustomRoutes.patientAppointment}',
+                  name: CustomRoutes.patientAppointment,
                   builder: (BuildContext context, GoRouterState state) {
                     return const PatientAppointmentPage();
                   },
@@ -196,8 +197,8 @@ final router = GoRouter(
               navigatorKey: _NavigationKeys().patientKey,
               routes: [
                 GoRoute(
-                    path: '/${CustomRoutes.patients}',
-                    name: CustomRoutes.patients,
+                    path: '/${CustomRoutes.searchPatients}',
+                    name: CustomRoutes.searchPatients,
                     builder: (BuildContext context, GoRouterState state) {
                       return const PatientSearchPage();
                     },
@@ -231,6 +232,15 @@ final router = GoRouter(
                   },
                 ),
               ]),
+          StatefulShellBranch(navigatorKey: _NavigationKeys().homeDoctorKey, routes: [
+            GoRoute(
+              path: '/${CustomRoutes.homeDoctor}',
+              name: CustomRoutes.homeDoctor,
+              builder: (BuildContext context, GoRouterState state) {
+                return const HomeDoctorPage();
+              },
+            ),
+          ]),
         ]),
   ],
 );
@@ -263,13 +273,14 @@ class CustomRoutes {
   static const String verifyCode = 'verify-code';
   static const String onboarding = 'onboarding';
   static const String profile = 'profile';
-  static const String home = 'home';
-  static const String search = 'search';
+  static const String homeDoctor = 'home-doctor';
+  static const String homePatient = 'home-patient';
+  static const String searchDoctor = 'search-doctor';
   static const String labResults = 'lab-results';
   static const String prescription = 'prescription';
   static const String doctorAppointment = 'doctor-appointment';
   static const String patientAppointment = 'patient-appointment';
-  static const String patients = 'patients';
+  static const String searchPatients = 'search-patients';
   static const String patientInfo = 'patientHistory';
   static const String doctorDetails = 'doctor-details';
   static const String createAppointment = 'create-appointment';
@@ -283,11 +294,12 @@ class CustomRouteParameter {
 }
 
 class _NavigationKeys {
-  final homeKey = GlobalKey<NavigatorState>();
+  final homePatientKey = GlobalKey<NavigatorState>();
+  final homeDoctorKey = GlobalKey<NavigatorState>();
   final searchDoctorKey = GlobalKey<NavigatorState>();
-  final appointmentKey = GlobalKey<NavigatorState>();
+  final doctorAppointmentKey = GlobalKey<NavigatorState>();
   final profileKey = GlobalKey<NavigatorState>();
-  final labResults = GlobalKey<NavigatorState>();
+  final patientAppointmentKey = GlobalKey<NavigatorState>();
   final doctorDetailsKey = GlobalKey<NavigatorState>();
   final patientKey = GlobalKey<NavigatorState>();
   final prescriptionKey = GlobalKey<NavigatorState>();
