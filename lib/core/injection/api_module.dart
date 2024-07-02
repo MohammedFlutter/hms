@@ -10,7 +10,7 @@ import 'package:medica/features/registration/data/repository/auth_repository.dar
 @module
 abstract class ApiModule {
   @Named('baseUrl')
-  String get baseUrl => 'https://af40-196-135-80-93.ngrok-free.app/';
+  String get baseUrl => 'https://7d42-197-121-233-169.ngrok-free.app/';
   // String get baseUrl => 'http://localhost:8080/';
 
   @lazySingleton
