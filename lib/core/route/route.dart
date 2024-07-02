@@ -19,7 +19,7 @@ import 'package:medica/features/patient/ui/page/Patient_search_page.dart';
 import 'package:medica/features/patient/ui/page/patient_info_page.dart';
 import 'package:medica/features/profile/ui/page/profile_page.dart';
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
-import 'package:medica/features/registration/ui/pages/fill_profile_page.dart';
+import 'package:medica/features/profile/ui/page/fill_profile_page.dart';
 import 'package:medica/features/registration/ui/pages/forget_password_page.dart';
 import 'package:medica/features/registration/ui/pages/reset_password_page.dart';
 import 'package:medica/features/registration/ui/pages/sign_in_page.dart';
@@ -29,23 +29,8 @@ import 'package:medica/features/splash/splash_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/${CustomRoutes.splash}',
-  // initialLocation: '/',
   debugLogDiagnostics: true,
   navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-  redirect: (context, state) async {
-    return null;
-
-    // final isFirstTimeLaunch = getIt<OnboardingRepo>().isFirstTimeLaunch();
-    // if (isFirstTimeLaunch) {
-    //   return '/${CustomRoutes.onboarding}'; // Pass current location
-    // }
-    // final isLoggedIn = await getIt<AuthRepository>().isLoggedIn();
-    // getIt<Dio>().interceptors.add(getIt<TokenInterceptor>());
-    // if (isLoggedIn && state.matchedLocation == '/${CustomRoutes.signIn}') {
-    //   return '/'; // Pass current location
-    // }
-    // return null;
-  },
   routes: [
     GoRoute(
       path: '/${CustomRoutes.splash}',
@@ -53,16 +38,15 @@ final router = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-        path: '/${CustomRoutes.signUp}',
-        name: CustomRoutes.signUp,
-        builder: (context, state) => const SignUpPage(),
-        routes: [
-          GoRoute(
-            path: CustomRoutes.fillProfile,
-            name: CustomRoutes.fillProfile,
-            builder: (context, state) => const FillProfilePage(),
-          ),
-        ]),
+      path: '/${CustomRoutes.fillProfile}',
+      name: CustomRoutes.fillProfile,
+      builder: (context, state) => const EditProfilePage(),
+    ),
+    GoRoute(
+      path: '/${CustomRoutes.signUp}',
+      name: CustomRoutes.signUp,
+      builder: (context, state) => const SignUpPage(),
+    ),
     GoRoute(
       path: '/${CustomRoutes.signIn}',
       name: CustomRoutes.signIn,
@@ -119,15 +103,17 @@ final router = GoRouter(
         builder: (context, state, navigationShell) =>
             MainWrapper(navigationShell: navigationShell),
         branches: <StatefulShellBranch>[
-          StatefulShellBranch(navigatorKey: _NavigationKeys().homePatientKey, routes: [
-            GoRoute(
-              path: '/${CustomRoutes.homePatient}',
-              name: CustomRoutes.homePatient,
-              builder: (BuildContext context, GoRouterState state) {
-                return const HomePatientPage();
-              },
-            ),
-          ]),
+          StatefulShellBranch(
+              navigatorKey: _NavigationKeys().homePatientKey,
+              routes: [
+                GoRoute(
+                  path: '/${CustomRoutes.homePatient}',
+                  name: CustomRoutes.homePatient,
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const HomePatientPage();
+                  },
+                ),
+              ]),
           StatefulShellBranch(
               navigatorKey: _NavigationKeys().searchDoctorKey,
               routes: [
@@ -232,15 +218,17 @@ final router = GoRouter(
                   },
                 ),
               ]),
-          StatefulShellBranch(navigatorKey: _NavigationKeys().homeDoctorKey, routes: [
-            GoRoute(
-              path: '/${CustomRoutes.homeDoctor}',
-              name: CustomRoutes.homeDoctor,
-              builder: (BuildContext context, GoRouterState state) {
-                return const HomeDoctorPage();
-              },
-            ),
-          ]),
+          StatefulShellBranch(
+              navigatorKey: _NavigationKeys().homeDoctorKey,
+              routes: [
+                GoRoute(
+                  path: '/${CustomRoutes.homeDoctor}',
+                  name: CustomRoutes.homeDoctor,
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const HomeDoctorPage();
+                  },
+                ),
+              ]),
         ]),
   ],
 );

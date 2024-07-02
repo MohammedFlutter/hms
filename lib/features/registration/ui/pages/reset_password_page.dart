@@ -7,7 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/core/widget/custom_text_field.dart';
 import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart';
 import 'package:medica/features/registration/data/model/reset_password.dart';

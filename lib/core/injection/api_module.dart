@@ -4,13 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/features/registration/data/repository/auth_repository.dart';
 
 @module
 abstract class ApiModule {
   @Named('baseUrl')
-  String get baseUrl => 'https://393c-154-239-31-76.ngrok-free.app/';
+  String get baseUrl => 'https://af40-196-135-80-93.ngrok-free.app/';
   // String get baseUrl => 'http://localhost:8080/';
 
   @lazySingleton

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/core/enums/doctor_specialization.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
 import 'package:medica/features/doctor/business_logic/doctor_search_event.dart';

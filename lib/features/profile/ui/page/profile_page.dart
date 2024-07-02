@@ -5,13 +5,14 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/features/profile/business_logic/profile_bloc.dart';
-import 'package:medica/features/profile/business_logic/profile_event.dart';
-import 'package:medica/features/profile/business_logic/profile_state.dart';
+import 'package:medica/features/profile/business_logic/profile/profile_bloc.dart';
+import 'package:medica/features/profile/business_logic/profile/profile_event.dart';
+import 'package:medica/features/profile/business_logic/profile/profile_state.dart';
+
 import 'package:medica/features/profile/data/model/profile.dart';
 import 'package:medica/features/profile/ui/widget/profile_card.dart';
 import 'package:medica/generated/assets.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -39,6 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
   // final String name = 'mohammed abdo';
   @override
   Widget build(BuildContext context) {
+    context.read<ProfileBloc>().add(const ProfileEvent.getProfile());
+
     return BlocConsumer<ProfileBloc, ProfileState>(
       listener: (context, state) {
         state.maybeWhen(
@@ -48,28 +51,37 @@ class _ProfilePageState extends State<ProfilePage> {
                 context: context, isError: true, message: error));
       },
       builder: (context, state) {
-        return state.maybeWhen(
-            orElse: () => const SizedBox(),
-            loading: () {
-              return const Center(child: CircularProgressIndicator());
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Profile'),
+          ),
+          body: RefreshIndicator(
+            onRefresh: () async {
+              context
+                  .read<ProfileBloc>()
+                  .add(const ProfileEvent.getProfile()); // Refresh appointments
             },
-            success: (profile) {
-              return Scaffold(
-                appBar: AppBar(title: const Text('Profile'),),
-                  body: Padding(
-                padding:
-                     EdgeInsets.symmetric(horizontal: 24.w) ,
-                child: SingleChildScrollView(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    buildProfileInfo(context, profile),
-                     Gap(16.h),
-                    buildBody(context)
-                  ],
-                )),
-              ));
-            });
+            child: state.maybeWhen(
+                orElse: () => const SizedBox(),
+                loading: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+                success: (profile) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: SingleChildScrollView(
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        buildProfileInfo(context, profile),
+                        Gap(16.h),
+                        buildBody(context)
+                      ],
+                    )),
+                  );
+                }),
+          ),
+        );
       },
     );
   }
@@ -81,14 +93,14 @@ class _ProfilePageState extends State<ProfilePage> {
         //   'Profile',
         //   style: CustomTextStyle.h1.copyWith(fontWeight: FontWeight.w600),
         // ),
-         Gap(16.h),
+        Gap(16.h),
         _buildPicture(context),
-         Gap(16.h),
+        Gap(16.h),
         Text(
           '${profile.firstname} ${profile.lastname}',
           style: CustomTextStyle.h2,
         ),
-         Gap(4.h),
+        Gap(4.h),
         Text(
           profile.phone ?? '',
           style: CustomTextStyle.bodyXSMedium,
@@ -98,7 +110,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildPicture(BuildContext context) {
-    final randomColor = Colors.primaries[DateTime.now().millisecondsSinceEpoch % Colors.primaries.length];
+    final randomColor = Colors.primaries[
+        DateTime.now().millisecondsSinceEpoch % Colors.primaries.length];
 
     return Stack(
       children: [
@@ -117,22 +130,22 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 160,
               alignment: AlignmentDirectional.center,
               child: Transform.translate(
-                  offset:  Offset(-20, 0),
-                  // offset: const Offset(0, 0),
-                  child:
-                  // Image.network(
-                  //   imageUri,
-                  //   height: 200,
-                  //   width: 200,
-                  // )
-                   Icon(
-                    Icons.person,
+                offset: Offset(-20, 0),
+                // offset: const Offset(0, 0),
+                child:
+                    // Image.network(
+                    //   imageUri,
+                    //   height: 200,
+                    //   width: 200,
+                    // )
+                    Icon(
+                  Icons.person,
 
-                    size: 200,
-                    color: randomColor,
-                    // color: Color(0xFFE5E7EB),
-                  ),
-                  ),
+                  size: 200,
+                  color: randomColor,
+                  // color: Color(0xFFE5E7EB),
+                ),
+              ),
             ),
           ),
         ),
@@ -208,7 +221,9 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _onEditProfile(BuildContext context) {}
+  void _onEditProfile(BuildContext context) {
+    context.pushNamed(CustomRoutes.fillProfile);
+  }
 
   void _onFavorite(BuildContext context) {}
 

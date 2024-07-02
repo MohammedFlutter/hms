@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 
 class DoctorDetailsPage extends StatelessWidget {
   final Doctor doctorDetails;

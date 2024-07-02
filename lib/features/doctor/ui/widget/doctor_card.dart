@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/features/doctor/data/model/doctor.dart';
 
 class DoctorCard extends StatelessWidget {

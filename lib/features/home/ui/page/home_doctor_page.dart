@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/features/home/business_logic/home_doctor/home_doctor_bloc.dart';
 import 'package:medica/features/home/business_logic/home_doctor/home_doctor_event.dart';
 import 'package:medica/features/home/business_logic/home_doctor/home_doctor_state.dart';

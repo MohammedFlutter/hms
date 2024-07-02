@@ -24,7 +24,7 @@ class DoctorAppointmentCard extends StatelessWidget {
       onTap: () {},
       child: Card(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
           child: Row(
             children: [
               // CircleAvatar with first letter
@@ -39,7 +39,7 @@ class DoctorAppointmentCard extends StatelessWidget {
                   ),
                 ),
               ),
-               SizedBox(width: 12.w), // Add some spacing
+              SizedBox(width: 12.w), // Add some spacing
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,16 +47,22 @@ class DoctorAppointmentCard extends StatelessWidget {
                     doctorAppointment.patientName,
                     style: CustomTextStyle.h3,
                   ),
-                   Gap(4.h),
+                  Gap(4.h),
                   Text('Date: ${doctorAppointment.startTime}'),
-                   Gap(4.h),
+                  Gap(4.h),
                   Text('Virtual: ${doctorAppointment.isVirtual}'),
                 ],
               ),
-              const Spacer(),
-              buildIcon(true, context),
-               Gap(4.w),
-              buildIcon(false, context),
+                        const Spacer(),
+              (doctorAppointment.isVirtual)
+                  ? Row(
+                      children: [
+                        buildIcon(true, context),
+                        Gap(4.w),
+                        buildIcon(false, context),
+                      ],
+                    )
+                  : const SizedBox()
             ],
           ),
         ),
@@ -74,11 +80,12 @@ class DoctorAppointmentCard extends StatelessWidget {
       isVideoCall: isVideoCall,
       icon: ButtonIcon(
           icon: Icon(
-        isVideoCall ? Icons.video_call : Icons.phone,
-        color: Theme.of(context).colorScheme.onPrimary,
-      ),backgroundColor:Theme.of(context).colorScheme.primary),
-      buttonSize:  Size(40.w, 40.h),
-      iconSize:  Size(40.w, 40.h),
+            isVideoCall ? Icons.video_call : Icons.phone,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary),
+      buttonSize: Size(40.w, 40.h),
+      iconSize: Size(40.w, 40.h),
       margin: EdgeInsets.zero,
     );
   }

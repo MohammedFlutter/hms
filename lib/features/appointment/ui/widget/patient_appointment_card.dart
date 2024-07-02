@@ -39,10 +39,16 @@ class PatientAppointmentCard extends StatelessWidget {
                     Text('Virtual: ${patientAppointment.isVirtual}'),
                   ],
                 ),
-                const Spacer(),
-                buildIcon(true, context),
-                 Gap(4.h),
-                buildIcon(false, context),
+                    const Spacer(),
+                (patientAppointment.isVirtual)
+                    ? Row(
+                  children: [
+                    buildIcon(true, context),
+                    Gap(4.w),
+                    buildIcon(false, context),
+                  ],
+                )
+                    : const SizedBox()
               ],
             ),
           ),

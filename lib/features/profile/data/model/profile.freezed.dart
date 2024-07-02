@@ -20,13 +20,15 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Profile {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get firstname => throw _privateConstructorUsedError;
   String get lastname => throw _privateConstructorUsedError;
+  String? get dob => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get roles => throw _privateConstructorUsedError;
+  String? get roles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,13 +41,15 @@ abstract class $ProfileCopyWith<$Res> {
       _$ProfileCopyWithImpl<$Res, Profile>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String firstname,
       String lastname,
+      String? dob,
       String? gender,
       String? phone,
+      String? address,
       String email,
-      String roles});
+      String? roles});
 }
 
 /// @nodoc
@@ -61,19 +65,21 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? firstname = null,
     Object? lastname = null,
+    Object? dob = freezed,
     Object? gender = freezed,
     Object? phone = freezed,
+    Object? address = freezed,
     Object? email = null,
-    Object? roles = null,
+    Object? roles = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       firstname: null == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -82,6 +88,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -90,14 +100,18 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      roles: null == roles
+      roles: freezed == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -110,13 +124,15 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String firstname,
       String lastname,
+      String? dob,
       String? gender,
       String? phone,
+      String? address,
       String email,
-      String roles});
+      String? roles});
 }
 
 /// @nodoc
@@ -130,19 +146,21 @@ class __$$ProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? firstname = null,
     Object? lastname = null,
+    Object? dob = freezed,
     Object? gender = freezed,
     Object? phone = freezed,
+    Object? address = freezed,
     Object? email = null,
-    Object? roles = null,
+    Object? roles = freezed,
   }) {
     return _then(_$ProfileImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       firstname: null == firstname
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -151,6 +169,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.lastname
           : lastname // ignore: cast_nullable_to_non_nullable
               as String,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -159,14 +181,18 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      roles: null == roles
+      roles: freezed == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -175,35 +201,41 @@ class __$$ProfileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileImpl implements _Profile {
   const _$ProfileImpl(
-      {required this.id,
+      {this.id,
       required this.firstname,
       required this.lastname,
+      this.dob,
       this.gender,
       this.phone,
+      this.address,
       required this.email,
-      required this.roles});
+      this.roles});
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String firstname;
   @override
   final String lastname;
   @override
+  final String? dob;
+  @override
   final String? gender;
   @override
   final String? phone;
   @override
+  final String? address;
+  @override
   final String email;
   @override
-  final String roles;
+  final String? roles;
 
   @override
   String toString() {
-    return 'Profile(id: $id, firstname: $firstname, lastname: $lastname, gender: $gender, phone: $phone, email: $email, roles: $roles)';
+    return 'Profile(id: $id, firstname: $firstname, lastname: $lastname, dob: $dob, gender: $gender, phone: $phone, address: $address, email: $email, roles: $roles)';
   }
 
   @override
@@ -216,16 +248,18 @@ class _$ProfileImpl implements _Profile {
                 other.firstname == firstname) &&
             (identical(other.lastname, lastname) ||
                 other.lastname == lastname) &&
+            (identical(other.dob, dob) || other.dob == dob) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.address, address) || other.address == address) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.roles, roles) || other.roles == roles));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, firstname, lastname, gender, phone, email, roles);
+  int get hashCode => Object.hash(runtimeType, id, firstname, lastname, dob,
+      gender, phone, address, email, roles);
 
   @JsonKey(ignore: true)
   @override
@@ -243,30 +277,36 @@ class _$ProfileImpl implements _Profile {
 
 abstract class _Profile implements Profile {
   const factory _Profile(
-      {required final int id,
+      {final int? id,
       required final String firstname,
       required final String lastname,
+      final String? dob,
       final String? gender,
       final String? phone,
+      final String? address,
       required final String email,
-      required final String roles}) = _$ProfileImpl;
+      final String? roles}) = _$ProfileImpl;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get firstname;
   @override
   String get lastname;
   @override
+  String? get dob;
+  @override
   String? get gender;
   @override
   String? get phone;
   @override
+  String? get address;
+  @override
   String get email;
   @override
-  String get roles;
+  String? get roles;
   @override
   @JsonKey(ignore: true)
   _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>

@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:medica/core/injection/init_di.config.dart';
 import 'package:medica/core/injection/init_di.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/core/theme/custom_scheme_color.dart';
 import 'package:medica/core/theme/theme_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +20,7 @@ import 'package:medica/features/doctor/business_logic/doctor_search_bloc.dart';
 import 'package:medica/features/home/business_logic/home_doctor/home_doctor_bloc.dart';
 import 'package:medica/features/home/business_logic/home_patient/home_patient_bloc.dart';
 import 'package:medica/features/patient/business_logic/patient_search_bloc.dart';
+import 'package:medica/features/profile/business_logic/profile_edit/profile_edit_bloc.dart';
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';
 import 'package:medica/features/registration/business_logic/reset_password/reset_password_cubit.dart';
 import 'package:medica/features/registration/business_logic/sign_in/sign_in_cubit.dart';
@@ -31,7 +32,7 @@ import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 import 'package:zego_zpns/zego_zpns.dart';
 
-import 'features/profile/business_logic/profile_bloc.dart';
+import 'features/profile/business_logic/profile/profile_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,7 @@ void main() async {
     BlocProvider(create: (_) => getIt<PatientSearchBloc>()),
     BlocProvider(create: (_) => getIt<AppointmentBloc>()),
     BlocProvider(create: (_) => getIt<ProfileBloc>()),
+    BlocProvider(create: (_) => getIt<ProfileEditBloc>()),
     BlocProvider(create: (_) => getIt<PatientAppointmentBloc>()),
     BlocProvider(create: (_) => getIt<DoctorAppointmentBloc>()),
   ], child: const MyApp()));

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/features/onboarding/onboarding_cubit.dart';
 import 'package:medica/generated/assets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -29,44 +29,46 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                if (index == 2) {
-                  isLast = true;
-                } else {
-                  isLast = false;
-                }
-                setState(() {});
-              },
-              children: [
-                buildPage(
-                  image: Assets.imagesOnboarding,
-                  title: 'Efficient Patient Management',
-                  subtitle:
-                      'Streamline patient records and improve care coordination.',
-                ),
-                buildPage(
-                  image: Assets.imagesOnboarding,
-                  title: 'Seamless Appointment Scheduling',
-                  subtitle:
-                      'Reduce wait times and optimize resource allocation.',
-                ),
-                buildPage(
-                  image: Assets.imagesOnboarding,
-                  title: 'Enhanced Communication',
-                  subtitle:
-                      'Connect patients, doctors, and staff for better collaboration.',
-                ),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  if (index == 2) {
+                    isLast = true;
+                  } else {
+                    isLast = false;
+                  }
+                  setState(() {});
+                },
+                children: [
+                  buildPage(
+                    image: Assets.imagesOnboarding,
+                    title: 'Efficient Patient Management',
+                    subtitle:
+                        'Streamline patient records and improve care coordination.',
+                  ),
+                  buildPage(
+                    image: Assets.imagesOnboarding,
+                    title: 'Seamless Appointment Scheduling',
+                    subtitle:
+                        'Reduce wait times and optimize resource allocation.',
+                  ),
+                  buildPage(
+                    image: Assets.imagesOnboarding,
+                    title: 'Enhanced Communication',
+                    subtitle:
+                        'Connect patients, doctors, and staff for better collaboration.',
+                  ),
+                ],
+              ),
             ),
-          ),
-          buildFooter(context),
-        ],
+            buildFooter(context),
+          ],
+        ),
       ),
     );
   }
@@ -136,11 +138,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AspectRatio(
-            aspectRatio: 16 / 9, // Adjust the aspect ratio as needed
+          Expanded(
             child: Image.asset(
               image,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitHeight,
             ),
           ),
           Column(
@@ -154,7 +155,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
               Text(
                 subtitle,
                 style: CustomTextStyle.bodySRegular,
+                textAlign: TextAlign.center,
               ),
+              Gap(8.h)
+
+  
+  
             ],
           ),
         ],

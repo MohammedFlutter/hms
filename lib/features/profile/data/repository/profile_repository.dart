@@ -18,4 +18,12 @@ class ProfileRepository {
       return ApiResult.failure(NetworkExceptions.getDioException(e));
     }
   }
+  Future<ApiResult<Profile>> updateProfile(Profile profile) async {
+    try {
+       await _profileProvider.updateProfile(profile);
+      return const ApiResult.success();
+    } catch (e) {
+      return ApiResult.failure(NetworkExceptions.getDioException(e));
+    }
+  }
 }

@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/core/widget/custom_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medica/features/registration/business_logic/forget_password/forget_password_cubit.dart';

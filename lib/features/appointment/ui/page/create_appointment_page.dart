@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/features/appointment/business_logic/create_appointment/appointment_bloc.dart';
 import 'package:medica/features/appointment/business_logic/create_appointment/appointment_event.dart';
 import 'package:medica/features/appointment/business_logic/create_appointment/appointment_state.dart';

@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:medica/core/const/text_style.dart';
 import 'package:medica/core/helper/custom_dialog.dart';
 import 'package:medica/core/helper/custom_snake_bar.dart';
-import 'package:medica/core/route.dart';
+import 'package:medica/core/route/route.dart';
 import 'package:medica/core/widget/custom_text_field.dart';
 import 'package:medica/features/registration/business_logic/sign_up/sign_up_cubit.dart';
 import 'package:medica/features/registration/data/model/sign_up_credential.dart';

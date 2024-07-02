@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:medica/core/exceptions/network_exceptions.dart';
-import 'package:medica/features/profile/business_logic/profile_event.dart';
-import 'package:medica/features/profile/business_logic/profile_state.dart';
+import 'package:medica/features/profile/business_logic/profile/profile_event.dart';
+import 'package:medica/features/profile/business_logic/profile/profile_state.dart';
+
 import 'package:medica/features/profile/data/repository/profile_repository.dart';
 import 'package:medica/features/registration/data/repository/auth_repository.dart';
 
